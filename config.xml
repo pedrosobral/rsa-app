@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.rsaapp455564" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="apps.pedrosobral.rsa" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>RSA</name>
   <description>RSA: Resposta em Sala de Aula em tempo real</description>
   <author email="pedrosobralxv@gmail.com" href="http://ionicframework.com/">Pedro Henrique A. Sobral</author>
@@ -15,6 +15,7 @@
   <platform name="android">
     <allow-intent href="market:*"/>
   </platform>
+  <preference name="StatusBarBackgroundColor" value="#1976D2" />
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
