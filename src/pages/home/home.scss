@@ -1,3 +1,30 @@
 page-home {
+  #logo {
+    text-align: center;
+  }
 
+  #join-button {
+    margin: 0;
+    height: 100%;
+    width: 20%;
+  }
+
+  #student {
+    padding-left: 16px;
+    margin-left: 8px;
+    font-weight: 500;
+    color: color($colors, primary);
+  }
+
+  .item-inner {
+    padding-right: 0 !important;
+  }
+
+  ion-list {
+    button {
+      &:first-child {
+        margin-bottom: 30px;
+      }
+    }
+  }
 }
