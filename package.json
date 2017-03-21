@@ -2,7 +2,7 @@
   "name": "rsa-backend",
   "author": "Pedro Henrique A. Sobral",
   "description": "Resposta em Sala de Aula: Aplicação de votação em tempo real para uso em sala de aula.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",

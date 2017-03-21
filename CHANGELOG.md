@@ -1,3 +1,14 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/pedrosobral/rsa-app/compare/0.1.0...v0.2.0) (2017-03-21)
+
+
+### Features
+
+* **poll:** add answer method ([8ff6a00](https://github.com/pedrosobral/rsa-app/commit/8ff6a00))
+* **poll:** add poll page (student view) ([6469fd1](https://github.com/pedrosobral/rsa-app/commit/6469fd1))
+
+
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/pedrosobral/rsa-app/compare/0.0.0...v0.1.0) (2017-03-20)
 
