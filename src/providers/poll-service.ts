@@ -25,6 +25,18 @@ export class PollService {
   }
 
   poll(room: String) {
-    return this.polls.find({ query: { code: room } });
+    return this.polls.find({ query: { room: room } });
+  }
+
+  answer(poll, answer) {
+    return this.polls.patch(poll.id, {
+      "$inc": {
+        "questions.0.options.$.votes": 1
+      }
+    }, {
+      query: {
+        "questions.0.options.text": answer
+      }
+    })
   }
 }
