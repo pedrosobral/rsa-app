@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Resposta em sala de aula</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div *ngIf="!poll">
+    <div id="loading">
+      <img src="./assets/loading.svg">
+    </div>
+
+    <div class="welcome">
+      <p>
+        Bem vindo à apresentação de Pedro Henrique na sala <span ion-text color="primary">{{room}}</span>
+      </p>
+      <p>
+        Assim que Pedro ativar uma votação, você vai poder votar aqui.
+      </p>
+    </div>
+  </div>
+
+  <div *ngIf="poll">
+    <div class="question">
+      <span>{{poll?.question}}</span>
+    </div>
+
+    <ion-list radio-group [(ngModel)]="answer">
+      <ion-item *ngFor="let option of poll.options; let i = index">
+        <ion-label>{{option.text}}</ion-label>
+        <ion-radio value="{{option.text}}"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <button (click)="submit(answer)" ion-button color="primary" full>ENVIAR</button>
+  </div>
+
+</ion-content>

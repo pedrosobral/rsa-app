@@ -19,9 +19,9 @@
 
 
     <span id="student">Estudantes</span>
-    <ion-item>
-      <ion-input type="text" placeholder="Digite o código de acesso"></ion-input>
-      <button id="join-button" ion-button item-right>Entrar</button>
+    <ion-item id="join-button">
+      <ion-input type="text" placeholder="Digite o código de acesso" [(ngModel)]="room"></ion-input>
+      <button (click)="goToPoll(room)" ion-button item-right>Entrar</button>
     </ion-item>
   </ion-list>
 </ion-content>
