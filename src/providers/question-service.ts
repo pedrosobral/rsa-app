@@ -25,4 +25,12 @@ export class QuestionService extends APIService {
 
     this.questions = app.service('questions');
   }
+
+  find(id?) {
+    return this.questions.find();
+  }
+
+  create(question) {
+    return this.questions.create(question);
+  }
 }
