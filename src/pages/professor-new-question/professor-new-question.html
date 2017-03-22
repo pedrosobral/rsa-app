@@ -1,0 +1,71 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nova Questão</ion-title>
+    <ion-buttons end>
+      <button (click)="close()" ion-button icon-only>Cancelar</button>
+      <button (click)="submit()" [disabled]="!form.valid" ion-button text-only>Criar Questão</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label stacked>Título</ion-label>
+      <ion-input type="text" formControlName="title" placeholder="Digite a sua questão aqui"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-textarea formControlName="description" placeholder="Você pode usar este espaço para adicionar detalhes"></ion-textarea>
+    </ion-item>
+    <ion-list radio-group formControlName="type">
+      <ion-item>
+        <ion-label>Múltipla escolha</ion-label>
+        <ion-radio checked="true" value="mc"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Verdadeiro/Falso</ion-label>
+        <ion-radio value="bool"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Aberta</ion-label>
+        <ion-radio value="free"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <div *ngIf="form.value.type === 'mc'">
+      <ion-list reorder="true" radio-group formControlName="correct" (ionItemReorder)="reorder($event)">
+        <ion-item *ngFor="let option of options; let i = index;">
+          <button clear ion-button item-right>
+          <ion-radio value="{{i}}"></ion-radio>
+        </button>
+          <ion-input type="text" [(ngModel)]="option.name" [ngModelOptions]="{standalone: true}" placeholder="Alternativa {{i}}"> </ion-input>
+          <button (click)="delete(i)" clear ion-button item-right icon-only>
+          <ion-icon name="close"></ion-icon>
+        </button>
+        </ion-item>
+      </ion-list>
+
+      <button ion-button clear (click)="addOption()">Adicionar Alternativa</button>
+    </div>
+
+    <ion-list *ngIf="form.value.type === 'bool'" radio-group formControlName="correct">
+      <ion-item>
+        <ion-label>Verdadeiro</ion-label>
+        <ion-radio checked="true" value="true"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Falso</ion-label>
+        <ion-radio value="false"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </form>
+
+</ion-content>

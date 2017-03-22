@@ -5,6 +5,9 @@ import { MyApp } from './app.component';
 import {
   HomePage,
   PollPage,
+  ProfessorTabsPage,
+  ProfessorQuestionsPage,
+  ProfessorNewQuestionPage,
 } from '../pages/pages';
 
 import { PollService } from '../providers/poll-service';
@@ -13,6 +16,9 @@ const pages = [
   MyApp,
   HomePage,
   PollPage,
+  ProfessorTabsPage,
+  ProfessorQuestionsPage,
+  ProfessorNewQuestionPage,
 ];
 
 const components = [];

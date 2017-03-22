@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 
-import { PollPage } from '../pages';
+import {
+  PollPage,
+  ProfessorTabsPage,
+} from '../pages';
 
 @Component({
   selector: 'page-home',
@@ -15,5 +18,9 @@ export class HomePage {
 
   goToPoll(room: String) {
     room && this.navCtrl.push(PollPage, { room: room.toUpperCase() });
+  }
+
+  goToDashboard() {
+    this.navCtrl.push(ProfessorTabsPage);
   }
 }
