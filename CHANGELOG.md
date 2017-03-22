@@ -1,3 +1,13 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/pedrosobral/rsa-app/compare/0.2.0...v0.3.0) (2017-03-22)
+
+
+### Features
+
+* **professor:** add form to create new question ([2b9afc7](https://github.com/pedrosobral/rsa-app/commit/2b9afc7))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/pedrosobral/rsa-app/compare/0.1.0...v0.2.0) (2017-03-21)
 
