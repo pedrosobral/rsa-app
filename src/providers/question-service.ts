@@ -10,7 +10,7 @@ import * as reactive from 'feathers-reactive';
 import { APIService } from './api-service';
 
 @Injectable()
-export class PollService extends APIService {
+export class QuestionService extends APIService {
   polls: any;
 
   constructor() {
@@ -23,22 +23,6 @@ export class PollService extends APIService {
       .configure(socketio(socket))
       .configure(reactive(RxJS));
 
-    this.polls = app.service('polls');
-  }
-
-  poll(room: String) {
-    return this.polls.find({ query: { room: room } });
-  }
-
-  answer(poll, answer) {
-    return this.polls.patch(poll.id, {
-      "$inc": {
-        "questions.0.options.$.votes": 1
-      }
-    }, {
-      query: {
-        "questions.0.options.text": answer
-      }
-    })
+    this.polls = app.service('questions');
   }
 }

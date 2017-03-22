@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 
-import { NavController, NavParams } from 'ionic-angular';
+import {
+  NavController,
+  NavParams,
+} from 'ionic-angular';
 
-import { PollService } from '../../providers/poll-service';
+import {
+  PollService
+} from '../../providers/providers';
 
 @Component({
   selector: 'page-poll',
@@ -23,7 +28,6 @@ export class PollPage {
   }
 
   submit(answer) {
-    console.info('answer', answer);
     this.ps.answer(this.poll, answer).subscribe((res) => console.info(res));
   }
 }

@@ -10,7 +10,10 @@ import {
   ProfessorNewQuestionPage,
 } from '../pages/pages';
 
-import { PollService } from '../providers/poll-service';
+import {
+  PollService,
+  QuestionService,
+} from '../providers/providers';
 
 const pages = [
   MyApp,
@@ -33,6 +36,7 @@ export function entryComponents() {
 
 const listProviders = [
   PollService,
+  QuestionService,
   {
     provide: ErrorHandler,
     useClass: IonicErrorHandler
