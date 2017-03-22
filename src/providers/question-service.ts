@@ -11,7 +11,7 @@ import { APIService } from './api-service';
 
 @Injectable()
 export class QuestionService extends APIService {
-  polls: any;
+  questions: any;
 
   constructor() {
     super();
@@ -23,6 +23,6 @@ export class QuestionService extends APIService {
       .configure(socketio(socket))
       .configure(reactive(RxJS));
 
-    this.polls = app.service('questions');
+    this.questions = app.service('questions');
   }
 }
