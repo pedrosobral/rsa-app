@@ -7,7 +7,20 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let q of questions">
+      <ion-thumbnail item-left>
+        <img [src]="q.image">
+      </ion-thumbnail>
+      <h2 class="title">{{q.question}}</h2>
+      <h3>{{q.typeDescription}} <span *ngIf="q.description"> &#8226; {{q.description}}</span></h3>
+      <button clear ion-button icon-only item-right (click)="goLive(q)">
+          <ion-icon name="play"></ion-icon>
+        </button>
+    </ion-item>
+  </ion-list>
 
   <ion-fab right bottom>
     <button (click)="newQuestion()" ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>

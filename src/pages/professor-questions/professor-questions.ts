@@ -5,21 +5,78 @@ import {
   ProfessorNewQuestionPage,
 } from '../pages';
 
+import {
+  PollService,
+  QuestionService,
+} from '../../providers/providers';
+
 @Component({
   selector: 'page-professor-questions',
   templateUrl: 'professor-questions.html'
 })
 export class ProfessorQuestionsPage {
+  questions: any;
 
   constructor(
+    public ps: PollService,
+    public qs: QuestionService,
     public modalCtrl: ModalController,
     public navCtrl: NavController,
-    public navParams: NavParams) {}
+    public navParams: NavParams) { }
 
-  ionViewDidLoad() { }
+  ionViewDidLoad() {
+    this.qs.find().subscribe((questions) => {
+      this.questions = questions.data;
+      this.questions.forEach(q => {
+        Object.assign(q, {
+          image: this.getImage(q.type),
+          typeDescription: this.getType(q.type)
+        });
+      });
+    });
+  }
 
   newQuestion() {
     this.modalCtrl.create(ProfessorNewQuestionPage).present();
+  }
+
+  goLive(question) {
+    let poll = {
+      questions: question,
+      room: 'FISC123',
+    };
+    this.ps.create(poll)
+      .then((live) => {
+        console.info('we are live', live);
+      });
+  }
+
+  getType(type) {
+    switch (type) {
+      case 'mc': {
+        return 'Múltipla escolha';
+      }
+      case 'free': {
+        return 'Aberta';
+      };
+      case 'bool': {
+        return 'Verdadeiro/Falso';
+      };
+    }
+  }
+
+  getImage(type) {
+    switch (type) {
+      case 'mc': {
+        return './assets/icon/mc.png';
+      }
+      case 'free': {
+        return './assets/icon/free_text.png';
+      };
+      case 'bool': {
+        return './assets/icon/mc.png';
+      };
+    }
   }
 
 }
