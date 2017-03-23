@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "2.4.8",
     "@angular/platform-server": "2.4.8",
     "@ionic/storage": "2.0.0",
+    "chart.js": "^2.5.0",
     "feathers": "^2.1.1",
     "feathers-reactive": "^0.4.1",
     "feathers-socketio": "^1.5.2",
