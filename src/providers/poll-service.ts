@@ -26,6 +26,10 @@ export class PollService extends APIService {
     this.polls = app.service('polls');
   }
 
+  create(poll) {
+    return this.polls.create(poll);
+  }
+
   poll(room: String) {
     return this.polls.find({ query: { room: room } });
   }
