@@ -1,3 +1,14 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/pedrosobral/rsa-app/compare/0.4.0...v0.5.0) (2017-03-23)
+
+
+### Features
+
+* **chart:** add basic static chart ([0249559](https://github.com/pedrosobral/rsa-app/commit/0249559))
+* **live:** MVP is live. Show chart in real-time ([688dc71](https://github.com/pedrosobral/rsa-app/commit/688dc71))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/pedrosobral/rsa-app/compare/0.3.0...v0.4.0) (2017-03-23)
 
