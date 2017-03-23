@@ -43,7 +43,7 @@ export class ProfessorNewQuestionPage {
   }
 
   addOption() {
-    this.options.push({ name: '' });
+    this.options.push({ text: '' });
   }
 
   submit() {
@@ -53,7 +53,7 @@ export class ProfessorNewQuestionPage {
     if (this.form.value.type === 'mc') {
       Object.assign(question, { options: this.options });
     } else if (this.form.value.type === 'bool') {
-      Object.assign(question, { options: [{ name: 'Verdadeiro' }, { name: 'Falso' }] });
+      Object.assign(question, { options: [{ text: 'Verdadeiro' }, { text: 'Falso' }] });
     }
 
     this.qs.create(question)

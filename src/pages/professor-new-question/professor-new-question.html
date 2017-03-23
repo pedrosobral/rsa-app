@@ -45,7 +45,7 @@
           <button clear ion-button item-right>
           <ion-radio value="{{i}}"></ion-radio>
         </button>
-          <ion-input type="text" [(ngModel)]="option.name" [ngModelOptions]="{standalone: true}" placeholder="Alternativa {{i}}"> </ion-input>
+          <ion-input type="text" [(ngModel)]="option.text" [ngModelOptions]="{standalone: true}" placeholder="Alternativa {{i}}"> </ion-input>
           <button (click)="delete(i)" clear ion-button item-right icon-only>
           <ion-icon name="close"></ion-icon>
         </button>
@@ -58,12 +58,12 @@
     <ion-list *ngIf="form.value.type === 'bool'" radio-group formControlName="correct">
       <ion-item>
         <ion-label>Verdadeiro</ion-label>
-        <ion-radio checked="true" value="true"></ion-radio>
+        <ion-radio checked="true" value="0"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>Falso</ion-label>
-        <ion-radio value="false"></ion-radio>
+        <ion-radio value="1"></ion-radio>
       </ion-item>
     </ion-list>
   </form>
