@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import {
   ProfessorQuestionsPage,
+  ProfessorLivePage,
 } from '../pages';
 
 @Component({
@@ -10,6 +11,7 @@ import {
 })
 export class ProfessorTabsPage {
   questions = ProfessorQuestionsPage;
+  live = ProfessorLivePage;
 
   constructor() {}
 }

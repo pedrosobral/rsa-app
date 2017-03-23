@@ -8,6 +8,7 @@ import {
   ProfessorTabsPage,
   ProfessorQuestionsPage,
   ProfessorNewQuestionPage,
+  ProfessorLivePage,
 } from '../pages/pages';
 
 import {
@@ -22,6 +23,7 @@ const pages = [
   ProfessorTabsPage,
   ProfessorQuestionsPage,
   ProfessorNewQuestionPage,
+  ProfessorLivePage,
 ];
 
 const components = [];
