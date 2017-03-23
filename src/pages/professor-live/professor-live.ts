@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Chart, pattern } from 'chart.js';
+import { Chart } from 'chart.js';
 
 import {
   PollService,
