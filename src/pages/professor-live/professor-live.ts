@@ -12,9 +12,9 @@ import {
   templateUrl: 'professor-live.html'
 })
 export class ProfessorLivePage {
-  @ViewChild('barCanvas') barCanvas;
+  @ViewChild('canvas') canvas;
 
-  barChart: any;
+  chart: any;
   data: any = {};
   poll: any;
 
@@ -50,7 +50,7 @@ export class ProfessorLivePage {
   }
 
   initChart(labels, data) {
-    this.barChart = new Chart(this.barCanvas.nativeElement, {
+    this.chart = new Chart(this.canvas.nativeElement, {
       type: 'bar',
       // type: 'horizontalBar',
       data: {
