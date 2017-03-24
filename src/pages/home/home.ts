@@ -12,7 +12,7 @@ import {
   templateUrl: 'home.html'
 })
 export class HomePage {
-  room = 'A1';
+  room = 'FISC123';
 
   constructor(public navCtrl: NavController) { }
 
