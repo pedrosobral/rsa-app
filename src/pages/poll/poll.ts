@@ -23,6 +23,10 @@ export class PollPage {
     public navParams: NavParams) { }
 
   ionViewDidLoad() {
+    this.initPoll();
+  }
+
+  initPoll() {
     this.ps.poll(this.room).subscribe((poll) => {
       if (poll.data.length > 0 && poll.data[0].available) {
         this.poll = poll.data[0].questions[0] || poll.data[0].questions;
