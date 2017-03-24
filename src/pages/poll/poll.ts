@@ -17,12 +17,17 @@ export class PollPage {
   room: String = this.navParams.get('room');
   poll: any;
 
-  constructor(public ps: PollService, public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(
+    public ps: PollService,
+    public navCtrl: NavController,
+    public navParams: NavParams) { }
 
   ionViewDidLoad() {
     this.ps.poll(this.room).subscribe((poll) => {
-      if (poll.data.length > 0) {
+      if (poll.data.length > 0 && poll.data[0].available) {
         this.poll = poll.data[0].questions[0] || poll.data[0].questions;
+      } else {
+        this.poll = null;
       }
     });
   }
