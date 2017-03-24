@@ -16,6 +16,9 @@ export class ProfessorLivePage {
 
   barChart: any;
   data: any = {};
+  poll: any;
+
+  isAvailable: boolean = false;
 
   constructor(
     public ps: PollService,
@@ -23,24 +26,27 @@ export class ProfessorLivePage {
     public navParams: NavParams) { }
 
   ionViewDidLoad() {
-
     this.ps.poll('FISC123').subscribe((poll) => {
       if (!poll.data.length) return;
-      console.info('poll', poll);
-      this.data['questions'] = poll.data[0].questions;
-      console.info('data', this.data);
-      const labels = this.data.questions[0].options.map(x => x.text);
-      console.info('labels', labels)
-      let sum = this.data.questions[0].options.reduce((p, c) => {
+      this.poll = poll.data[0];
+
+      this.data['questions'] = this.poll.questions[0];
+      const labels = this.data.questions.options.map(x => x.text);
+
+      let sum = this.data.questions.options.reduce((p, c) => {
         c.votes = c.votes || 0;
         return p + parseInt(c.votes, 10);
       }, 0);
 
-      const data = this.data.questions[0].options.map(x => x.votes / sum);
+      const data = this.data.questions.options.map(x => x.votes / sum);
 
       this.initChart(labels, data);
       this.plugin();
     });
+  }
+
+  stop() {
+    this.ps.setAvailable(this.poll, !this.poll.available);
   }
 
   initChart(labels, data) {
@@ -88,7 +94,8 @@ export class ProfessorLivePage {
           }],
           xAxes: [{
             ticks: {
-              beginAtZero: true
+              beginAtZero: true,
+              fontSize: 30
             }
           }]
         }
@@ -96,25 +103,22 @@ export class ProfessorLivePage {
     });
   }
 
+  // Define a plugin to provide data labels
   plugin() {
-    // Define a plugin to provide data labels
     Chart.plugins.register({
       afterDatasetsDraw: (chart, easing) => {
         // To only draw at the end of animation, check for easing === 1
         const ctx = chart.chart.ctx;
         chart.data.datasets.forEach((dataset, i) => {
-          //
-          // const sum = dataset.data.reduce((sum, value) => {
-          //   return sum + value;
-          // }, 0);
-
-          // console.info('sum', sum);
 
           const meta = chart.getDatasetMeta(i);
           if (!meta.hidden) {
             meta.data.forEach((element, index) => {
               // Draw the text in black, with the specified font
               ctx.fillStyle = 'rgb(0,0,0)';
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+
               const fontSize = element._chart.width / 17;
               const fontStyle = 'bold';
               const fontFamily = 'Helvetica Neue';
@@ -123,12 +127,10 @@ export class ProfessorLivePage {
               // Just naively convert to string for now
               const dataString = Math.floor(dataset.data[index] * 100) + '%';
 
-              console.info('%', dataString);
-
               // Make sure alignment settings are correct
-              ctx.textAlign = 'center';
-              ctx.textBaseline = 'middle';
               const position = element.tooltipPosition();
+
+              // print
               ctx.fillText(dataString, element._model.x, position.y - (fontSize / 2));
             });
           }

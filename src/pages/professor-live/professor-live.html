@@ -9,4 +9,10 @@
 
 <ion-content padding>
   <canvas #barCanvas></canvas>
+
+  <ion-fab right bottom>
+    <button (click)="stop()" ion-fab color="secondary">
+      <ion-icon [name]="poll?.available ? 'pause' : 'play' "></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
