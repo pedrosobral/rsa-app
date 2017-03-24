@@ -1,3 +1,15 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/pedrosobral/rsa-app/compare/0.5.0...v0.6.0) (2017-03-24)
+
+
+### Features
+
+* **live:** add button to hide/show poll ([87f654d](https://github.com/pedrosobral/rsa-app/commit/87f654d))
+* **poll:** only show poll if it's available ([4722267](https://github.com/pedrosobral/rsa-app/commit/4722267))
+* **poll-service:** method to set poll availability ([ace8de9](https://github.com/pedrosobral/rsa-app/commit/ace8de9))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/pedrosobral/rsa-app/compare/0.4.0...v0.5.0) (2017-03-23)
 
