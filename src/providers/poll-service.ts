@@ -34,6 +34,12 @@ export class PollService extends APIService {
     return this.polls.find({ query: { room: room } });
   }
 
+  setAvailable(poll, value) {
+    return this.polls.patch(poll.id, {
+      "available": value
+    });
+  }
+
   answer(poll, answer) {
     return this.polls.patch(poll.id, {
       "$inc": {
