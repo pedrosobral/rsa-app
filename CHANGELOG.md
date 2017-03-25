@@ -1,3 +1,14 @@
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/pedrosobral/rsa-app/compare/0.6.0...v0.7.0) (2017-03-25)
+
+
+### Features
+
+* **live:** add fab buttons w/ many options ([72268ab](https://github.com/pedrosobral/rsa-app/commit/72268ab))
+* **unit-test:** add support to unit test ([6fe5ccb](https://github.com/pedrosobral/rsa-app/commit/6fe5ccb))
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/pedrosobral/rsa-app/compare/0.5.0...v0.6.0) (2017-03-24)
 
