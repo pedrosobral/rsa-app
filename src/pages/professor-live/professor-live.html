@@ -8,11 +8,30 @@
 
 
 <ion-content padding>
-  <canvas #canvas></canvas>
+  <!-- <div *ngIf="poll"> -->
+    <div class="question">
+      <span>{{data?.questions?.question}}</span>
+    </div>
 
-  <ion-fab right bottom>
+    <ion-list>
+      <ion-item *ngFor="let option of data?.questions?.options; let i = index;">
+        <ion-label><span class="alternative-label">{{alternativeLabels[i]}})</span> {{option.text}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+  <!-- </div> -->
+  <canvas [hidden]="!isChartVisible" class="chart" #canvas></canvas>
+
+  <ion-fab bottom right #fab>
+  <button ion-fab>
+    <ion-icon name="settings"></ion-icon>
+  </button>
+  <ion-fab-list side="top">
     <button (click)="stop()" ion-fab color="secondary">
       <ion-icon [name]="poll?.available ? 'pause' : 'play' "></ion-icon>
     </button>
-  </ion-fab>
+    <button ion-fab (click)="showChart()" [color]=" isChartVisible ? 'secondary' : ''"><ion-icon name="stats"></ion-icon></button>
+    <button ion-fab (click)="fullscreen()" [color]=" isFullscreen ? 'secondary' : ''"><ion-icon name="expand"></ion-icon></button>
+  </ion-fab-list>
+</ion-fab>
 </ion-content>

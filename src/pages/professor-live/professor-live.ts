@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, FabContainer } from 'ionic-angular';
 
 import { Chart } from 'chart.js';
 
@@ -13,12 +13,17 @@ import {
 })
 export class ProfessorLivePage {
   @ViewChild('canvas') canvas;
+  @ViewChild('fab') fab: FabContainer;
+
+  alternativeLabels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   chart: any;
   data: any = {};
   poll: any;
 
   isAvailable: boolean = false;
+  isChartVisible: boolean = false;
+  isFullscreen: boolean = false;
 
   constructor(
     public ps: PollService,
@@ -26,27 +31,53 @@ export class ProfessorLivePage {
     public navParams: NavParams) { }
 
   ionViewDidLoad() {
+    this.fab.toggleList();
+
     this.ps.poll('FISC123').subscribe((poll) => {
       if (!poll.data.length) return;
+
       this.poll = poll.data[0];
-
       this.data['questions'] = this.poll.questions[0];
-      const labels = this.data.questions.options.map(x => x.text);
 
-      let sum = this.data.questions.options.reduce((p, c) => {
-        c.votes = c.votes || 0;
-        return p + parseInt(c.votes, 10);
-      }, 0);
-
+      const sum = this.sumVotes();
       const data = this.data.questions.options.map(x => x.votes / sum);
+      const labels = this.getLabels();
 
       this.initChart(labels, data);
       this.plugin();
     });
   }
 
+  sumVotes() {
+    return this.data.questions.options.reduce((p, c) => {
+      c.votes = c.votes || 0;
+      return p + parseInt(c.votes, 10);
+    }, 0);
+  }
+
   stop() {
     this.ps.setAvailable(this.poll, !this.poll.available);
+  }
+
+  showChart() {
+    this.isChartVisible = !this.isChartVisible;
+  }
+
+  getLabels() {
+    let labels = [];
+    for (let i = 0; i < this.data.questions.options.length; i++) {
+      labels.push(this.alternativeLabels[i]);
+    }
+    return labels;
+  }
+
+  fullscreen() {
+    if (this.isFullscreen) {
+      exitFullscreen();
+    } else {
+      launchIntoFullscreen(document.documentElement);
+    }
+    this.isFullscreen = !this.isFullscreen;
   }
 
   initChart(labels, data) {
@@ -139,4 +170,26 @@ export class ProfessorLivePage {
     });
   }
 
+}
+
+// Find the right method, call on correct element
+function launchIntoFullscreen(element) {
+  if (element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if (element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if (element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();
+  } else if (element.msRequestFullscreen) {
+    element.msRequestFullscreen();
+  }
+}
+
+// Whack fullscreen
+function exitFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  }
 }
