@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
-import { Splashscreen } from 'ionic-native';
+
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/pages';
 
@@ -10,9 +11,9 @@ import { HomePage } from '../pages/pages';
 export class MyApp {
   rootPage = HomePage;
 
-  constructor(platform: Platform) {
+  constructor(public platform: Platform , public splash: SplashScreen ) {
     platform.ready().then(() => {
-      Splashscreen.hide();
+      splash.hide();
     });
   }
 }
