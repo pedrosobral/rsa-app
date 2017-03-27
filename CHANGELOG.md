@@ -1,3 +1,13 @@
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/pedrosobral/rsa-app/compare/0.7.0...v0.8.0) (2017-03-27)
+
+
+### Features
+
+* **live:** add reveal.js to present questions ([ed7af8f](https://github.com/pedrosobral/rsa-app/commit/ed7af8f))
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/pedrosobral/rsa-app/compare/0.6.0...v0.7.0) (2017-03-25)
 
