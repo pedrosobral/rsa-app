@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, FabContainer } from 'ionic-angular';
 
 import { Chart } from 'chart.js';
+import * as Reveal from 'reveal.js';
 
 import {
   PollService,
@@ -20,6 +21,7 @@ export class ProfessorLivePage {
   chart: any;
   data: any = {};
   poll: any;
+  totalVotes = 0;
 
   isAvailable: boolean = false;
   isChartVisible: boolean = false;
@@ -31,6 +33,14 @@ export class ProfessorLivePage {
     public navParams: NavParams) { }
 
   ionViewDidLoad() {
+    Reveal.initialize({
+      controls: false,
+      // Enable the slide overview mode
+      overview: false,
+      // Vertical centering of slides
+      center: false,
+    });
+
     this.fab.toggleList();
 
     this.ps.poll('FISC123').subscribe((poll) => {
@@ -40,9 +50,11 @@ export class ProfessorLivePage {
       this.data['questions'] = this.poll.questions[0];
 
       const sum = this.sumVotes();
+      this.totalVotes = sum;
+
       const data = this.data.questions.options.map(x => x.votes / sum);
       const labels = this.getLabels();
-
+      //
       this.initChart(labels, data);
       this.plugin();
     });
@@ -60,6 +72,8 @@ export class ProfessorLivePage {
   }
 
   showChart() {
+    // Reveal.next();
+    // !this.isChartVisible ? Reveal.next() : Reveal.prev();
     this.isChartVisible = !this.isChartVisible;
   }
 

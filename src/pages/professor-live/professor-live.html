@@ -6,32 +6,42 @@
 
 </ion-header>
 
-
-<ion-content padding>
-  <!-- <div *ngIf="poll"> -->
-    <div class="question">
-      <span>{{data?.questions?.question}}</span>
+<ion-content>
+  <div class="reveal">
+    <div class="slides">
+      <section style="text-align: left;">
+        <h6>
+          <span *ngIf="poll?.available"> Responda agora em <span color="secondary">#FISC123</span>
+          </span>
+          <span *ngIf="!poll?.available">Votação indisponível <span color="secondary">#FISC123</span></span>
+          <span style="float: right">Respostas: {{totalVotes}}</span>
+        </h6>
+        <p>{{data?.questions?.question}}</p>
+        <canvas [hidden]="!isChartVisible" width="50%" style="float: right" class="chart" #canvas></canvas>
+        <p *ngFor="let option of data?.questions?.options; let i = index;">
+          <span color="primary" class="alternative-label">{{alternativeLabels[i]}})</span> {{option.text}}
+        </p>
+      </section>
     </div>
-
-    <ion-list>
-      <ion-item *ngFor="let option of data?.questions?.options; let i = index;">
-        <ion-label><span class="alternative-label">{{alternativeLabels[i]}})</span> {{option.text}}</ion-label>
-      </ion-item>
-    </ion-list>
-
-  <!-- </div> -->
-  <canvas [hidden]="!isChartVisible" class="chart" #canvas></canvas>
+  </div>
 
   <ion-fab bottom right #fab>
-  <button ion-fab>
+    <button ion-fab>
     <ion-icon name="settings"></ion-icon>
   </button>
-  <ion-fab-list side="top">
-    <button (click)="stop()" ion-fab color="secondary">
-      <ion-icon [name]="poll?.available ? 'pause' : 'play' "></ion-icon>
+    <ion-fab-list side="top">
+      <button (click)="stop()" ion-fab [color]="poll?.available ? 'secondary' : ''">
+      <ion-icon name="play"></ion-icon>
+      <ion-label>{{poll?.available ? 'Pausar votação' : 'Ativar votação'}}</ion-label>
     </button>
-    <button ion-fab (click)="showChart()" [color]=" isChartVisible ? 'secondary' : ''"><ion-icon name="stats"></ion-icon></button>
-    <button ion-fab (click)="fullscreen()" [color]=" isFullscreen ? 'secondary' : ''"><ion-icon name="expand"></ion-icon></button>
-  </ion-fab-list>
-</ion-fab>
+      <button ion-fab (click)="showChart()" [color]=" isChartVisible ? 'secondary' : ''">
+        <ion-icon name="stats"></ion-icon>
+        <ion-label>{{isChartVisible ? 'Esconder resultado' : 'Mostrar resultado'}}</ion-label>
+      </button>
+      <button ion-fab (click)="fullscreen()" [color]=" isFullscreen ? 'secondary' : ''">
+        <ion-icon [name]="isFullscreen ? 'contract' : 'expand'"></ion-icon>
+        <ion-label>{{isFullscreen ? 'Sair tela cheia' : 'Tela cheia'}}</ion-label>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>
