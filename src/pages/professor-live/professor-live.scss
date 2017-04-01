@@ -11,6 +11,16 @@ page-professor-live {
       width: 50% !important;
     }
   }
+
+  .correct {
+    background-color: color($colors, secondary);
+    width: 48%;
+    color: white;
+    .alternative-label {
+      color: white;
+      padding-left: 2px;
+    }
+  }
   /*!
    * reveal.js
    * http://lab.hakim.se/reveal-js

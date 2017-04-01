@@ -26,6 +26,7 @@ export class ProfessorLivePage {
   isAvailable: boolean = false;
   isChartVisible: boolean = false;
   isFullscreen: boolean = false;
+  showCorrectAnswer: boolean = false;
 
   constructor(
     public ps: PollService,
@@ -54,10 +55,14 @@ export class ProfessorLivePage {
 
       const data = this.data.questions.options.map(x => x.votes / sum);
       const labels = this.getLabels();
-      //
+
       this.initChart(labels, data);
       this.plugin();
     });
+  }
+
+  showAnswer() {
+    this.showCorrectAnswer = !this.showCorrectAnswer;
   }
 
   sumVotes() {
@@ -72,8 +77,6 @@ export class ProfessorLivePage {
   }
 
   showChart() {
-    // Reveal.next();
-    // !this.isChartVisible ? Reveal.next() : Reveal.prev();
     this.isChartVisible = !this.isChartVisible;
   }
 
