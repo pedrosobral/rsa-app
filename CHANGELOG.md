@@ -1,3 +1,18 @@
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/pedrosobral/rsa-app/compare/0.8.0...v0.9.0) (2017-04-01)
+
+
+### Bug Fixes
+
+* **scss:** comment out import ([519ac0f](https://github.com/pedrosobral/rsa-app/commit/519ac0f))
+
+
+### Features
+
+* **live:** able to show correct answer ([f72e1e4](https://github.com/pedrosobral/rsa-app/commit/f72e1e4))
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/pedrosobral/rsa-app/compare/0.7.0...v0.8.0) (2017-03-27)
 
