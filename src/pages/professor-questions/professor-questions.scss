@@ -2,4 +2,23 @@ page-professor-questions {
   .title {
     font-weight: 500;
   }
+
+  .fab {
+    contain: layout;
+  }
+
+  ion-list {
+    @media screen and (min-width: 992px) {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: 60vw !important;
+    }
+  }
+
+  ion-item:first-child {
+    button {
+      height: 3.6rem !important;
+      font-size: 1.4rem !important;
+    }
+  }
 }

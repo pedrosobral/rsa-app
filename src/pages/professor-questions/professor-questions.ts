@@ -16,6 +16,7 @@ import {
 })
 export class ProfessorQuestionsPage {
   questions: any;
+  sessionQuestions: any = [];
 
   constructor(
     public ps: PollService,
@@ -42,13 +43,17 @@ export class ProfessorQuestionsPage {
 
   goLive(question) {
     let poll = {
-      questions: question,
+      questions: this.sessionQuestions,
       room: 'FISC123',
     };
     this.ps.create(poll)
       .then((live) => {
         console.info('we are live', live);
       });
+  }
+
+  questionSelected() {
+    this.sessionQuestions = this.questions.filter(x => x.isChecked);
   }
 
   getType(type) {

@@ -8,17 +8,23 @@
 
 
 <ion-content>
-
   <ion-list>
-    <ion-item *ngFor="let q of questions">
-      <ion-thumbnail item-left>
-        <img [src]="q.image">
-      </ion-thumbnail>
-      <h2 class="title">{{q.question}}</h2>
-      <h3>{{q.typeDescription}} <span *ngIf="q.description"> &#8226; {{q.description}}</span></h3>
-      <button clear ion-button icon-only item-right (click)="goLive(q)">
-          <ion-icon name="play"></ion-icon>
+    <ion-item>
+      <span i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões} =1 {1 questão selecionada} =2 {{{sessionQuestions.length}} questões selecionadas}}</span>
+      <button ion-button item-right clear icon-left [disabled]="sessionQuestions.length === 0" (click)="goLive()">
+        <ion-icon name="play"></ion-icon>
+          Iniciar sessão
         </button>
+    </ion-item>
+    <ion-item *ngFor="let q of questions">
+      <ion-label>
+        {{q.question}}
+        <h3>{{q.typeDescription}} <span *ngIf="q.description"> &#8226; {{q.description}}</span></h3>
+      </ion-label>
+      <ion-checkbox (ionChange)="questionSelected()" [(ngModel)]="q.isChecked"></ion-checkbox>
+      <button clear ion-button icon-only item-right (click)="edit(q)">
+          <ion-icon name="create"></ion-icon>
+      </button>
     </ion-item>
   </ion-list>
 
