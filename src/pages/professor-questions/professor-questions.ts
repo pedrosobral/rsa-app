@@ -41,7 +41,7 @@ export class ProfessorQuestionsPage {
     this.modalCtrl.create(ProfessorNewQuestionPage).present();
   }
 
-  goLive(question) {
+  goLive() {
     let poll = {
       questions: this.sessionQuestions,
       room: 'FISC123',
