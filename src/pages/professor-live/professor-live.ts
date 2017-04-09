@@ -79,6 +79,8 @@ export class ProfessorLivePage {
 
       // Vertical centering of slides
       center: false,
+
+      minScale: 1,
     });
 
     Reveal.addEventListener('slidechanged', (event) => {
@@ -134,7 +136,8 @@ export class ProfessorLivePage {
     this.ps.setIsOver(this.poll);
 
     // clear var
-    this.reset();
+    // this.reset();
+    this.poll = null;
   }
 
   reset() {
