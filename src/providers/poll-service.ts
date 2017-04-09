@@ -31,7 +31,13 @@ export class PollService extends APIService {
   }
 
   poll(room: String) {
-    return this.polls.find({ query: { room: room } });
+    return this.polls.find({ query: { room: room, isOver: false } });
+  }
+
+  setIsOver(poll) {
+    return this.polls.patch(poll.id, {
+      isOver: true
+    });
   }
 
   setAvailable(poll, value) {

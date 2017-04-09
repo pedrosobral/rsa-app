@@ -127,6 +127,24 @@ export class ProfessorLivePage {
     this.ps.setAvailable(this.poll, -1);
   }
 
+  /**
+   * End current session
+   */
+  end() {
+    this.ps.setIsOver(this.poll);
+
+    // clear var
+    this.reset();
+  }
+
+  reset() {
+    this.poll = null;
+    this.questions = null;
+    this.currentSlide = -1;
+    this.isChartAvailable = false;
+    this.isAnswerAvailable = false;
+  }
+
   showChart() {
     const question = this.poll.questions[this.currentSlide];
     this.isChartAvailable = !question.showChart;

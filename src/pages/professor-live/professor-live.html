@@ -1,13 +1,12 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Ao Vivo</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content>
-  <div class="reveal">
+  <!-- slides -->
+  <div class="reveal" *ngIf="poll">
     <div class="slides">
       <section style="text-align: left;"
         *ngFor="let question of questions"
@@ -18,11 +17,23 @@
     </div>
   </div>
 
-  <ion-fab bottom right #fab>
+  <!-- old sessions list -->
+  <ion-list *ngIf="!poll">
+    <ion-item>
+      <h1>No Poll</h1>
+    </ion-item>
+  </ion-list>
+
+  <!-- fab button -->
+  <ion-fab bottom right #fab [hidden]="!poll">
     <button ion-fab>
     <ion-icon name="settings"></ion-icon>
   </button>
     <ion-fab-list side="top">
+      <button (click)="end()" ion-fab color="danger">
+        <ion-icon name="square"></ion-icon>
+        <ion-label>Encerrar sessão</ion-label>
+      </button>
       <button (click)="stop()" ion-fab [color]="poll?.available == currentSlide ? 'secondary' : ''">
         <ion-icon name="play"></ion-icon>
         <ion-label>{{poll?.available == currentSlide ? 'Pausar votação' : 'Ativar votação'}}</ion-label>
