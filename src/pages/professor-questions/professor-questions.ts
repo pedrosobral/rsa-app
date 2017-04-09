@@ -42,13 +42,14 @@ export class ProfessorQuestionsPage {
   }
 
   goLive() {
-    let poll = {
+    const poll = {
       questions: this.sessionQuestions,
       room: 'FISC123',
     };
+
     this.ps.create(poll)
-      .then((live) => {
-        console.info('we are live', live);
+      .then(() => {
+        this.navCtrl.parent.select(1);
       });
   }
 
