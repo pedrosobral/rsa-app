@@ -17,6 +17,8 @@ export class PollPage {
   room: String = this.navParams.get('room');
   poll: any;
 
+  currentQuestion: number;
+
   constructor(
     public ps: PollService,
     public navCtrl: NavController,
@@ -28,8 +30,9 @@ export class PollPage {
 
   initPoll() {
     this.ps.poll(this.room).subscribe((poll) => {
-      if (poll.data.length > 0 && poll.data[0].available) {
-        this.poll = poll.data[0].questions[0] || poll.data[0].questions;
+      if (poll.data.length > 0 && poll.data[0].available !== -1) {
+        this.currentQuestion = poll.data[0].available;
+        this.poll = poll.data[0].questions[this.currentQuestion];
       } else {
         this.poll = null;
       }
@@ -37,6 +40,6 @@ export class PollPage {
   }
 
   submit(answer) {
-    this.ps.answer(this.poll, answer).subscribe((res) => console.info(res));
+    this.ps.answer(this.poll, this.currentQuestion, answer).subscribe((res) => console.info(res));
   }
 }

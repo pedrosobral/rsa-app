@@ -9,19 +9,7 @@
 <ion-content>
   <div class="reveal">
     <div class="slides">
-      <section style="text-align: left;">
-        <h6>
-          <span *ngIf="poll?.available"> Responda agora em <span ion-text color="secondary">#FISC123</span>
-          </span>
-          <span *ngIf="!poll?.available">Votação indisponível <span ion-text color="secondary">#FISC123</span></span>
-          <span style="float: right">Respostas: {{totalVotes}}</span>
-        </h6>
-        <p>{{data?.questions?.question}}</p>
-        <canvas [hidden]="!isChartVisible" width="50%" style="float: right" class="chart" #canvas></canvas>
-        <p *ngFor="let option of data?.questions?.options; let i = index;" [class.correct]="data?.questions?.correct === i && showCorrectAnswer">
-          <span ion-text color="primary" class="alternative-label">{{alternativeLabels[i]}})</span> {{option.text}}
-        </p>
-      </section>
+      <section *ngFor="let question of questions" [question]="question" [poll]="poll" style="text-align: left;"></section>
     </div>
   </div>
 
@@ -30,17 +18,17 @@
     <ion-icon name="settings"></ion-icon>
   </button>
     <ion-fab-list side="top">
-      <button (click)="stop()" ion-fab [color]="poll?.available ? 'secondary' : ''">
+      <button (click)="stop()" ion-fab [color]="poll?.available == currentSlide ? 'secondary' : ''">
         <ion-icon name="play"></ion-icon>
-        <ion-label>{{poll?.available ? 'Pausar votação' : 'Ativar votação'}}</ion-label>
+        <ion-label>{{poll?.available == currentSlide ? 'Pausar votação' : 'Ativar votação'}}</ion-label>
       </button>
-      <button ion-fab (click)="showChart()" [color]=" isChartVisible ? 'secondary' : ''">
+      <button ion-fab (click)="showChart()" [color]=" isChartAvailable ? 'secondary' : ''">
         <ion-icon name="stats"></ion-icon>
-        <ion-label>{{isChartVisible ? 'Esconder resultado' : 'Mostrar resultado'}}</ion-label>
+        <ion-label>{{isChartAvailable ? 'Esconder resultado' : 'Mostrar resultado'}}</ion-label>
       </button>
-      <button (click)="showAnswer()" ion-fab [color]="showCorrectAnswer ? 'secondary' : ''">
+      <button (click)="showAnswer()" ion-fab [color]="isAnswerAvailable ? 'secondary' : ''">
         <ion-icon name="checkmark"></ion-icon>
-        <ion-label>{{!showCorrectAnswer ? 'Mostrar resposta' : 'Esconder resposta'}}</ion-label>
+        <ion-label>{{!isAnswerAvailable ? 'Mostrar resposta' : 'Esconder resposta'}}</ion-label>
       </button>
       <button ion-fab (click)="fullscreen()" [color]=" isFullscreen ? 'secondary' : ''">
         <ion-icon [name]="isFullscreen ? 'contract' : 'expand'"></ion-icon>

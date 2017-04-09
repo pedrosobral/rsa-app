@@ -40,15 +40,27 @@ export class PollService extends APIService {
     });
   }
 
-  answer(poll, answer) {
+  showChart(poll, questionIndex, value) {
+    return this.polls.patch(poll.id, {
+        [`questions.${questionIndex}.showChart`]: value
+    });
+  }
+
+  showAnswer(poll, questionIndex, value) {
+    return this.polls.patch(poll.id, {
+        [`questions.${questionIndex}.showAnswer`]: value
+    });
+  }
+
+  answer(poll, questionIndex, answer) {
     return this.polls.patch(poll.id, {
       "$inc": {
-        "questions.0.options.$.votes": 1
+        [`questions.${questionIndex}.options.$.votes`]: 1
       }
     }, {
-      query: {
-        "questions.0.options.text": answer
-      }
-    })
+        query: {
+          [`questions.${questionIndex}.options.text`]: answer
+        }
+      })
   }
 }

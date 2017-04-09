@@ -1,0 +1,10 @@
+<h6>
+    <span *ngIf="poll?.available"> Responda agora em <span ion-text color="secondary">#FISC123</span></span>
+    <span *ngIf="!poll?.available">Votação indisponível <span ion-text color="secondary">#FISC123</span></span>
+    <span style="float: right">Respostas: {{totalVotes}}</span>
+  </h6>
+<p>{{question.question}}</p>
+<canvas [hidden]="!question.showChart" width="50%" style="float: right" class="chart" #canvas></canvas>
+<p *ngFor="let option of question.options; let i = index;" [class.correct]="question.correct === i && question.showAnswer">
+  <span ion-text color="primary" class="alternative-label">{{labels[i]}})</span> {{option.text}}
+</p>

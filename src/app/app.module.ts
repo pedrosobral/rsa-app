@@ -22,6 +22,10 @@ import {
   QuestionService,
 } from '../providers/providers';
 
+import {
+  SlideComponent,
+} from '../components/components';
+
 const pages = [
   MyApp,
   HomePage,
@@ -32,7 +36,9 @@ const pages = [
   ProfessorLivePage,
 ];
 
-const components = [];
+const components = [
+  SlideComponent,
+];
 
 export function declarations() {
   return [components, pages];
