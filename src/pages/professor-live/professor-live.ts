@@ -23,6 +23,8 @@ export class ProfessorLivePage {
 
   isFullscreen: boolean = false;
 
+  settings = {};
+
   constructor(
     public ps: PollService,
     public navParams: NavParams,
@@ -58,7 +60,14 @@ export class ProfessorLivePage {
       this.currentSlide = Reveal.getState().indexh;
       this.isChartAvailable = this.poll.questions[this.currentSlide].showChart;
       this.isAnswerAvailable = this.poll.questions[this.currentSlide].showAnswer;
+
+      // settings
+      this.updateSettings();
     });
+  }
+
+  updateSettings() {
+    this.settings['available'] = this.currentSlide === this.poll.available;
   }
 
   initializeReveal() {
@@ -73,9 +82,21 @@ export class ProfessorLivePage {
     });
 
     Reveal.addEventListener('slidechanged', (event) => {
+      // TODO: called to many times
+      // check to avoid many call
+      if (event.indexh === this.currentSlide) return;
+
       this.currentSlide = event.indexh;
       this.isChartAvailable = this.poll.questions[this.currentSlide].showChart;
       this.isAnswerAvailable = this.poll.questions[this.currentSlide].showAnswer;
+
+      // settings
+      this.updateSettings();
+
+      // if fullscreen, available is automatically
+      if (this.isFullscreen) {
+        this.setPollAvailable();
+      }
     });
   }
 
@@ -91,11 +112,19 @@ export class ProfessorLivePage {
 
     if (this.poll.available === this.currentSlide) {
       // pause case
-      this.ps.setAvailable(this.poll, -1);
+      this.setPollUnavailable();
     } else {
       // activate
-      this.ps.setAvailable(this.poll, this.currentSlide);
+      this.setPollAvailable();
     }
+  }
+
+  setPollAvailable() {
+    this.ps.setAvailable(this.poll, this.currentSlide);
+  }
+
+  setPollUnavailable() {
+    this.ps.setAvailable(this.poll, -1);
   }
 
   showChart() {
@@ -110,6 +139,7 @@ export class ProfessorLivePage {
       exitFullscreen();
     } else {
       launchIntoFullscreen(document.documentElement);
+      this.setPollAvailable();
     }
     this.isFullscreen = !this.isFullscreen;
   }

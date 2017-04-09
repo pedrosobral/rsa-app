@@ -1,6 +1,6 @@
 <h6>
-    <span *ngIf="poll?.available"> Responda agora em <span ion-text color="secondary">#FISC123</span></span>
-    <span *ngIf="!poll?.available">Votação indisponível <span ion-text color="secondary">#FISC123</span></span>
+    <span *ngIf="settings?.available"> Responda agora em <span ion-text color="secondary">#FISC123</span></span>
+    <span *ngIf="!settings?.available">Votação indisponível <span ion-text color="secondary">#FISC123</span></span>
     <span style="float: right">Respostas: {{totalVotes}}</span>
   </h6>
 <p>{{question.question}}</p>

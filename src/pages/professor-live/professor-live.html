@@ -9,7 +9,12 @@
 <ion-content>
   <div class="reveal">
     <div class="slides">
-      <section *ngFor="let question of questions" [question]="question" [poll]="poll" style="text-align: left;"></section>
+      <section style="text-align: left;"
+        *ngFor="let question of questions"
+          [settings]="settings"
+          [question]="question"
+          [poll]="poll">
+      </section>
     </div>
   </div>
 

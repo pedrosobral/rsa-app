@@ -19,12 +19,11 @@ export class SlideComponent implements AfterViewInit {
 
   @Input() question: any;
   @Input() poll: any;
+  @Input() settings: any;
 
   constructor() { }
 
-  ngAfterViewInit() {
-    // this.initChart(['A', 'B', 'C', 'D'], [1,2,3,4]);
-  }
+  ngAfterViewInit() { }
 
   ngOnChanges(changes) {
     if (changes.question) {
