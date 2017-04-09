@@ -1,3 +1,14 @@
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/pedrosobral/rsa-app/compare/0.9.0...v0.10.0) (2017-04-09)
+
+
+### Features
+
+* **many:** refactor slide to a component ([40a7909](https://github.com/pedrosobral/rsa-app/commit/40a7909))
+* **questions:** able to select questions (wip) ([2ee0b51](https://github.com/pedrosobral/rsa-app/commit/2ee0b51))
+
+
+
 <a name="0.9.0"></a>
 # [0.9.0](https://github.com/pedrosobral/rsa-app/compare/0.8.0...v0.9.0) (2017-04-01)
 
