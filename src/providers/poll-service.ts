@@ -34,6 +34,10 @@ export class PollService extends APIService {
     return this.polls.find({ query: { room: room, isOver: false } });
   }
 
+  sessions() {
+    return this.polls.find({ query: { isOver: true, $sort: { createdAt: -1 } } });
+  }
+
   setIsOver(poll) {
     return this.polls.patch(poll.id, {
       isOver: true

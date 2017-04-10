@@ -14,6 +14,8 @@ import {
 export class ProfessorLivePage {
   @ViewChild('fab') fab: FabContainer;
 
+  sessions: any;
+
   poll: any;
   questions: any;
 
@@ -36,8 +38,11 @@ export class ProfessorLivePage {
     // open fab button
     this.fab.toggleList();
 
-    // get data
+    // get poll
     this.initializeData();
+
+    // get sessions
+    this.getOldSessions();
   }
 
   initializeData() {
@@ -63,6 +68,15 @@ export class ProfessorLivePage {
 
       // settings
       this.updateSettings();
+    });
+  }
+
+  getOldSessions() {
+    this.ps.sessions().then((sessions) => {
+      this.sessions = [];
+      sessions.data.forEach((session) => {
+        this.sessions.push(session);
+      });
     });
   }
 
@@ -136,8 +150,10 @@ export class ProfessorLivePage {
     this.ps.setIsOver(this.poll);
 
     // clear var
-    // this.reset();
     this.poll = null;
+
+    // old sessions
+    this.getOldSessions();
   }
 
   reset() {
