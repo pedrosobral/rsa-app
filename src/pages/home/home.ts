@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import {
-  PollPage,
   ProfessorTabsPage,
 } from '../pages';
 
@@ -17,7 +16,7 @@ export class HomePage {
   constructor(public navCtrl: NavController) { }
 
   goToPoll(room: String) {
-    room && this.navCtrl.push(PollPage, { room: room.toUpperCase() });
+    room && this.navCtrl.push('PollPage', { room: room.toUpperCase() });
   }
 
   goToDashboard() {

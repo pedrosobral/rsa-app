@@ -1,17 +1,14 @@
 import { Component } from '@angular/core';
-
-import {
-  NavController,
-  NavParams,
-} from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import {
   PollService
 } from '../../providers/providers';
 
+@IonicPage()
 @Component({
   selector: 'page-poll',
-  templateUrl: 'poll.html'
+  templateUrl: 'poll.html',
 })
 export class PollPage {
   room: String = this.navParams.get('room');
