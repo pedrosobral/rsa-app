@@ -24,7 +24,7 @@
       <ion-row>
         <ion-col align-self-center col-6>{{session.room}}</ion-col>
         <ion-col align-self-center>{{session.questions?.length}}</ion-col>
-        <ion-col align-self-center>{{session.updatedAt | amTimeAgo }}</ion-col>
+        <ion-col align-self-left>{{session.updatedAt | amTimeAgo }}</ion-col>
         <ion-col align-self-center text-center>20</ion-col>
       </ion-row>
     </button>
@@ -49,7 +49,7 @@
     <button ion-fab>
     <ion-icon name="settings"></ion-icon>
   </button>
-    <ion-fab-list side="top">
+    <ion-fab-list side="top" [hidden]="isViewMode">
       <button (click)="end()" ion-fab color="danger">
         <ion-icon name="square"></ion-icon>
         <ion-label>Encerrar sessão</ion-label>
@@ -71,5 +71,20 @@
         <ion-label>{{isFullscreen ? 'Sair tela cheia' : 'Tela cheia'}}</ion-label>
       </button>
     </ion-fab-list>
+    <ion-fab-list side="top" [hidden]="!isViewMode">
+      <button ion-fab (click)="exitViewMode()">
+        <ion-icon name="exit"></ion-icon>
+        <ion-label>Sair</ion-label>
+      </button>
+      <button ion-fab (click)="download()">
+        <ion-icon name="download"></ion-icon>
+        <ion-label>Exportar</ion-label>
+      </button>
+      <button ion-fab (click)="fullscreen()" [color]=" isFullscreen ? 'secondary' : ''">
+        <ion-icon [name]="isFullscreen ? 'contract' : 'expand'"></ion-icon>
+        <ion-label>{{isFullscreen ? 'Sair tela cheia' : 'Tela cheia'}}</ion-label>
+      </button>
+    </ion-fab-list>
+
   </ion-fab>
 </ion-content>

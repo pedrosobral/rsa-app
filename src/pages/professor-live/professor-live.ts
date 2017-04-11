@@ -28,6 +28,11 @@ export class ProfessorLivePage {
 
   settings = {};
 
+  /**
+   * Used to control fab options
+   */
+  isViewMode: boolean = false;
+
   constructor(
     public ps: PollService,
     public navParams: NavParams,
@@ -49,6 +54,9 @@ export class ProfessorLivePage {
   initializeData() {
     this.ps.poll('FISC123').subscribe((poll) => {
       if (!poll.data.length) return;
+
+      // force no view mode
+      this.isViewMode = false;
 
       this.poll = poll.data[0];
       this.questions = this.poll.questions;
@@ -82,6 +90,8 @@ export class ProfessorLivePage {
   }
 
   goToDetails(poll) {
+    this.isViewMode = true;
+
     this.poll = poll;
     this.questions = this.poll.questions;
 
@@ -101,6 +111,12 @@ export class ProfessorLivePage {
 
     // settings
     this.updateSettings();
+  }
+
+  exitViewMode() {
+    this.isViewMode = false;
+
+    this.end();
   }
 
   updateSettings() {
