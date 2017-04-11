@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import {
-  ProfessorTabsPage,
-} from '../pages';
+import { IonicPage, NavController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -20,6 +16,6 @@ export class HomePage {
   }
 
   goToDashboard() {
-    this.navCtrl.push(ProfessorTabsPage);
+    this.navCtrl.push('ProfessorTabsPage');
   }
 }

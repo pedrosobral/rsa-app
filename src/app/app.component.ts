@@ -3,8 +3,6 @@ import { Platform } from 'ionic-angular';
 
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { ProfessorTabsPage } from '../pages/pages';
-
 @Component({
   templateUrl: 'app.html'
 })

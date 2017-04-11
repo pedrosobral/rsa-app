@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import {
   ProfessorQuestionsPage,
   ProfessorLivePage,
 } from '../pages';
 
+@IonicPage()
 @Component({
   selector: 'page-professor-tabs',
-  templateUrl: 'professor-tabs.html'
+  templateUrl: 'professor-tabs.html',
 })
 export class ProfessorTabsPage {
   questions = ProfessorQuestionsPage;
