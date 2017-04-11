@@ -9,8 +9,6 @@ import { MyApp } from './app.component';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {
-  HomePage,
-  // PollPage,
   ProfessorTabsPage,
   ProfessorQuestionsPage,
   ProfessorNewQuestionPage,
@@ -28,8 +26,6 @@ import {
 
 const pages = [
   MyApp,
-  HomePage,
-  // PollPage,
   ProfessorTabsPage,
   ProfessorQuestionsPage,
   ProfessorNewQuestionPage,
