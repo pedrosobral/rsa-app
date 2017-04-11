@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 
-import { ToastController } from 'ionic-angular';
-
-import { reorderArray } from 'ionic-angular';
+import {
+  IonicPage,
+  ToastController,
+} from 'ionic-angular';
 
 import {
   Validators,
   FormBuilder,
   FormGroup,
 } from '@angular/forms';
+
+import { reorderArray } from 'ionic-angular';
 
 import {
   ViewController,
@@ -19,9 +22,10 @@ import {
   QuestionService,
 } from '../../providers/providers';
 
+@IonicPage()
 @Component({
   selector: 'page-professor-new-question',
-  templateUrl: 'professor-new-question.html'
+  templateUrl: 'professor-new-question.html',
 })
 export class ProfessorNewQuestionPage {
   form: FormGroup;

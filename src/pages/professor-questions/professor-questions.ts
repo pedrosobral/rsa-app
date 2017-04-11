@@ -2,10 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
 
 import {
-  ProfessorNewQuestionPage,
-} from '../pages';
-
-import {
   PollService,
   QuestionService,
 } from '../../providers/providers';
@@ -39,7 +35,7 @@ export class ProfessorQuestionsPage {
   }
 
   newQuestion() {
-    this.modalCtrl.create(ProfessorNewQuestionPage).present();
+    this.modalCtrl.create('ProfessorNewQuestionPage').present();
   }
 
   goLive() {

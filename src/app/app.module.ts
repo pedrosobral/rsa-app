@@ -9,18 +9,11 @@ import { MyApp } from './app.component';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {
-  ProfessorNewQuestionPage,
-} from '../pages/pages';
-
-import {
   PollService,
   QuestionService,
 } from '../providers/providers';
 
-const pages = [
-  MyApp,
-  ProfessorNewQuestionPage,
-];
+const pages = [ MyApp ];
 
 const components = [];
 
