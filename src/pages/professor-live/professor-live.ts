@@ -81,6 +81,28 @@ export class ProfessorLivePage {
     });
   }
 
+  goToDetails(poll) {
+    this.poll = poll;
+    this.questions = this.poll.questions;
+
+    // $scope.$apply()
+    this.cdf.detectChanges();
+
+    // init slides engine
+    this.initializeReveal();
+
+    // apply changes
+    Reveal.setState(Reveal.getState());
+
+    // set fab actions state
+    this.currentSlide = Reveal.getState().indexh;
+    this.isChartAvailable = this.poll.questions[this.currentSlide].showChart;
+    this.isAnswerAvailable = this.poll.questions[this.currentSlide].showAnswer;
+
+    // settings
+    this.updateSettings();
+  }
+
   updateSettings() {
     this.settings['available'] = this.currentSlide === this.poll.available;
   }
@@ -100,7 +122,7 @@ export class ProfessorLivePage {
 
     Reveal.addEventListener('slidechanged', (event) => {
       // TODO: called to many times
-      // check to avoid many call
+      // check to avoid many calls
       if (event.indexh === this.currentSlide) return;
 
       this.currentSlide = event.indexh;

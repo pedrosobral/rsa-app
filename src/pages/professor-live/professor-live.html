@@ -20,14 +20,14 @@
         <ion-col align-self-center text-center>Alunos</ion-col>
       </ion-row>
     </ion-item>
-    <ion-item *ngFor="let session of sessions" (click)="goToDetails()">
+    <button ion-item *ngFor="let session of sessions" (click)="goToDetails(session)">
       <ion-row>
         <ion-col align-self-center col-6>{{session.room}}</ion-col>
         <ion-col align-self-center>{{session.questions?.length}}</ion-col>
         <ion-col align-self-center>{{session.updatedAt | amTimeAgo }}</ion-col>
         <ion-col align-self-center text-center>20</ion-col>
       </ion-row>
-    </ion-item>
+    </button>
     <ion-item *ngIf="sessions?.length < 1">Nenhuma sessão encerrada</ion-item>
   </ion-list>
 
