@@ -13,18 +13,6 @@ import {
   QuestionService,
 } from '../providers/providers';
 
-const pages = [ MyApp ];
-
-const components = [];
-
-export function declarations() {
-  return [components, pages];
-}
-
-export function entryComponents() {
-  return pages;
-}
-
 const listProviders = [
   PollService,
   QuestionService,
@@ -41,13 +29,13 @@ export function provider() {
 }
 
 @NgModule({
-  declarations: declarations(),
+  declarations: [MyApp],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
-  entryComponents: entryComponents(),
+  entryComponents: [MyApp],
   providers: provider(),
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ProfessorLivePage } from './professor-live';
-import { SlideComponent } from '../../components/components';
+import { SlideComponent } from '../../components/slide/slide';
 
 @NgModule({
   declarations: [
