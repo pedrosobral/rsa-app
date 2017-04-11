@@ -1,3 +1,28 @@
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/pedrosobral/rsa-app/compare/0.10.0...v0.11.0) (2017-04-11)
+
+
+### Bug Fixes
+
+* **live:** set minScale to 1 to avoid small slide ([6baa8d4](https://github.com/pedrosobral/rsa-app/commit/6baa8d4))
+
+
+### Features
+
+* **ionic-cli:** update v3beta ([434aaba](https://github.com/pedrosobral/rsa-app/commit/434aaba))
+* **lazy-load:** home page ([4d15f8e](https://github.com/pedrosobral/rsa-app/commit/4d15f8e))
+* **lazy-load:** poll page ([a85c433](https://github.com/pedrosobral/rsa-app/commit/a85c433))
+* **lazy-load:** professor-live page ([28ad782](https://github.com/pedrosobral/rsa-app/commit/28ad782))
+* **lazy-load:** professor-new-question page ([feb512c](https://github.com/pedrosobral/rsa-app/commit/feb512c))
+* **lazy-load:** professor-questions page ([89327b4](https://github.com/pedrosobral/rsa-app/commit/89327b4))
+* **lazy-load:** professor-tabs page ([fb37032](https://github.com/pedrosobral/rsa-app/commit/fb37032))
+* **live:** add button to end current session ([cc11cb8](https://github.com/pedrosobral/rsa-app/commit/cc11cb8))
+* **live:** add list ended sessions ([73d7278](https://github.com/pedrosobral/rsa-app/commit/73d7278))
+* **live:** automatically set poll as available when on fullscreen mode ([478a7c1](https://github.com/pedrosobral/rsa-app/commit/478a7c1))
+* **questions:** go to tab on go Live ([73baeb9](https://github.com/pedrosobral/rsa-app/commit/73baeb9))
+
+
+
 <a name="0.10.0"></a>
 # [0.10.0](https://github.com/pedrosobral/rsa-app/compare/0.9.0...v0.10.0) (2017-04-09)
 
