@@ -6,7 +6,7 @@
 
 <ion-content>
   <!-- old sessions list -->
-  <ion-list *ngIf="!poll">
+  <ion-list *ngIf="!poll" padding>
     <h1>Sessões</h1>
     <div *ngIf="sessions?.length < 1">
       <p>Veja aqui todas as sessões encerradas.</p>
@@ -16,13 +16,15 @@
       <ion-row>
         <ion-col align-self-center col-6>Turma</ion-col>
         <ion-col align-self-center>Questões</ion-col>
-        <ion-col align-self-center text-center> Alunos </ion-col>
+        <ion-col align-self-center>Última atividade</ion-col>
+        <ion-col align-self-center text-center>Alunos</ion-col>
       </ion-row>
     </ion-item>
     <ion-item *ngFor="let session of sessions" (click)="goToDetails()">
       <ion-row>
         <ion-col align-self-center col-6>{{session.room}}</ion-col>
         <ion-col align-self-center>{{session.questions?.length}}</ion-col>
+        <ion-col align-self-center>{{session.updatedAt | amTimeAgo }}</ion-col>
         <ion-col align-self-center text-center>20</ion-col>
       </ion-row>
     </ion-item>
