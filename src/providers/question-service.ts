@@ -33,4 +33,8 @@ export class QuestionService extends APIService {
   create(question) {
     return this.questions.create(question);
   }
+
+  edit(question) {
+    return this.questions.update(question.id, question);
+  }
 }

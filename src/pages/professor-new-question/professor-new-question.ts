@@ -31,6 +31,8 @@ export class ProfessorNewQuestionPage {
   form: FormGroup;
   options = [{}];
 
+  isEditMode: boolean = false;
+
   constructor(
     public qs: QuestionService,
     public viewCtrl: ViewController,
@@ -44,6 +46,26 @@ export class ProfessorNewQuestionPage {
       type: ['mc', Validators.required],
       correct: ['']
     });
+
+    const question = this.navParams.get('question');
+    question && this.handleEditMode(question);
+  }
+
+  handleEditMode(question) {
+    this.isEditMode = true;
+
+    this.form = this.formBuilder.group({
+      question: [question.question, Validators.required],
+      description: [question.description],
+      type: [question.type, Validators.required],
+      correct: [question.correct],
+      id: [question._id]
+    });
+
+    // mc case
+    if (question.type === 'mc') {
+      this.options = question.options;
+    }
   }
 
   addOption() {
@@ -60,11 +82,13 @@ export class ProfessorNewQuestionPage {
       Object.assign(question, { options: [{ text: 'Verdadeiro' }, { text: 'Falso' }] });
     }
 
-    this.qs.create(question)
-      .then(() => {
-        this.presentToast('Questão criada')
-          .then(() => this.close());
-      });
+    if (this.isEditMode) {
+      this.qs.edit(question)
+        .then(() => this.presentToast('Questão atualizada') .then(() => this.close()));
+    } else {
+      this.qs.create(question)
+        .then(() => this.presentToast('Questão criada') .then(() => this.close()));
+    }
   }
 
   delete(item) {
@@ -80,11 +104,11 @@ export class ProfessorNewQuestionPage {
   }
 
   presentToast(message) {
-      let toast = this.toastCtrl.create({
-        message,
-        duration: 3000
-      });
-      return toast.present();
+    let toast = this.toastCtrl.create({
+      message,
+      duration: 3000
+    });
+    return toast.present();
   }
 
 }

@@ -24,7 +24,13 @@ export class ProfessorQuestionsPage {
 
   ionViewDidLoad() {
     this.qs.find().subscribe((questions) => {
-      this.questions = questions.data;
+      if (!this.questions) {
+        this.questions = questions.data;
+      } else {
+        const index = this.questions.findIndex((x) => x._id === questions.data[0]._id);
+        this.questions[index] = questions.data[0];
+      }
+
       this.questions.forEach(q => {
         Object.assign(q, {
           image: this.getImage(q.type),
@@ -36,6 +42,10 @@ export class ProfessorQuestionsPage {
 
   newQuestion() {
     this.modalCtrl.create('ProfessorNewQuestionPage').present();
+  }
+
+  edit(question) {
+    this.modalCtrl.create('ProfessorNewQuestionPage', { question }).present();
   }
 
   goLive() {
