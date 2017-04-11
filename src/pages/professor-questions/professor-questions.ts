@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
 
 import {
   ProfessorNewQuestionPage,
@@ -10,9 +10,10 @@ import {
   QuestionService,
 } from '../../providers/providers';
 
+@IonicPage()
 @Component({
   selector: 'page-professor-questions',
-  templateUrl: 'professor-questions.html'
+  templateUrl: 'professor-questions.html',
 })
 export class ProfessorQuestionsPage {
   questions: any;
