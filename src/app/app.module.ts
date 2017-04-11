@@ -11,7 +11,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {
   ProfessorQuestionsPage,
   ProfessorNewQuestionPage,
-  ProfessorLivePage,
 } from '../pages/pages';
 
 import {
@@ -19,20 +18,13 @@ import {
   QuestionService,
 } from '../providers/providers';
 
-import {
-  SlideComponent,
-} from '../components/components';
-
 const pages = [
   MyApp,
   ProfessorQuestionsPage,
   ProfessorNewQuestionPage,
-  ProfessorLivePage,
 ];
 
-const components = [
-  SlideComponent,
-];
+const components = [];
 
 export function declarations() {
   return [components, pages];

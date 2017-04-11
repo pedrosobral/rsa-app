@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import {
   ProfessorQuestionsPage,
-  ProfessorLivePage,
 } from '../pages';
 
 @IonicPage()
@@ -13,7 +12,7 @@ import {
 })
 export class ProfessorTabsPage {
   questions = ProfessorQuestionsPage;
-  live = ProfessorLivePage;
+  live = 'ProfessorLivePage';
 
   constructor() {}
 }

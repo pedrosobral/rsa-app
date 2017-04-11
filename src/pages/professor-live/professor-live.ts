@@ -1,5 +1,5 @@
 import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { NavController, NavParams, FabContainer } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, FabContainer } from 'ionic-angular';
 
 import * as Reveal from 'reveal.js';
 
@@ -7,9 +7,10 @@ import {
   PollService,
 } from '../../providers/providers';
 
+@IonicPage()
 @Component({
   selector: 'page-professor-live',
-  templateUrl: 'professor-live.html'
+  templateUrl: 'professor-live.html',
 })
 export class ProfessorLivePage {
   @ViewChild('fab') fab: FabContainer;
