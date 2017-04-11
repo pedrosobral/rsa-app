@@ -157,14 +157,6 @@ export class ProfessorLivePage {
     this.getOldSessions();
   }
 
-  reset() {
-    this.poll = null;
-    this.questions = null;
-    this.currentSlide = -1;
-    this.isChartAvailable = false;
-    this.isAnswerAvailable = false;
-  }
-
   showChart() {
     const question = this.poll.questions[this.currentSlide];
     this.isChartAvailable = !question.showChart;
