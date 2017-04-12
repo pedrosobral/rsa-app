@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
+import {
+  IonicPage,
+  ModalController,
+  NavController,
+  NavParams,
+  ToastController,
+} from 'ionic-angular';
 
 import {
   PollService,
@@ -13,16 +19,25 @@ import {
 })
 export class ProfessorQuestionsPage {
   questions: any = [];
+
+  // used for undo remove
+  backup: any = [];
+
   sessionQuestions: any = [];
 
   isFromEdit: boolean = false;
+
+  // undo controll
+  undo: boolean = false;
 
   constructor(
     public ps: PollService,
     public qs: QuestionService,
     public modalCtrl: ModalController,
     public navCtrl: NavController,
-    public navParams: NavParams) { }
+    public navParams: NavParams,
+    public toastCtrl: ToastController,
+  ) { }
 
   ionViewDidLoad() {
     this.qs.find().subscribe((questions) => {
@@ -75,12 +90,28 @@ export class ProfessorQuestionsPage {
   }
 
   remove(question) {
-    this.qs.remove(question).then((q) => {
-      const index = this.questions.findIndex((x) => x._id === q._id);
+    // backup for undo
+    this.backup = Object.assign([], this.questions);
 
-      // remove it from list
-      this.questions.splice(index, 1);
-    });
+    this.removeFromArray(question);
+
+    setTimeout(() => {
+      !this.undo && this.qs.remove(question);
+    }, 5000);
+
+    this.presentToast('Questão removida');
+  }
+
+  removeFromArray(q) {
+    const index = this.questions.findIndex((x) => x._id === q._id);
+
+    // remove it from list
+    this.questions.splice(index, 1);
+  }
+
+  undoRemove() {
+    this.questions = [];
+    this.backup.forEach(q => this.questions.push(q));
   }
 
   goLive() {
@@ -97,6 +128,22 @@ export class ProfessorQuestionsPage {
 
   questionSelected() {
     this.sessionQuestions = this.questions.filter(x => x.isChecked);
+  }
+
+  presentToast(message) {
+    let toast = this.toastCtrl.create({
+      message,
+      duration: 5000,
+      showCloseButton: true,
+      closeButtonText: 'Desfazer',
+    });
+    toast.onDidDismiss((data, role) => {
+      if (role === 'close') {
+        this.undo = true;
+        this.undoRemove();
+      }
+    });
+    return toast.present();
   }
 
   getType(type) {
