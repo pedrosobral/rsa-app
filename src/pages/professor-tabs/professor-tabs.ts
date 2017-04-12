@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 
-@IonicPage()
+@IonicPage({
+  segment: 'dashboard'
+})
 @Component({
   selector: 'page-professor-tabs',
   templateUrl: 'professor-tabs.html',
