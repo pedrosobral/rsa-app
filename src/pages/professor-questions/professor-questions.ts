@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+
 import {
+  AlertController,
   IonicPage,
   ModalController,
   NavController,
@@ -19,20 +21,13 @@ import {
 })
 export class ProfessorQuestionsPage {
   questions: any = [];
-
-  // used for undo remove
-  backup: any = [];
-
   sessionQuestions: any = [];
-
   isFromEdit: boolean = false;
-
-  // undo controll
-  undo: boolean = false;
 
   constructor(
     public ps: PollService,
     public qs: QuestionService,
+    public alertCtrl: AlertController,
     public modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -90,28 +85,16 @@ export class ProfessorQuestionsPage {
   }
 
   remove(question) {
-    // backup for undo
-    this.backup = Object.assign([], this.questions);
+    this.qs.remove(question).then((q) => {
+      // get question index
+      const index = this.questions.findIndex((x) => x._id === q._id);
 
-    this.removeFromArray(question);
+      // remove it from list
+      this.questions.splice(index, 1);
 
-    setTimeout(() => {
-      !this.undo && this.qs.remove(question);
-    }, 5000);
-
-    this.presentToast('Questão removida');
-  }
-
-  removeFromArray(q) {
-    const index = this.questions.findIndex((x) => x._id === q._id);
-
-    // remove it from list
-    this.questions.splice(index, 1);
-  }
-
-  undoRemove() {
-    this.questions = [];
-    this.backup.forEach(q => this.questions.push(q));
+      // show toast
+      this.presentToast('Questão removida');
+    });
   }
 
   goLive() {
@@ -133,17 +116,31 @@ export class ProfessorQuestionsPage {
   presentToast(message) {
     let toast = this.toastCtrl.create({
       message,
-      duration: 5000,
-      showCloseButton: true,
-      closeButtonText: 'Desfazer',
-    });
-    toast.onDidDismiss((data, role) => {
-      if (role === 'close') {
-        this.undo = true;
-        this.undoRemove();
-      }
+      duration: 3000,
     });
     return toast.present();
+  }
+
+  showConfirm(question) {
+    let confirm = this.alertCtrl.create({
+      title: 'Remover questão?',
+      message: 'Essa operação não pode ser desfeita.',
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+            this.presentToast('Remoção cancelada');
+          }
+        },
+        {
+          text: 'OK',
+          handler: () => {
+            this.remove(question);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
   getType(type) {
