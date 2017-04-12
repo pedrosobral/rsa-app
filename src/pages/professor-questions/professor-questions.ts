@@ -12,8 +12,10 @@ import {
   templateUrl: 'professor-questions.html',
 })
 export class ProfessorQuestionsPage {
-  questions: any;
+  questions: any = [];
   sessionQuestions: any = [];
+
+  isFromEdit: boolean = false;
 
   constructor(
     public ps: PollService,
@@ -24,11 +26,14 @@ export class ProfessorQuestionsPage {
 
   ionViewDidLoad() {
     this.qs.find().subscribe((questions) => {
-      if (!this.questions) {
-        this.questions = questions.data;
+      if (!questions.data.length) return;
+
+      // case add questions
+      if (!this.isFromEdit) {
+        this.updateQuestions(questions);
       } else {
-        const index = this.questions.findIndex((x) => x._id === questions.data[0]._id);
-        this.questions[index] = questions.data[0];
+        // handle edit mode
+        this.updateEditedQuestion(questions);
       }
 
       this.questions.forEach(q => {
@@ -40,12 +45,42 @@ export class ProfessorQuestionsPage {
     });
   }
 
+  updateQuestions(questions) {
+    if (questions.data.length > 1) {
+      this.questions = questions.data;
+    } else {
+      questions.data.forEach((q) => {
+        this.questions.push(q);
+      });
+    }
+  }
+
+  updateEditedQuestion(questions) {
+    const index = this.questions.findIndex((x) => x._id === questions.data[0]._id);
+    this.questions[index] = questions.data[0];
+  }
+
   newQuestion() {
-    this.modalCtrl.create('ProfessorNewQuestionPage').present();
+    this.modalCtrl
+      .create('ProfessorNewQuestionPage')
+      .present()
+      .then(() => this.isFromEdit = false);
   }
 
   edit(question) {
-    this.modalCtrl.create('ProfessorNewQuestionPage', { question }).present();
+    this.modalCtrl
+      .create('ProfessorNewQuestionPage', { question })
+      .present()
+      .then(() => this.isFromEdit = true);
+  }
+
+  remove(question) {
+    this.qs.remove(question).then((q) => {
+      const index = this.questions.findIndex((x) => x._id === q._id);
+
+      // remove it from list
+      this.questions.splice(index, 1);
+    });
   }
 
   goLive() {

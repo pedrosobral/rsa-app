@@ -100,7 +100,7 @@ export class ProfessorNewQuestionPage {
   }
 
   close() {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss(this.isEditMode);
   }
 
   presentToast(message) {
