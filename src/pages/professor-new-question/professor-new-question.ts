@@ -97,6 +97,11 @@ export class ProfessorNewQuestionPage {
 
   reorder(indexes) {
     this.options = reorderArray(this.options, indexes);
+
+    // handle correct answer choice reorder
+    if (indexes.from === this.form.value.correct) {
+      this.form.value.correct = indexes.to;
+    }
   }
 
   close(message) {
