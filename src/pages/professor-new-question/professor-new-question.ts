@@ -84,10 +84,10 @@ export class ProfessorNewQuestionPage {
 
     if (this.isEditMode) {
       this.qs.edit(question)
-        .then(() => this.presentToast('Questão atualizada') .then(() => this.close()));
+        .then(() => this.close('Questão atualizada'));
     } else {
       this.qs.create(question)
-        .then(() => this.presentToast('Questão criada') .then(() => this.close()));
+        .then(() => this.close('Questão criada'));
     }
   }
 
@@ -99,8 +99,11 @@ export class ProfessorNewQuestionPage {
     this.options = reorderArray(this.options, indexes);
   }
 
-  close() {
-    this.viewCtrl.dismiss(this.isEditMode);
+  close(message) {
+    this.viewCtrl.dismiss(this.isEditMode)
+      .then(() => {
+        this.presentToast(message);
+      });
   }
 
   presentToast(message) {
