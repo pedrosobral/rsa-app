@@ -10,7 +10,7 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <span i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões} =1 {1 questão selecionada} =2 {{{sessionQuestions.length}} questões selecionadas}}</span>
+      <span i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões} =1 {1 questão selecionada} other {{{sessionQuestions.length}} questões selecionadas}}</span>
       <button ion-button item-right clear icon-left [disabled]="sessionQuestions.length === 0" (click)="goLive()">
         <ion-icon name="play"></ion-icon>
           Iniciar sessão
