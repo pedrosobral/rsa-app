@@ -9,8 +9,16 @@
 
 <ion-content>
   <ion-list>
+    <div>
+      <h1>Questões</h1>
+      <div *ngIf="questions?.length < 1">
+        <p>Você ainda não tem nenhuma questão cadastrada.</p>
+        <p>Para iniciar uma sessão, você precisa criar uma questão primeiro.</p>
+      </div>
+    </div>
     <ion-item>
-      <span i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões} =1 {1 questão selecionada} other {{{sessionQuestions.length}} questões selecionadas}}</span>
+      <span *ngIf="questions?.length > 0" i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões} =1 {1 questão selecionada} other {{{sessionQuestions.length}} questões selecionadas}}
+      </span>
       <button ion-button item-right clear icon-left [disabled]="sessionQuestions.length === 0" (click)="goLive()">
         <ion-icon name="play"></ion-icon>
           Iniciar sessão
