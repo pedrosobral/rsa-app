@@ -7,7 +7,9 @@ import {
   PollService,
 } from '../../providers/providers';
 
-@IonicPage()
+@IonicPage({
+  segment: 'polls'
+})
 @Component({
   selector: 'page-professor-live',
   templateUrl: 'professor-live.html',

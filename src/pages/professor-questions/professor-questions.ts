@@ -14,7 +14,9 @@ import {
   QuestionService,
 } from '../../providers/providers';
 
-@IonicPage()
+@IonicPage({
+  segment: 'list'
+})
 @Component({
   selector: 'page-professor-questions',
   templateUrl: 'professor-questions.html',
