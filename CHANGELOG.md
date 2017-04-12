@@ -1,3 +1,29 @@
+<a name="0.12.0"></a>
+# [0.12.0](https://github.com/pedrosobral/rsa-app/compare/0.11.0...v0.12.0) (2017-04-12)
+
+
+### Bug Fixes
+
+* **i18n:** add other option for n >= 2 ([47ed4d0](https://github.com/pedrosobral/rsa-app/commit/47ed4d0))
+
+
+### Features
+
+* **config:** get rid off old configuration ([9347a25](https://github.com/pedrosobral/rsa-app/commit/9347a25))
+* **list-sessions:** add column amTimeAgo ([7a5e59a](https://github.com/pedrosobral/rsa-app/commit/7a5e59a))
+* **live:** remove unused code ([fb37e3b](https://github.com/pedrosobral/rsa-app/commit/fb37e3b))
+* **live:** style sessions list ([68a5812](https://github.com/pedrosobral/rsa-app/commit/68a5812))
+* **new-question:** show toast after close Modal ([d6cb766](https://github.com/pedrosobral/rsa-app/commit/d6cb766))
+* **questions:** add edit mode ([b4f9ca0](https://github.com/pedrosobral/rsa-app/commit/b4f9ca0))
+* **questions:** add remove option. ([78b570d](https://github.com/pedrosobral/rsa-app/commit/78b570d))
+* **questions:** remove undo, add alert on remove ([9ca41b4](https://github.com/pedrosobral/rsa-app/commit/9ca41b4))
+* **questions:** undo remove (will remove) ([de3b96d](https://github.com/pedrosobral/rsa-app/commit/de3b96d))
+* **session:** add basic view ended polls ([537e2a4](https://github.com/pedrosobral/rsa-app/commit/537e2a4))
+* **sessions:** add context fab actions on view mode ([1cec534](https://github.com/pedrosobral/rsa-app/commit/1cec534))
+* **url:** better urls ([6a820d9](https://github.com/pedrosobral/rsa-app/commit/6a820d9))
+
+
+
 <a name="0.11.0"></a>
 # [0.11.0](https://github.com/pedrosobral/rsa-app/compare/0.10.0...v0.11.0) (2017-04-11)
 
