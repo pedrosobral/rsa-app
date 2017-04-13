@@ -11,11 +11,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {
   PollService,
   QuestionService,
+  LabelService,
 } from '../providers/providers';
 
 const listProviders = [
   PollService,
   QuestionService,
+  LabelService,
 
   SplashScreen,
   {

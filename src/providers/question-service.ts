@@ -27,7 +27,20 @@ export class QuestionService extends APIService {
   }
 
   find(id?) {
-    return this.questions.find();
+    return this.questions.find({
+      query: {
+        $populate: ['labels']
+      }
+    });
+  }
+
+  findByLabel(label) {
+    return this.questions.find({
+      query: {
+        labels: label,
+        $populate: ['labels']
+      }
+    });
   }
 
   create(question) {
@@ -36,6 +49,12 @@ export class QuestionService extends APIService {
 
   edit(question) {
     return this.questions.update(question.id, question);
+  }
+
+  setLabels(question, labels) {
+    return this.questions.patch(question._id, {
+      labels
+    });
   }
 
   remove(question) {

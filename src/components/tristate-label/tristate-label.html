@@ -1,0 +1,8 @@
+<ion-item>
+  <ion-label>{{label.text}}</ion-label>
+  <ion-checkbox #checkbox
+    (click)="onClick()"
+    [(ngModel)]="label.isChecked"
+    [color]="label.isAppliedToAllQuestions ? 'primary' : 'danger'">
+  </ion-checkbox>
+</ion-item>

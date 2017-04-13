@@ -1,14 +1,18 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle>
+     <ion-icon name="menu"></ion-icon>
+   </button>
     <ion-title>Questões</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
+<ion-content padding>
   <ion-list>
+    <!-- header info -->
     <div>
       <h1>Questões</h1>
       <div *ngIf="questions?.length < 1">
@@ -16,18 +20,27 @@
         <p>Para iniciar uma sessão, você precisa criar uma questão primeiro.</p>
       </div>
     </div>
+
+    <!-- header selected questions -->
     <ion-item>
       <span *ngIf="questions?.length > 0" i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões} =1 {1 questão selecionada} other {{{sessionQuestions.length}} questões selecionadas}}
       </span>
+      <button ion-button item-right clear icon-left [disabled]="sessionQuestions.length === 0" (click)="labelIt()">
+        <ion-icon name="pricetag"></ion-icon>
+          Adicionar label
+      </button>
       <button ion-button item-right clear icon-left [disabled]="sessionQuestions.length === 0" (click)="goLive()">
         <ion-icon name="play"></ion-icon>
           Iniciar sessão
-        </button>
+      </button>
     </ion-item>
+
+    <!-- list questions -->
     <ion-item *ngFor="let q of questions">
       <ion-label>
         {{q.question}}
         <h3>{{q.typeDescription}} <span *ngIf="q.description"> &#8226; {{q.description}}</span></h3>
+        <ion-badge *ngFor="let label of q.labels" item-right>{{label.text}}</ion-badge>
       </ion-label>
       <ion-checkbox (ionChange)="questionSelected()" [(ngModel)]="q.isChecked"></ion-checkbox>
       <button clear ion-button icon-only item-right (click)="edit(q)">
@@ -39,8 +52,8 @@
     </ion-item>
   </ion-list>
 
+  <!-- fab button -->
   <ion-fab right bottom>
     <button (click)="newQuestion()" ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
-
 </ion-content>

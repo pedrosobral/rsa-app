@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Editar labels</ion-title>
+    <ion-buttons end>
+      <button (click)="close()" ion-button icon-only>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!-- new label form -->
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label stacked>Label</ion-label>
+      <ion-input type="text" formControlName="text" placeholder="Criar novo label"></ion-input>
+      <button clear ion-button item-right (click)="submit()" [disabled]="!form.valid">
+        Salvar
+      </button>
+    </ion-item>
+  </form>
+
+  <!-- list labels -->
+  <!-- TODO -->
+  <ion-list>
+    <ion-item *ngFor="let label of labels">
+      <ion-icon name="pricetag" item-left small></ion-icon>
+      {{label.text}}
+    </ion-item>
+  </ion-list>
+
+</ion-content>

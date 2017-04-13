@@ -1,0 +1,25 @@
+<ion-split-pane>
+  <!--  our side menu  -->
+  <ion-menu [content]="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Labels</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <button ion-item (click)="label()">
+          <ion-icon name="add" item-left color="secondary"></ion-icon>
+          Criar novo label
+        </button>
+        <button ion-item *ngFor="let label of labels" (click)="filterByLabel(label)">
+          <ion-icon name="pricetag" item-left></ion-icon>
+          {{label.text}}
+        </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- the main content -->
+  <ion-nav [root]="root" main #content></ion-nav>
+</ion-split-pane>

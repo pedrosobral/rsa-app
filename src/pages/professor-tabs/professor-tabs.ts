@@ -11,6 +11,7 @@ import { IonicPage } from 'ionic-angular';
 export class ProfessorTabsPage {
   questions = 'ProfessorQuestionsPage';
   live = 'ProfessorLivePage';
+  manager = 'ProfessorQuestionsListPage';
 
   constructor() {}
 }

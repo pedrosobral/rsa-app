@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Adicionar label</ion-title>
+    <ion-buttons end>
+      <button (click)="close()" ion-button icon-only>Cancelar</button>
+      <button (click)="submit()" ion-button text-only>Salvar</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list text-wrap>
+    <!-- <ion-item *ngFor="let label of labels">
+      <ion-label>{{label | json}}</ion-label>
+      <ion-checkbox (ionChange)="labelChange(label)" [(ngModel)]="label.isChecked" [color]="label.isAppliedToAllQuestions ? 'primary' : 'danger'"></ion-checkbox>
+    </ion-item> -->
+    <tristate-label *ngFor="let label of labels" [label]="label"></tristate-label>
+  </ion-list>
+
+</ion-content>

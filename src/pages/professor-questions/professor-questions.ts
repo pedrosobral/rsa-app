@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import {
   AlertController,
+  Events,
   IonicPage,
   ModalController,
   NavController,
@@ -27,6 +28,7 @@ export class ProfessorQuestionsPage {
   isFromEdit: boolean = false;
 
   constructor(
+    public events: Events,
     public ps: PollService,
     public qs: QuestionService,
     public alertCtrl: AlertController,
@@ -34,7 +36,12 @@ export class ProfessorQuestionsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-  ) { }
+  ) {
+    // filter by label event subscribe
+    this.events.subscribe('filter:label', (label) => {
+      this.getQuestionByLabel(label._id);
+    });
+  }
 
   ionViewDidLoad() {
     this.qs.find().subscribe((questions) => {
@@ -54,6 +61,12 @@ export class ProfessorQuestionsPage {
           typeDescription: this.getType(q.type)
         });
       });
+    });
+  }
+
+  getQuestionByLabel(label) {
+    this.qs.findByLabel(label).then((questions) => {
+      this.questions = questions.data;
     });
   }
 
@@ -97,6 +110,10 @@ export class ProfessorQuestionsPage {
       // show toast
       this.presentToast('Questão removida');
     });
+  }
+
+  labelIt() {
+    this.modalCtrl.create('AddLabelPage', { questions: this.sessionQuestions }).present();
   }
 
   goLive() {
