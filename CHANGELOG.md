@@ -1,3 +1,20 @@
+<a name="0.13.0"></a>
+# [0.13.0](https://github.com/pedrosobral/rsa-app/compare/0.12.0...v0.13.0) (2017-04-13)
+
+
+### Bug Fixes
+
+* **new-question:** handle correct answer choice reorder ([07dacbf](https://github.com/pedrosobral/rsa-app/commit/07dacbf))
+
+
+### Features
+
+* **labels:** add labels system ([4697faf](https://github.com/pedrosobral/rsa-app/commit/4697faf))
+* **questions:** add info message on no questions ([e6e6b00](https://github.com/pedrosobral/rsa-app/commit/e6e6b00))
+* **urls:** better urls ([b5d2574](https://github.com/pedrosobral/rsa-app/commit/b5d2574))
+
+
+
 <a name="0.12.0"></a>
 # [0.12.0](https://github.com/pedrosobral/rsa-app/compare/0.11.0...v0.12.0) (2017-04-12)
 
