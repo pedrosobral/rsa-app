@@ -37,7 +37,7 @@ export class ProfessorQuestionsPage {
     public toastCtrl: ToastController,
   ) {
     // filter by label event subscribe
-    this.events.subscribe('filter:label', (label) => {
+    this.events.subscribe('label:filter', (label) => {
       this.getQuestionByLabel(label._id);
     });
 

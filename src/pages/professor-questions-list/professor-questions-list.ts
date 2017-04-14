@@ -34,7 +34,7 @@ export class ProfessorQuestionsListPage {
 
   filterByLabel(label) {
     this.title = label.text;
-    this.events.publish('filter:label', label);
+    this.events.publish('label:filter', label);
   }
 
   ionViewDidLoad() {
