@@ -134,7 +134,7 @@ export class ProfessorQuestionsPage {
 
     this.ps.create(poll)
       .then(() => {
-        this.navCtrl.parent.select(1);
+        this.events.publish('tabs:select', 1);
       });
   }
 

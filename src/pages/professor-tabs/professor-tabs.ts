@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, Events, Tabs } from 'ionic-angular';
 
 @IonicPage({
   segment: 'dashboard'
@@ -9,9 +9,15 @@ import { IonicPage } from 'ionic-angular';
   templateUrl: 'professor-tabs.html',
 })
 export class ProfessorTabsPage {
+  @ViewChild('tabs') tabs: Tabs;
+
   questions = 'ProfessorQuestionsPage';
   live = 'ProfessorLivePage';
   manager = 'ProfessorQuestionsListPage';
 
-  constructor() {}
+  constructor(public events: Events) {
+    events.subscribe('tabs:select', (tab) => {
+      this.tabs.select(tab);
+    })
+  }
 }
