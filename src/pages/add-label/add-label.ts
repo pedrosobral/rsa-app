@@ -43,7 +43,7 @@ export class AddLabelPage {
 
   setSelectedLabels() {
     this.questions.forEach((q) => {
-      q.labels.forEach((l) => {
+      q.labels && q.labels.forEach((l) => {
         const label = this.labels.find((x) => x._id === l._id);
         label.isChecked = true;
 
