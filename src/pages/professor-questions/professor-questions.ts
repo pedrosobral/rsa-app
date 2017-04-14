@@ -39,9 +39,17 @@ export class ProfessorQuestionsPage {
     // filter by label event subscribe
     this.events.subscribe('label:filter', (label) => {
       this.getQuestionByLabel(label._id);
+
+      // clear selected questions
+      this.sessionQuestions = [];
     });
 
-    this.events.subscribe('label:changed', () => this.refresh());
+    this.events.subscribe('label:changed', () => {
+      this.refresh();
+
+      // clear selected questions
+      this.sessionQuestions = [];
+    });
   }
 
   ionViewDidLoad() {
@@ -54,9 +62,26 @@ export class ProfessorQuestionsPage {
 
   refresh() {
     this.qs.find().then((questions) => {
+      const previousQuestions = Object.assign([], this.questions);
+
+      // update questions
       this.questions = questions.data;
+
+      // preserve selected questions
+      this.setSelectedQuestions(previousQuestions);
+
+      // format properly
       this.formatQuestions();
     });
+  }
+
+  setSelectedQuestions(questions) {
+    questions
+      .filter(x => x.isChecked)
+      .forEach((q) => {
+        const question = this.questions.find(x => x._id === q._id);
+        question && (question.isChecked = true);
+      });
   }
 
   formatQuestions() {
@@ -71,6 +96,9 @@ export class ProfessorQuestionsPage {
     this.qs.findByLabel(label).then((questions) => {
       this.questions = questions.data;
       this.formatQuestions();
+
+      // clear selected questions
+      this.sessionQuestions = [];
     });
   }
 
