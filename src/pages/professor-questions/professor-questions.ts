@@ -25,7 +25,6 @@ import {
 export class ProfessorQuestionsPage {
   questions: any = [];
   sessionQuestions: any = [];
-  isFromEdit: boolean = false;
 
   constructor(
     public events: Events,
@@ -44,22 +43,25 @@ export class ProfessorQuestionsPage {
   }
 
   ionViewDidLoad() {
-    this.qs.find().subscribe((questions) => {
-      if (!questions.data.length) return;
+    this.qs.find().subscribe(() => this.refresh());
 
-      // case add questions
-      if (!this.isFromEdit) {
-        this.updateQuestions(questions);
-      } else {
-        // handle edit mode
-        this.updateEditedQuestion(questions);
-      }
+    // workaround b/c service is not triggering
+    // with populate ['labels'] on created
+    this.qs.questions.on('created', () => this.refresh());
+  }
 
-      this.questions.forEach(q => {
-        Object.assign(q, {
-          image: this.getImage(q.type),
-          typeDescription: this.getType(q.type)
-        });
+  refresh() {
+    this.qs.find().then((questions) => {
+      this.questions = questions.data;
+      this.formatQuestions();
+    });
+  }
+
+  formatQuestions() {
+    this.questions.forEach(q => {
+      Object.assign(q, {
+        image: this.getImage(q.type),
+        typeDescription: this.getType(q.type)
       });
     });
   }
@@ -70,46 +72,24 @@ export class ProfessorQuestionsPage {
     });
   }
 
-  updateQuestions(questions) {
-    if (questions.data.length > 1) {
-      this.questions = questions.data;
-    } else {
-      questions.data.forEach((q) => {
-        this.questions.push(q);
-      });
-    }
-  }
-
-  updateEditedQuestion(questions) {
-    const index = this.questions.findIndex((x) => x._id === questions.data[0]._id);
-    this.questions[index] = questions.data[0];
-  }
-
   newQuestion() {
     this.modalCtrl
       .create('ProfessorNewQuestionPage')
       .present()
-      .then(() => this.isFromEdit = false);
   }
 
   edit(question) {
     this.modalCtrl
       .create('ProfessorNewQuestionPage', { question })
       .present()
-      .then(() => this.isFromEdit = true);
   }
 
   remove(question) {
-    this.qs.remove(question).then((q) => {
-      // get question index
-      const index = this.questions.findIndex((x) => x._id === q._id);
-
-      // remove it from list
-      this.questions.splice(index, 1);
-
-      // show toast
-      this.presentToast('Questão removida');
-    });
+    this.qs.remove(question)
+      .then((q) => {
+        // show toast
+        this.presentToast('Questão removida');
+      });
   }
 
   labelIt() {
