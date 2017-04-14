@@ -26,7 +26,7 @@ export class QuestionService extends APIService {
     this.questions = app.service('questions');
   }
 
-  find(id?) {
+  find() {
     return this.questions.find({
       query: {
         $populate: ['labels']
