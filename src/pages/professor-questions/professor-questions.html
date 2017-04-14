@@ -37,8 +37,8 @@
     <!-- list questions -->
     <ion-item *ngFor="let q of questions">
       <ion-label>
-        {{q.question}}
-        <h3>{{q.typeDescription}} <span *ngIf="q.description"> &#8226; {{q.description}}</span></h3>
+        <span class="title">{{q.question}}</span>
+        <h3 class="description">{{q.typeDescription}} <span *ngIf="q.description"> &#8226; {{q.description}}</span></h3>
         <ion-badge *ngFor="let label of q.labels" item-right>{{label.text}}</ion-badge>
       </ion-label>
       <ion-checkbox (ionChange)="questionSelected()" [(ngModel)]="q.isChecked"></ion-checkbox>
