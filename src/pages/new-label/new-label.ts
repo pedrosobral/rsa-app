@@ -53,8 +53,6 @@ export class NewLabelPage {
     this.ls.create(this.form.value).then((res) => {
       // clear input
       this.form.reset();
-
-      this.refresh();
     });
   }
 
