@@ -60,7 +60,6 @@ export class ProfessorQuestionsPage {
   formatQuestions() {
     this.questions.forEach(q => {
       Object.assign(q, {
-        image: this.getImage(q.type),
         typeDescription: this.getType(q.type)
       });
     });
@@ -69,6 +68,7 @@ export class ProfessorQuestionsPage {
   getQuestionByLabel(label) {
     this.qs.findByLabel(label).then((questions) => {
       this.questions = questions.data;
+      this.formatQuestions();
     });
   }
 
@@ -155,19 +155,4 @@ export class ProfessorQuestionsPage {
       };
     }
   }
-
-  getImage(type) {
-    switch (type) {
-      case 'mc': {
-        return './assets/icon/mc.png';
-      }
-      case 'free': {
-        return './assets/icon/free_text.png';
-      };
-      case 'bool': {
-        return './assets/icon/mc.png';
-      };
-    }
-  }
-
 }
