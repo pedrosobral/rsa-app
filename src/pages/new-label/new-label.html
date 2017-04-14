@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Editar labels</ion-title>
+    <ion-title>Editar marcadores</ion-title>
     <ion-buttons end>
       <button (click)="close()" ion-button icon-only>
         <ion-icon name="close"></ion-icon>
@@ -17,8 +17,8 @@
   <!-- new label form -->
   <form [formGroup]="form">
     <ion-item>
-      <ion-label stacked>Label</ion-label>
-      <ion-input type="text" formControlName="text" placeholder="Criar novo label"></ion-input>
+      <ion-label stacked>Marcador</ion-label>
+      <ion-input type="text" formControlName="text" placeholder="Criar novo marcador"></ion-input>
       <button clear ion-button item-right (click)="submit()" [disabled]="!form.valid">
         Salvar
       </button>
