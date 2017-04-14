@@ -32,7 +32,10 @@ export class LabelService extends APIService {
         $sort: {
           text: 1
         }
-      }
+      },
+      rx: {
+         listStrategy: 'always'
+       }
     });
   }
 
