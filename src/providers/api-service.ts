@@ -1,3 +1,11 @@
+import * as RxJS from 'rxjs';
+import 'rxjs/add/operator/map';
+
+import * as io from 'socket.io-client';
+import * as feathers from 'feathers/client';
+import * as socketio from 'feathers-socketio/client';
+import * as reactive from 'feathers-reactive';
+
 export abstract class APIService {
 
   // private _url: string = 'http://192.168.0.175:3030';
@@ -9,6 +17,17 @@ export abstract class APIService {
   // private _url: string = 'https://rsa-app.herokuapp.com';
 
   private _url: string = 'http://localhost:3030';
+  public socket: any;
+  public app: any;
+
+  constructor() {
+    this.socket = io(this.url);
+    this.app = feathers();
+
+    this.app
+      .configure(socketio(this.socket))
+      .configure(reactive(RxJS));
+  }
 
   get url(): string {
     return this._url;
