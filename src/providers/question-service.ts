@@ -48,7 +48,7 @@ export class QuestionService extends APIService {
   }
 
   edit(question) {
-    return this.questions.update(question.id, question);
+    return this.questions.update(question._id, question);
   }
 
   setLabels(question, labels) {

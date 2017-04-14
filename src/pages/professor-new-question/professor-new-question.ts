@@ -59,7 +59,7 @@ export class ProfessorNewQuestionPage {
       description: [question.description],
       type: [question.type, Validators.required],
       correct: [question.correct],
-      id: [question._id]
+      _id: [question._id]
     });
 
     // mc case
