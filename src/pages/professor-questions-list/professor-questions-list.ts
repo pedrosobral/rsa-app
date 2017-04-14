@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 import {
   IonicPage,
   ModalController,
-  NavController,
-  NavParams,
   Events,
 } from 'ionic-angular';
 
@@ -26,8 +24,6 @@ export class ProfessorQuestionsListPage {
     public events: Events,
     public ls: LabelService,
     public modalCtrl: ModalController,
-    public navCtrl: NavController,
-    public navParams: NavParams,
   ) { }
 
   label() {
