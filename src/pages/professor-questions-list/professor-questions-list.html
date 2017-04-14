@@ -3,14 +3,21 @@
   <ion-menu [content]="content">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Labels</ion-title>
+        <button ion-button menuToggle>
+         <ion-icon name="pricetag"></ion-icon>
+       </button>
+        <ion-title>{{title || 'Todas as questões' }}</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list>
+        <button ion-item (click)="filterByLabel({text: ''})">
+          <ion-icon name="book" item-left color="primary"></ion-icon>
+          Todas as questões
+        </button>
         <button ion-item (click)="label()">
-          <ion-icon name="add" item-left color="secondary"></ion-icon>
-          Criar novo label
+          <ion-icon name="create" item-left></ion-icon>
+          Editar Labels
         </button>
         <button ion-item *ngFor="let label of labels" (click)="filterByLabel(label)">
           <ion-icon name="pricetag" item-left></ion-icon>

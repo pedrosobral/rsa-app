@@ -20,6 +20,8 @@ export class ProfessorQuestionsListPage {
 
   labels: any;
 
+  title: string;
+
   constructor(
     public events: Events,
     public ls: LabelService,
@@ -31,6 +33,7 @@ export class ProfessorQuestionsListPage {
   }
 
   filterByLabel(label) {
+    this.title = label.text;
     this.events.publish('filter:label', label);
   }
 
