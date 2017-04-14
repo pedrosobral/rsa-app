@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import {
   IonicPage,
+  Events,
   NavController,
   NavParams,
   ViewController,
@@ -29,6 +30,7 @@ export class NewLabelPage {
 
   constructor(
     public ls: LabelService,
+    public events: Events,
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
@@ -53,11 +55,17 @@ export class NewLabelPage {
   }
 
   edit(label) {
-    this.ls.edit(label);
+    this.ls.edit(label)
+      .then(() => this.change());
   }
 
   remove(label) {
-    this.ls.remove(label);
+    this.ls.remove(label)
+      .then(() => this.change());
+  }
+
+  change() {
+    this.events.publish('label:changed');
   }
 
   close() {

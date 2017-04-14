@@ -40,6 +40,8 @@ export class ProfessorQuestionsPage {
     this.events.subscribe('filter:label', (label) => {
       this.getQuestionByLabel(label._id);
     });
+
+    this.events.subscribe('label:changed', () => this.refresh());
   }
 
   ionViewDidLoad() {
