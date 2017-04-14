@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 
 import {
   PollService
@@ -13,13 +13,12 @@ import {
 export class PollPage {
   room: String = this.navParams.get('room');
   poll: any;
-
-  currentQuestion: number;
+  question: any;
 
   constructor(
     public ps: PollService,
-    public navCtrl: NavController,
-    public navParams: NavParams) { }
+    public navParams: NavParams,
+  ) { }
 
   ionViewDidLoad() {
     this.initPoll();
@@ -28,8 +27,8 @@ export class PollPage {
   initPoll() {
     this.ps.poll(this.room).subscribe((poll) => {
       if (poll.data.length > 0 && poll.data[0].available !== -1) {
-        this.currentQuestion = poll.data[0].available;
-        this.poll = poll.data[0].questions[this.currentQuestion];
+        this.poll = poll.data[0];
+        this.question = this.poll.questions[this.poll.available];
       } else {
         this.poll = null;
       }
@@ -37,6 +36,7 @@ export class PollPage {
   }
 
   submit(answer) {
-    this.ps.answer(this.poll, this.currentQuestion, answer).subscribe((res) => console.info(res));
+    this.ps.answer(this.poll, this.poll.available, answer)
+      .then((res) => console.info(res));
   }
 }

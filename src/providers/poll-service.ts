@@ -16,7 +16,15 @@ export class PollService extends APIService {
   }
 
   poll(room: String) {
-    return this.polls.find({ query: { room: room, isOver: false } });
+    return this.polls.find({
+      query: {
+        room: room,
+        isOver: false
+      },
+      rx: {
+         listStrategy: 'always'
+     }
+    });
   }
 
   sessions() {
@@ -37,13 +45,13 @@ export class PollService extends APIService {
 
   showChart(poll, questionIndex, value) {
     return this.polls.patch(poll._id, {
-        [`questions.${questionIndex}.showChart`]: value
+      [`questions.${questionIndex}.showChart`]: value
     });
   }
 
   showAnswer(poll, questionIndex, value) {
     return this.polls.patch(poll._id, {
-        [`questions.${questionIndex}.showAnswer`]: value
+      [`questions.${questionIndex}.showAnswer`]: value
     });
   }
 

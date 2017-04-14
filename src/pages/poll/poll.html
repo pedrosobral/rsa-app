@@ -26,11 +26,11 @@
 
   <div *ngIf="poll">
     <div class="question">
-      <span>{{poll?.question}}</span>
+      <span>{{question?.question}}</span>
     </div>
 
     <ion-list radio-group [(ngModel)]="answer">
-      <ion-item *ngFor="let option of poll.options; let i = index">
+      <ion-item *ngFor="let option of question.options; let i = index">
         <ion-label>{{option.text}}</ion-label>
         <ion-radio value="{{option.text}}"></ion-radio>
       </ion-item>
