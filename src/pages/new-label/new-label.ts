@@ -40,10 +40,12 @@ export class NewLabelPage {
   }
 
   ionViewDidLoad() {
-    this.ls.find().subscribe((labels) => {
-      this.labels = labels.data;
+    this.ls.find().subscribe(() => this.refresh());
+  }
 
-      console.info('labels', labels.data);
+  refresh() {
+    this.ls.find().then((labels) => {
+      this.labels = labels.data;
     });
   }
 
@@ -51,7 +53,18 @@ export class NewLabelPage {
     this.ls.create(this.form.value).then((res) => {
       // clear input
       this.form.reset();
+
+      this.refresh();
     });
+  }
+
+  edit(label) {
+    this.ls.edit(label).then((res) => {
+    });
+  }
+
+  remove(label) {
+    this.ls.remove(label).then((removed) => { });
   }
 
   close() {

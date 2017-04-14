@@ -41,7 +41,9 @@ export class LabelService extends APIService {
   }
 
   edit(label) {
-    return this.labels.update(label.id, label);
+    return this.labels.patch(label._id, {
+      text: label.text
+    });
   }
 
   remove(label) {

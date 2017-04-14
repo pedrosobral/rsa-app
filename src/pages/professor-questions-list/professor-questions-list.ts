@@ -37,9 +37,15 @@ export class ProfessorQuestionsListPage {
     this.events.publish('filter:label', label);
   }
 
+  refresh() {
+    this.ls.find().then((labels) => {
+      this.labels = labels.data;
+    });
+  }
+
   ionViewDidLoad() {
     this.ls.find().subscribe((labels) => {
-      this.labels = labels.data;
+      this.refresh();
     });
   }
 }

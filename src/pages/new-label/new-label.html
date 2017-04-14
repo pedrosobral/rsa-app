@@ -30,7 +30,13 @@
   <ion-list>
     <ion-item *ngFor="let label of labels">
       <ion-icon name="pricetag" item-left small></ion-icon>
-      {{label.text}}
+      <ion-input type="text" [(ngModel)]="label.text" (click)="label.edit = !label.edit" [readonly]="!label.edit"></ion-input>
+      <button clear ion-button item-right (click)="edit(label)" *ngIf="label.edit">
+        Salvar
+      </button>
+      <button clear ion-button item-right (click)="remove(label)" icon-only>
+        <ion-icon name="trash"></ion-icon>
+      </button>
     </ion-item>
   </ion-list>
 
