@@ -4,6 +4,10 @@ page-professor-live {
     contain: layout;
   }
 
+  .info {
+    font-size: 16px;
+  }
+
   ion-list {
     @media screen and (min-width: 992px) {
       margin-left: auto !important;

@@ -8,9 +8,9 @@
   <!-- old sessions list -->
   <ion-list *ngIf="!poll" padding>
     <h1>Sessões</h1>
-    <div *ngIf="sessions?.length < 1">
+    <div class="info" *ngIf="!sessions?.length">
       <p>Veja aqui todas as sessões encerradas.</p>
-      <p>Clique para ver os resultados</p>
+      <p>Clique para ver os resultados dos estudantes.</p>
     </div>
     <ion-item class="sessions-head">
       <ion-row>
