@@ -1,3 +1,35 @@
+<a name="0.14.0"></a>
+# [0.14.0](https://github.com/pedrosobral/rsa-app/compare/0.13.0...v0.14.0) (2017-04-14)
+
+
+### Bug Fixes
+
+* **labels:** get rid off old strategy. ([ad38453](https://github.com/pedrosobral/rsa-app/commit/ad38453))
+* **labels:** save check for labels ([6ea0394](https://github.com/pedrosobral/rsa-app/commit/6ea0394))
+* **poll:** fix passing wrong parameter to answer poll ([ff271c7](https://github.com/pedrosobral/rsa-app/commit/ff271c7))
+* **poll:** use _id ([379ed5c](https://github.com/pedrosobral/rsa-app/commit/379ed5c))
+* **questions:** format questions after filter by label ([bf473cf](https://github.com/pedrosobral/rsa-app/commit/bf473cf))
+* **questions:** use _id instead of id (convention) ([5170ccf](https://github.com/pedrosobral/rsa-app/commit/5170ccf))
+* **questions-service:** remove unused parameter ([26a0286](https://github.com/pedrosobral/rsa-app/commit/26a0286))
+
+
+### Features
+
+* **label:** better context name, remove comment unused code ([2d56e8f](https://github.com/pedrosobral/rsa-app/commit/2d56e8f))
+* **labels:** add list all questions, style... ([02a9ec2](https://github.com/pedrosobral/rsa-app/commit/02a9ec2))
+* **labels:** better events name's convention ([d8c5cf1](https://github.com/pedrosobral/rsa-app/commit/d8c5cf1))
+* **labels:** refactor labels update ([6f89e42](https://github.com/pedrosobral/rsa-app/commit/6f89e42))
+* **labels:** remove unused call to refresh ([e08d41b](https://github.com/pedrosobral/rsa-app/commit/e08d41b))
+* **labels:** update questions on labels update ([7c9dc4b](https://github.com/pedrosobral/rsa-app/commit/7c9dc4b))
+* **labels:** use always strategy. ([4381cc0](https://github.com/pedrosobral/rsa-app/commit/4381cc0))
+* **providers:** use OOP to clean code ([4d28cb2](https://github.com/pedrosobral/rsa-app/commit/4d28cb2))
+* **questions:** preserve selected question on updates ([c9a20fc](https://github.com/pedrosobral/rsa-app/commit/c9a20fc))
+* **questions:** refactor way to handle questions updates ([2487ab1](https://github.com/pedrosobral/rsa-app/commit/2487ab1))
+* **questions:** style question item ([7e492c4](https://github.com/pedrosobral/rsa-app/commit/7e492c4))
+* **tabs:** use events to select tab ([482e2b1](https://github.com/pedrosobral/rsa-app/commit/482e2b1))
+
+
+
 <a name="0.13.0"></a>
 # [0.13.0](https://github.com/pedrosobral/rsa-app/compare/0.12.0...v0.13.0) (2017-04-13)
 
