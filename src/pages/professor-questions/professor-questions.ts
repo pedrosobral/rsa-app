@@ -42,6 +42,10 @@ export class ProfessorQuestionsPage {
     this.events.subscribe('label:filter', (label) => {
       this.isFiltered = true;
 
+      if (!label.text) {
+        this.isFiltered = false;
+      }
+
       this.getQuestionByLabel(label._id);
 
       // clear selected questions
