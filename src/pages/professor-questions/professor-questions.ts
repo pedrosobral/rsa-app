@@ -26,6 +26,8 @@ export class ProfessorQuestionsPage {
   questions: any = [];
   sessionQuestions: any = [];
 
+  isFiltered: boolean = false;
+
   constructor(
     public events: Events,
     public ps: PollService,
@@ -38,6 +40,8 @@ export class ProfessorQuestionsPage {
   ) {
     // filter by label event subscribe
     this.events.subscribe('label:filter', (label) => {
+      this.isFiltered = true;
+
       this.getQuestionByLabel(label._id);
 
       // clear selected questions
@@ -72,6 +76,9 @@ export class ProfessorQuestionsPage {
 
       // format properly
       this.formatQuestions();
+
+      // no filter
+      this.isFiltered = false;
     });
   }
 

@@ -13,11 +13,9 @@
 <ion-content padding>
   <ion-list>
     <!-- header info -->
-    <div>
-      <div *ngIf="questions?.length < 1">
-        <p>Você ainda não tem nenhuma questão cadastrada.</p>
-        <p>Para iniciar uma sessão, você precisa criar uma questão primeiro.</p>
-      </div>
+    <div class="info-header" *ngIf="!questions?.length">
+      <p>Você ainda não tem nenhuma questão cadastrada.</p>
+      <p>Para iniciar uma sessão, você precisa criar uma questão primeiro.</p>
     </div>
 
     <!-- header selected questions -->
@@ -50,6 +48,13 @@
       </button>
     </ion-item>
   </ion-list>
+
+  <div class="no-questions-label" *ngIf="isFiltered && !questions?.length">
+    <div>
+      <ion-icon name="pricetag"></ion-icon>
+    </div>
+    Não há questões com este marcador ainda
+  </div>
 
   <!-- fab button -->
   <ion-fab right bottom>
