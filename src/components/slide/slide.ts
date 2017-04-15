@@ -2,7 +2,6 @@ import {
   Component,
   ViewChild,
   Input,
-  AfterViewInit,
 } from '@angular/core';
 
 import { Chart } from 'chart.js';
@@ -11,7 +10,7 @@ import { Chart } from 'chart.js';
   selector: 'section',
   templateUrl: 'slide.html'
 })
-export class SlideComponent implements AfterViewInit {
+export class SlideComponent {
   @ViewChild('canvas') canvas;
   chart: any;
 
@@ -22,8 +21,6 @@ export class SlideComponent implements AfterViewInit {
   @Input() settings: any;
 
   constructor() { }
-
-  ngAfterViewInit() { }
 
   ngOnChanges(changes) {
     if (changes.question) {
