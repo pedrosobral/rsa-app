@@ -29,7 +29,7 @@ export class SlideComponent {
   }
 
   chartData() {
-    const data = this.question.options.map(x => x.votes / this.poll.votes);
+    const data = this.question.options.map(x => x.votes / this.question.votes);
     const labels = this.getLabels();
 
     this.initChart(labels, data)
