@@ -32,10 +32,7 @@ export class SlideComponent implements AfterViewInit {
   }
 
   chartData() {
-    const sum = this.sumVotes();
-    // this.totalVotes = sum;
-
-    const data = this.question.options.map(x => x.votes / sum);
+    const data = this.question.options.map(x => x.votes / this.poll.votes);
     const labels = this.getLabels();
 
     this.initChart(labels, data)
@@ -48,13 +45,6 @@ export class SlideComponent implements AfterViewInit {
       labels.push(this.labels[i]);
     }
     return labels;
-  }
-
-  sumVotes() {
-    return this.question.options.reduce((p, c) => {
-      c.votes = c.votes || 0;
-      return p + parseInt(c.votes, 10);
-    }, 0);
   }
 
   initChart(labels, data) {

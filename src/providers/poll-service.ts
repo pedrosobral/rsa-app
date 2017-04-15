@@ -58,7 +58,8 @@ export class PollService extends APIService {
   answer(poll, questionIndex, answer) {
     return this.polls.patch(poll._id, {
       "$inc": {
-        [`questions.${questionIndex}.options.$.votes`]: 1
+        [`questions.${questionIndex}.options.$.votes`]: 1,
+        votes: 1,
       }
     }, {
         query: {
