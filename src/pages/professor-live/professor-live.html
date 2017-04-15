@@ -24,7 +24,7 @@
       <ion-row>
         <ion-col align-self-center col-6>{{session.room}}</ion-col>
         <ion-col align-self-center><ion-icon name="list"></ion-icon> {{session.questions?.length}}</ion-col>
-        <ion-col align-self-center text-center><ion-icon name="ios-people"></ion-icon> 20</ion-col>
+        <ion-col align-self-center text-center><ion-icon name="ios-people"></ion-icon> {{session.votes}}</ion-col>
         <ion-col align-self-left><ion-icon name="timer"></ion-icon> {{session.updatedAt | amTimeAgo }}</ion-col>
       </ion-row>
     </button>
