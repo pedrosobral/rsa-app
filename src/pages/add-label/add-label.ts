@@ -68,10 +68,20 @@ export class AddLabelPage {
   }
 
   submit() {
-    const selectedLabels = this.labels.filter(l => l.isAppliedToAllQuestions)
+    const labelsToAll = this.labels.filter(l => l.isAppliedToAllQuestions);
+    const labelsNotToAll = this.labels.filter(l => l.isChecked && !l.isAppliedToAllQuestions);
 
     this.questions.forEach((q) => {
-      this.qs.setLabels(q, selectedLabels);
+      let labels = Object.assign([], labelsToAll);
+
+      // find labels that just applies to specific questions
+      q.labels && q.labels.forEach(label => {
+        if (labelsNotToAll.findIndex(x => x._id === label._id) > -1) {
+          labels.push(label);
+        }
+      });
+
+      this.qs.setLabels(q, labels);
     });
   }
 
