@@ -47,16 +47,10 @@ export class ProfessorQuestionsPage {
       }
 
       this.getQuestionByLabel(label._id);
-
-      // clear selected questions
-      this.sessionQuestions = [];
     });
 
     this.events.subscribe('label:changed', () => {
       this.refresh();
-
-      // clear selected questions
-      this.sessionQuestions = [];
     });
   }
 
@@ -69,6 +63,9 @@ export class ProfessorQuestionsPage {
   }
 
   refresh() {
+    // clear selected questions
+    this.sessionQuestions = [];
+
     this.qs.find().then((questions) => {
       const previousQuestions = Object.assign([], this.questions);
 
