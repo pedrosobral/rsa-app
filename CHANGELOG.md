@@ -1,3 +1,27 @@
+<a name="0.14.1"></a>
+## [0.14.1](https://github.com/pedrosobral/rsa-app/compare/0.14.0...v0.14.1) (2017-04-15)
+
+
+### Bug Fixes
+
+* **add-labels:** check for specific labels ([af24822](https://github.com/pedrosobral/rsa-app/commit/af24822))
+* **labels:** only show no question's label info no labels ([659f431](https://github.com/pedrosobral/rsa-app/commit/659f431))
+
+
+### Features
+
+* **label:** add info no labels ([5bd8a7c](https://github.com/pedrosobral/rsa-app/commit/5bd8a7c))
+* **labels:** better init button info ([666e7eb](https://github.com/pedrosobral/rsa-app/commit/666e7eb))
+* **labels:** rename label to marcador ([817f8ec](https://github.com/pedrosobral/rsa-app/commit/817f8ec))
+* **new-question:** rename Salvar to Concluido ([1a73f83](https://github.com/pedrosobral/rsa-app/commit/1a73f83))
+* **questions:** better clear selected questions ([bdce472](https://github.com/pedrosobral/rsa-app/commit/bdce472))
+* **sessions:** add total participants ([a38877b](https://github.com/pedrosobral/rsa-app/commit/a38877b))
+* **slide:** remove unused implements ([ffcf7da](https://github.com/pedrosobral/rsa-app/commit/ffcf7da))
+* **slide:** show num of votes ([530c1a5](https://github.com/pedrosobral/rsa-app/commit/530c1a5))
+* **votes:** move votes to each Question, ([bae3e98](https://github.com/pedrosobral/rsa-app/commit/bae3e98))
+
+
+
 <a name="0.14.0"></a>
 # [0.14.0](https://github.com/pedrosobral/rsa-app/compare/0.13.0...v0.14.0) (2017-04-14)
 
