@@ -12,12 +12,14 @@ import {
   PollService,
   QuestionService,
   LabelService,
+  RoomsProvider,
 } from '../providers/providers';
 
 const listProviders = [
   PollService,
   QuestionService,
   LabelService,
+  RoomsProvider,
 
   SplashScreen,
   {

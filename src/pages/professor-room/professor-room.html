@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Turmas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <!-- rooms list -->
+  <ion-list padding>
+    <ion-item class="room-head">
+      <ion-row>
+        <ion-col align-self-center col-6>Nome</ion-col>
+        <ion-col align-self-center>Acesso</ion-col>
+        <ion-col align-self-center text-center>Alunos</ion-col>
+        <ion-col align-self-center>Atividades</ion-col>
+        <ion-col align-self-center>Última atividade</ion-col>
+      </ion-row>
+    </ion-item>
+    <button ion-item *ngFor="let room of rooms">
+      <ion-row>
+        <ion-col align-self-center col-6>{{room.name}}</ion-col>
+        <ion-col align-self-center><ion-icon name="finger-print"></ion-icon> {{ room.code }}</ion-col>
+        <ion-col align-self-center text-center><ion-icon name="ios-people"></ion-icon> {{ room.participants || 0 }}</ion-col>
+        <ion-col align-self-left><ion-icon name="list"></ion-icon> {{room.activites || 0 }}</ion-col>
+        <ion-col align-self-left><ion-icon name="timer"></ion-icon> {{room.activites | amTimeAgo }}</ion-col>
+      </ion-row>
+    </button>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button (click)="newRoom()" ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>
