@@ -4,7 +4,12 @@
     <button ion-button menuToggle>
      <ion-icon name="menu"></ion-icon>
    </button>
-    <ion-title>Questões</ion-title>
+    <ion-title>{{room?.name}} #{{room?.code}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-left>
+        <ion-icon name="people"></ion-icon> 3
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>

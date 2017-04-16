@@ -15,10 +15,10 @@ export class PollService extends APIService {
     return this.polls.create(poll);
   }
 
-  poll(room: String) {
+  poll(room: any) {
     return this.polls.find({
       query: {
-        room: room,
+        'room.code': room.code,
         isOver: false
       },
       rx: {

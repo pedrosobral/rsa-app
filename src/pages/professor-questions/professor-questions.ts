@@ -13,6 +13,7 @@ import {
 import {
   PollService,
   QuestionService,
+  RoomsProvider,
 } from '../../providers/providers';
 
 @IonicPage({
@@ -28,10 +29,13 @@ export class ProfessorQuestionsPage {
 
   isFiltered: boolean = false;
 
+  room: any;
+
   constructor(
     public events: Events,
     public ps: PollService,
     public qs: QuestionService,
+    public rs: RoomsProvider,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
     public navCtrl: NavController,
@@ -52,6 +56,9 @@ export class ProfessorQuestionsPage {
     this.events.subscribe('label:changed', () => {
       this.refresh();
     });
+
+    // active room
+    this.getActiveRoom();
   }
 
   ionViewDidLoad() {
@@ -137,13 +144,20 @@ export class ProfessorQuestionsPage {
   goLive() {
     const poll = {
       questions: this.sessionQuestions,
-      room: 'FISC123',
+      room: this.room,
     };
 
     this.ps.create(poll)
       .then(() => {
+        this.events.publish('room:live', this.room);
         this.events.publish('tabs:select', 1);
       });
+  }
+
+  getActiveRoom() {
+    this.rs.active().subscribe((room) => {
+      this.room = room.data[0];
+    });
   }
 
   questionSelected() {

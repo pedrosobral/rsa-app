@@ -20,9 +20,9 @@
         <ion-col align-self-center>Última atividade</ion-col>
       </ion-row>
     </ion-item>
-    <button ion-item *ngFor="let session of sessions" (click)="goToDetails(session)">
+    <button class="sessions-rows" ion-item *ngFor="let session of sessions" (click)="goToDetails(session)">
       <ion-row>
-        <ion-col align-self-center col-6>{{session.room}}</ion-col>
+        <ion-col align-self-center col-6>{{session.room.name}} - {{session.room.code}}</ion-col>
         <ion-col align-self-center><ion-icon name="list"></ion-icon> {{session.questions?.length}}</ion-col>
         <ion-col align-self-center text-center><ion-icon name="ios-people"></ion-icon> {{session.participants || 0}}</ion-col>
         <ion-col align-self-left><ion-icon name="timer"></ion-icon> {{session.updatedAt | amTimeAgo }}</ion-col>

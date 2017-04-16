@@ -1,5 +1,10 @@
 import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, FabContainer } from 'ionic-angular';
+import { 
+  IonicPage, 
+  Events,
+  NavController, 
+  FabContainer,
+} from 'ionic-angular';
 
 import * as Reveal from 'reveal.js';
 
@@ -30,6 +35,8 @@ export class ProfessorLivePage {
 
   settings = {};
 
+  room: any; 
+
   /**
    * Used to control fab options
    */
@@ -37,10 +44,16 @@ export class ProfessorLivePage {
 
   constructor(
     public ps: PollService,
-    public navParams: NavParams,
     public navCtrl: NavController,
     public cdf: ChangeDetectorRef,
-  ) { }
+    public events: Events,
+  ) {
+    this.events.subscribe('room:live', (room) => {
+      console.info('room:live', room);
+      this.room = room;
+      this.initializeData();
+    });
+  }
 
   ionViewDidLoad() {
     // open fab button
@@ -54,9 +67,11 @@ export class ProfessorLivePage {
   }
 
   initializeData() {
-    this.ps.poll('FISC123').subscribe((poll) => {
+    this.room && this.ps.poll(this.room.code).subscribe((poll) => {
       if (!poll.data.length) return;
 
+      console.info('poll', poll);
+      
       // force no view mode
       this.isViewMode = false;
 
