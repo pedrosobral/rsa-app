@@ -10,6 +10,7 @@ import * as Reveal from 'reveal.js';
 
 import {
   PollService,
+  RoomsProvider,
 } from '../../providers/providers';
 
 @IonicPage({
@@ -44,12 +45,12 @@ export class ProfessorLivePage {
 
   constructor(
     public ps: PollService,
+    public rs: RoomsProvider,
     public navCtrl: NavController,
     public cdf: ChangeDetectorRef,
     public events: Events,
   ) {
     this.events.subscribe('room:live', (room) => {
-      console.info('room:live', room);
       this.room = room;
       this.initializeData();
     });
@@ -64,14 +65,18 @@ export class ProfessorLivePage {
 
     // get sessions
     this.getOldSessions();
+
+    // get default room
+    !this.room && this.rs.active().then((room) => {
+      this.room = room.data[0];
+      this.initializeData();
+    });
   }
 
   initializeData() {
     this.room && this.ps.poll(this.room.code).subscribe((poll) => {
       if (!poll.data.length) return;
 
-      console.info('poll', poll);
-      
       // force no view mode
       this.isViewMode = false;
 
