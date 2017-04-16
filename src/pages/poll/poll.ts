@@ -11,7 +11,7 @@ import {
   templateUrl: 'poll.html',
 })
 export class PollPage {
-  room: String = this.navParams.get('room');
+  code: String = this.navParams.get('room');
   poll: any;
   question: any;
 
@@ -25,7 +25,7 @@ export class PollPage {
   }
 
   initPoll() {
-    this.ps.poll(this.room).subscribe((poll) => {
+    this.ps.poll({code: this.code}).subscribe((poll) => {
       if (poll.data.length > 0 && poll.data[0].available !== -1) {
         this.poll = poll.data[0];
         this.question = this.poll.questions[this.poll.available];
