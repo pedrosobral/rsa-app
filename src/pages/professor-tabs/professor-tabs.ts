@@ -11,13 +11,13 @@ import { IonicPage, Events, Tabs } from 'ionic-angular';
 export class ProfessorTabsPage {
   @ViewChild('tabs') tabs: Tabs;
 
-  questions = 'ProfessorQuestionsPage';
+  room = 'ProfessorRoomPage';
   live = 'ProfessorLivePage';
   manager = 'ProfessorQuestionsListPage';
 
   constructor(public events: Events) {
     events.subscribe('tabs:select', (tab) => {
       this.tabs.select(tab);
-    })
+    });
   }
 }
