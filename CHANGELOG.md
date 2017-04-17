@@ -1,3 +1,24 @@
+<a name="0.15.0"></a>
+# [0.15.0](https://github.com/pedrosobral/rsa-app/compare/0.14.1...v0.15.0) (2017-04-17)
+
+
+### Bug Fixes
+
+* **live:** get default room available ([54aef7a](https://github.com/pedrosobral/rsa-app/commit/54aef7a))
+
+
+### Features
+
+* **new-room:** form new room ([15c2504](https://github.com/pedrosobral/rsa-app/commit/15c2504))
+* **poll:** get code from params ([3144230](https://github.com/pedrosobral/rsa-app/commit/3144230))
+* **room:** basic room providers and page ([575fa60](https://github.com/pedrosobral/rsa-app/commit/575fa60))
+* **room-list:** list rooms, create, activate ([355472a](https://github.com/pedrosobral/rsa-app/commit/355472a))
+* **rooms:** add rooms page ([f86c580](https://github.com/pedrosobral/rsa-app/commit/f86c580))
+* **rooms:** get activate room ([1a632fa](https://github.com/pedrosobral/rsa-app/commit/1a632fa))
+* **rooms:** use active room ([baa590c](https://github.com/pedrosobral/rsa-app/commit/baa590c))
+
+
+
 <a name="0.14.1"></a>
 ## [0.14.1](https://github.com/pedrosobral/rsa-app/compare/0.14.0...v0.14.1) (2017-04-15)
 
