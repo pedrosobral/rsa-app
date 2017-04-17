@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nova turma</ion-title>
+    <ion-buttons end>
+      <button (click)="close()" ion-button icon-only>Cancelar</button>
+      <button (click)="submit()" [disabled]="!form.valid" ion-button text-only>Concluído</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input type="text" formControlName="name" placeholder="Digite o nome da turma aqui"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Código de acesso</ion-label>
+      <ion-input type="text" formControlName="code" placeholder="Digite o código de acesso aqui"></ion-input>
+    </ion-item>
+    <ion-list radio-group>
+      <ion-item>
+        <ion-label>Tornar essa turma padrão</ion-label>
+        <ion-toggle formControlName="default"></ion-toggle>
+      </ion-item>
+    </ion-list>
+  </form>
+
+</ion-content>
