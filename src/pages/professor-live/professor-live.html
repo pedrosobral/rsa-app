@@ -14,18 +14,20 @@
     </div>
     <ion-item class="sessions-head">
       <ion-row>
-        <ion-col align-self-center col-6>Turma</ion-col>
-        <ion-col align-self-center>Questões</ion-col>
-        <ion-col align-self-center text-center>Alunos</ion-col>
-        <ion-col align-self-center>Última atividade</ion-col>
+        <ion-col align-self-center col-3>Nome</ion-col>
+        <ion-col align-self-center col-2>#</ion-col>
+        <ion-col align-self-center col-2>Questões</ion-col>
+        <ion-col align-self-center col-2>Alunos</ion-col>
+        <ion-col align-self-center col-2>Última atividade</ion-col>
       </ion-row>
     </ion-item>
     <button class="sessions-rows" ion-item *ngFor="let session of sessions" (click)="goToDetails(session)">
       <ion-row>
-        <ion-col align-self-center col-6>{{session.room.name}} - {{session.room.code}}</ion-col>
-        <ion-col align-self-center><ion-icon name="list"></ion-icon> {{session.questions?.length}}</ion-col>
-        <ion-col align-self-center text-center><ion-icon name="ios-people"></ion-icon> {{session.participants || 0}}</ion-col>
-        <ion-col align-self-left><ion-icon name="timer"></ion-icon> {{session.updatedAt | amTimeAgo }}</ion-col>
+        <ion-col align-self-center col-3>{{session.room.name}}</ion-col>
+        <ion-col align-self-center col-2>{{session.room.code}}</ion-col>
+        <ion-col align-self-center col-2><ion-icon name="list"></ion-icon> {{session.questions?.length}}</ion-col>
+        <ion-col align-self-center col-2><ion-icon name="ios-people"></ion-icon> {{session.participants || 0}}</ion-col>
+        <ion-col align-self-center col-2><ion-icon name="timer"></ion-icon> {{session.updatedAt | amTimeAgo }}</ion-col>
       </ion-row>
     </button>
     <ion-item *ngIf="sessions?.length < 1">Nenhuma sessão encerrada</ion-item>
