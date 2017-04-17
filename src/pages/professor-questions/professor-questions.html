@@ -7,7 +7,7 @@
     <ion-title>{{room?.name}} #{{room?.code}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-left>
-        <ion-icon name="people"></ion-icon> 3
+        <ion-icon name="people"></ion-icon> <span class="people-online">{{room?.peopleOnline}}</span>
       </button>
     </ion-buttons>
   </ion-navbar>
