@@ -24,8 +24,16 @@ export class PollPage {
     this.initPoll();
   }
 
+  ionViewDidEnter() {
+    this.ps.socket.emit('enter room', this.code);
+  }
+
+  ionViewDidLeave() {
+    this.ps.socket.emit('leave room', this.code);
+  }
+
   initPoll() {
-    this.ps.poll({code: this.code}).subscribe((poll) => {
+    this.ps.poll({ code: this.code }).subscribe((poll) => {
       if (poll.data.length > 0 && poll.data[0].available !== -1) {
         this.poll = poll.data[0];
         this.question = this.poll.questions[this.poll.available];
