@@ -31,11 +31,17 @@ export class RoomsProvider extends APIService {
   active() {
     return this.rooms.find({
       query: {
-        active: true
+        online: true
       },
       rx: {
          listStrategy: 'always'
        }
+    });
+  }
+
+  activate(room, value) {
+    return this.rooms.patch(room._id, {
+      online: value
     });
   }
 
