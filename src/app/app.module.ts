@@ -13,6 +13,8 @@ import {
   QuestionService,
   LabelService,
   RoomsProvider,
+  AuthProvider,
+  UsersProvider,
 } from '../providers/providers';
 
 const listProviders = [
@@ -20,6 +22,8 @@ const listProviders = [
   QuestionService,
   LabelService,
   RoomsProvider,
+  AuthProvider,
+  UsersProvider,
 
   SplashScreen,
   {
