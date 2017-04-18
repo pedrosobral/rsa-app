@@ -27,7 +27,11 @@
             <ion-note *ngIf="room.default">(Padrão)</ion-note>
           </ion-col>
           <ion-col align-self-center col-2>
-            <ion-icon name="ios-people"></ion-icon> {{ room.participants || 0 }}</ion-col>
+            <button ion-button icon-left clear (click)="students(room)">
+              <ion-icon name="person-add"></ion-icon>
+              {{ room.students?.length || 0 }}
+            </button>
+          </ion-col>
           <ion-col align-self-center col-2>
             <ion-icon name="list"></ion-icon> {{room.activites || 0 }}
           </ion-col>

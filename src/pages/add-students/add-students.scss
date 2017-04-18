@@ -1,0 +1,28 @@
+page-add-students {
+  .student-header {
+    font-weight: 500;
+  }
+  ion-list,
+  ion-card {
+    @media screen and (min-width: 992px) {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: 60vw !important;
+    }
+  }
+  .fab {
+    contain: layout;
+  }
+  ion-card {
+    ion-card-header {
+      padding-bottom: 0px !important;
+      ion-label {
+        font-size: 1.8rem;
+        font-weight: 500;
+      }
+    }
+  }
+  .item-inside {
+    padding-left: 0px;
+  }
+}

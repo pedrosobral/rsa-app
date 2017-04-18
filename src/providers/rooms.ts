@@ -49,6 +49,12 @@ export class RoomsProvider extends APIService {
     return this.rooms.patch(room._id, room);
   }
 
+  setStudents(room, students) {
+    return this.rooms.patch(room._id, {
+      students,
+    });
+  }
+
   remove(room) {
     return this.rooms.remove(room._id);
   }

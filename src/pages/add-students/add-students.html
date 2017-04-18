@@ -1,0 +1,95 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Estudantes de {{room?.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showInfo=!showInfo">
+      <ion-icon name="information-circle"></ion-icon>
+    </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-card [hidden]="!!showInfo">
+    <ion-card-header>
+      <ion-item>
+        Como importar lista de estudantes por arquivo CSV
+        <button ion-button clear item-right (click)="showInfo=!showInfo">Entendi</button>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ul>
+        <li>Campos necessários: Nome e código de idendificação (p. ex. CPF)</li>
+        <li>Ordem e nome dos campos: name, id</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <form [formGroup]="form">
+    <ion-buttons end>
+      <button *ngIf="import" ion-button icon-left clear (click)="undo()">
+        <ion-icon name="undo"></ion-icon> Desfazer importação
+      </button>
+      <button [disabled]="!((form.dirty) && form.valid)" ion-button icon-left clear (click)="save()">
+        <ion-icon name="checkmark"></ion-icon> Salvar
+      </button>
+    </ion-buttons>
+    <ion-item class="student-header">
+      <ion-row>
+        <ion-col align-self-center col-1>#</ion-col>
+        <ion-col align-self-center col-6>Nome</ion-col>
+        <ion-col align-self-center col-3>ID</ion-col>
+        <ion-col align-self-center col-1></ion-col>
+      </ion-row>
+    </ion-item>
+      <ion-item formArrayName="students" *ngFor="let student of form.controls.students.controls; let i = index">
+        <ion-label>
+          <ion-row [formGroupName]="i">
+            <ion-col align-self-center col-1>{{i + 1}}</ion-col>
+            <ion-col align-self-center col-6>
+              <ion-item class="item-inside">
+                <ion-input type="text" formControlName="name" placeholder="Nome"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col align-self-center col-3>
+              <ion-item class="item-inside">
+                <ion-input type="text" formControlName="id" placeholder="ID"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col align-self-center col-1>
+              <button ion-button clear icon-only (click)="remove(i)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+            </ion-col>
+          </ion-row>
+        </ion-label>
+      </ion-item>
+    </form>
+    <ion-item *ngIf="!form?.value?.students?.length">
+      Nenhum estudante cadastrado
+    </ion-item>
+  </ion-list>
+
+
+  <!-- fab button -->
+  <ion-fab bottom right #fab>
+    <button ion-fab>
+      <ion-icon name="settings"></ion-icon>
+    </button>
+    <ion-fab-list side="top" [hidden]="isViewMode">
+      <button (click)="open()" ion-fab>
+        <ion-icon name="download"></ion-icon>
+        <ion-label>Importar estudantes (CSV)</ion-label>
+      </button>
+      <button (click)="add()" ion-fab>
+        <ion-icon name="person-add"></ion-icon>
+        <ion-label>Adicionar manualmente</ion-label>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <input id="file-input" #file type="file" accept=".csv" (change)="uploadChange($event)" style="visibility:hidden" />
+</ion-content>

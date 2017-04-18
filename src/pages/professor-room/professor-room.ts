@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import {
   IonicPage,
   ModalController,
@@ -33,6 +34,10 @@ export class ProfessorRoomPage {
 
   newRoom() {
     this.modalCtrl.create('NewRoomPage').present();
+  }
+
+  students(room) {
+    this.navCtrl.push('AddStudentsPage', { room });
   }
 
   activate(room) {
