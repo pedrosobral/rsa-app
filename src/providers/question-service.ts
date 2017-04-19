@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
-import { APIService } from './api-service';
+
+import { FeathersProvider } from './feathers';
 
 @Injectable()
-export class QuestionService extends APIService {
-  questions: any;
+export class QuestionService {
+  questions = this.app.service('questions');
 
-  constructor() {
-    super();
-
-    this.questions = this.app.service('questions');
-  }
+  constructor(public app: FeathersProvider) { }
 
   find() {
     return this.questions.find({
