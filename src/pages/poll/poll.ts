@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavParams } from 'ionic-angular';
 
 import {
-  PollService
+  FeathersProvider,
+  PollService,
 } from '../../providers/providers';
 
 @IonicPage()
@@ -16,6 +17,7 @@ export class PollPage {
   question: any;
 
   constructor(
+    public app: FeathersProvider,
     public ps: PollService,
     public navParams: NavParams,
   ) { }
@@ -25,11 +27,11 @@ export class PollPage {
   }
 
   ionViewDidEnter() {
-    this.ps.socket.emit('enter room', this.code);
+    this.app.socket().emit('enter room', this.code);
   }
 
   ionViewDidLeave() {
-    this.ps.socket.emit('leave room', this.code);
+    this.app.socket().emit('leave room', this.code);
   }
 
   initPoll() {

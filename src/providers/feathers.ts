@@ -23,18 +23,22 @@ export class FeathersProvider {
   // private _url: string = 'https://rsa-app.herokuapp.com';
 
   private _url: string = 'http://localhost:3030';
-  public socket: any;
+  private _socket: any;
   public app: any;
 
   constructor() {
-    this.socket = io(this._url);
+    this._socket = io(this._url);
     this.app = feathers();
 
     this.app
       .configure(hooks())
-      .configure(socketio(this.socket))
+      .configure(socketio(this._socket))
       .configure(reactive(RxJS))
       .configure(authentication({ storage: window.localStorage }));
+  }
+
+  socket() {
+    return this._socket;
   }
 
   getJwt(token): Promise<any> {

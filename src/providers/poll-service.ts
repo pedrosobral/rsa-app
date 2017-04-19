@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
-import { APIService } from './api-service';
+
+import { FeathersProvider } from './feathers';
 
 @Injectable()
-export class PollService extends APIService {
-  polls: any;
+export class PollService {
+  polls = this.app.service('polls');
 
-  constructor() {
-    super();
-
-    this.polls = this.app.service('polls');
-  }
+  constructor(public app: FeathersProvider) { }
 
   create(poll) {
     return this.polls.create(poll);
@@ -22,8 +19,8 @@ export class PollService extends APIService {
         isOver: false
       },
       rx: {
-         listStrategy: 'always'
-     }
+        listStrategy: 'always'
+      }
     });
   }
 

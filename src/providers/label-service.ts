@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
-import { APIService } from './api-service';
+import { FeathersProvider } from './feathers';
 
 @Injectable()
-export class LabelService extends APIService {
-  labels: any;
+export class LabelService {
+  labels = this.app.service('labels');
 
-  constructor() {
-    super();
-
-    this.labels = this.app.service('labels');
-  }
+  constructor(public app: FeathersProvider) { }
 
   find() {
     return this.labels.find({
@@ -19,8 +15,8 @@ export class LabelService extends APIService {
         }
       },
       rx: {
-         listStrategy: 'always'
-       }
+        listStrategy: 'always'
+      }
     });
   }
 
