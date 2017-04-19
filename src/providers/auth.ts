@@ -17,19 +17,14 @@ export class AuthProvider {
 
     return this.app.authenticate(payload)
       .then(response => {
-        console.log('Authenticated!', response);
         return this.app.getJwt(response.accessToken);
-        // return this.app.passport.verifyJWT(response.accessToken);
       })
       .catch((error) => console.info('ERROR::auth::login()', error));
   }
 
-  loginFromToken() {
+  isLoggedIn(): Promise<boolean> {
     return this.app.authenticate()
-      .then(response => {
-        console.log('Authenticated!', response);
-        // return this.app.passport.verifyJWT(response.accessToken);
-      })
-      .catch((error) => console.info('ERROR::auth::loginFromToken()', error));
+      .then(() => true)
+      .catch(() => false);
   }
 }

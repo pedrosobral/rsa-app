@@ -1,8 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, Events, Tabs } from 'ionic-angular';
+import { NavController, IonicPage, Events, Tabs } from 'ionic-angular';
+
+import { AuthProvider } from '../../providers/providers';
 
 @IonicPage({
-  segment: 'dashboard'
+  segment: 'dashboard',
+  defaultHistory: ['HomePage']
 })
 @Component({
   selector: 'page-professor-tabs',
@@ -15,9 +18,24 @@ export class ProfessorTabsPage {
   live = 'ProfessorLivePage';
   manager = 'ProfessorQuestionsListPage';
 
-  constructor(public events: Events) {
+  constructor(
+    public auth: AuthProvider,
+    public navCtrl: NavController,
+    public events: Events,
+  ) {
     events.subscribe('tabs:select', (tab) => {
       this.tabs.select(tab);
     });
+  }
+
+  ionViewCanEnter(): Promise<Boolean> {
+    return this.auth.isLoggedIn()
+      .then((isLoggedIn) => {
+        if (!isLoggedIn) {
+          this.navCtrl.push('ProfessorLoginPage');
+          return false;
+        }
+        return true;
+      });
   }
 }

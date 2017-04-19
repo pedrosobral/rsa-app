@@ -34,7 +34,7 @@ export class FeathersProvider {
       .configure(hooks())
       .configure(socketio(this._socket))
       .configure(reactive(RxJS))
-      .configure(authentication({ storage: window.localStorage }));
+      .configure(authentication({ storage: localStorage }));
   }
 
   socket() {
