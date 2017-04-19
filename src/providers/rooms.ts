@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
-import { APIService } from './api-service';
+
+import { FeathersProvider } from './feathers';
 
 @Injectable()
-export class RoomsProvider extends APIService {
-  rooms: any;
+export class RoomsProvider {
+  rooms = this.app.service('rooms');
 
-  constructor() {
-    super();
-
-    this.rooms = this.app.service('rooms');
-  }
+  constructor(public app: FeathersProvider) { }
 
   find() {
     return this.rooms.find({
@@ -19,8 +16,8 @@ export class RoomsProvider extends APIService {
         }
       },
       rx: {
-         listStrategy: 'always'
-       }
+        listStrategy: 'always'
+      }
     });
   }
 
@@ -34,8 +31,8 @@ export class RoomsProvider extends APIService {
         online: true
       },
       rx: {
-         listStrategy: 'always'
-       }
+        listStrategy: 'always'
+      }
     });
   }
 
