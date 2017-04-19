@@ -18,4 +18,8 @@ export class HomePage {
   goToDashboard() {
     this.navCtrl.push('ProfessorTabsPage');
   }
+
+  goLogin() {
+    this.navCtrl.push('ProfessorLoginPage');
+  }
 }
