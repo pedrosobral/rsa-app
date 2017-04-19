@@ -25,7 +25,8 @@ export class RoomsProvider {
     return this.rooms.find({
       query: {
         code: code,
-        $select: ['name']
+        $populate: [{ path: 'user', select: 'name'}],
+        $select: ['name', 'user'],
       }
     });
   }

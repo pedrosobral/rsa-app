@@ -34,10 +34,11 @@ export class PollPage {
 
   getRoomInfo() {
     this.rooms.room(this.code)
-      .subscribe((room) => {
-        if (!room.total) return;
-        console.info('room', room);
-        this.room = room.data[0].name;
+      .subscribe((result) => {
+        if (!result.total) return;
+
+        this.room = result.data[0]
+        // this.room.professor = room.user.name;
       });
   }
 

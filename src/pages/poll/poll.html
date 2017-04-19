@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{room}} #{{code}}</ion-title>
+    <ion-title>{{room?.name}} #{{code}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,10 +16,10 @@
 
     <div class="welcome">
       <p>
-        Bem vindo à apresentação de Pedro Henrique na sala <span ion-text color="primary">{{room}}</span>
+        Bem vindo à apresentação de <span ion-text color="primary">{{room?.user?.name}}</span> na sala <span ion-text color="primary">{{room?.name}}</span>
       </p>
       <p>
-        Assim que Pedro ativar uma votação, você vai poder votar aqui.
+        Assim que {{room?.user?.name.split(' ')[0]}} ativar uma atividade, você vai poder participar aqui.
       </p>
     </div>
   </div>
