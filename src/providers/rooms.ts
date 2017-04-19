@@ -21,6 +21,15 @@ export class RoomsProvider {
     });
   }
 
+  room(code) {
+    return this.rooms.find({
+      query: {
+        code: code,
+        $select: ['name']
+      }
+    });
+  }
+
   create(room) {
     return this.rooms.create(room);
   }

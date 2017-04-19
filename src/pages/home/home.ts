@@ -11,7 +11,7 @@ export class HomePage {
   constructor(public navCtrl: NavController) { }
 
   goToPoll(room: String) {
-    room && this.navCtrl.push('PollPage', { room: room.toUpperCase() });
+    room && this.navCtrl.push('PollPage', { id: room.toUpperCase() });
   }
 
   goToDashboard() {

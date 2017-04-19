@@ -4,20 +4,26 @@ import { IonicPage, NavParams } from 'ionic-angular';
 import {
   FeathersProvider,
   PollService,
+  RoomsProvider,
 } from '../../providers/providers';
 
-@IonicPage()
+@IonicPage({
+  segment: 'poll/:id',
+  defaultHistory: ['HomePage']
+})
 @Component({
   selector: 'page-poll',
   templateUrl: 'poll.html',
 })
 export class PollPage {
-  code: String = this.navParams.get('room');
+  code: String = this.navParams.get('id');
   poll: any;
   question: any;
+  room: any;
 
   constructor(
     public app: FeathersProvider,
+    public rooms: RoomsProvider,
     public ps: PollService,
     public navParams: NavParams,
   ) { }
@@ -26,8 +32,19 @@ export class PollPage {
     this.initPoll();
   }
 
+  getRoomInfo() {
+    this.rooms.room(this.code)
+      .subscribe((room) => {
+        if (!room.total) return;
+        console.info('room', room);
+        this.room = room.data[0].name;
+      });
+  }
+
   ionViewDidEnter() {
     this.app.socket().emit('enter room', this.code);
+
+    this.getRoomInfo();
   }
 
   ionViewDidLeave() {
