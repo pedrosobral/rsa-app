@@ -49,12 +49,14 @@ export class ProfessorLoginPage {
 
   login() {
     this.auth.login(this.form.value)
-      .then((token) => {
-        return this.auth.app.service('users').get(token.userId);
+      .then((payload) => {
+        console.info('payload', payload);
+        return this.users.user(payload.userId);
       })
       .then((user) => {
-        this.auth.app.set('user', user);
-        console.info('user', this.auth.app.get('user'));
+        console.info('user', user);
+        // this.auth.app.set('user', user);
+        // console.info('user', this.auth.app.get('user'));
       })
       .catch((error) => {
         console.info('error', error);

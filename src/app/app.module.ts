@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {
+  FeathersProvider,
   PollService,
   QuestionService,
   LabelService,
@@ -18,6 +19,7 @@ import {
 } from '../providers/providers';
 
 const listProviders = [
+  FeathersProvider,
   PollService,
   QuestionService,
   LabelService,

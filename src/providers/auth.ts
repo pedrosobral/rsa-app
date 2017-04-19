@@ -2,16 +2,12 @@ import {
   Injectable
 } from '@angular/core';
 
-import {
-  APIService
-} from './api-service';
+import { FeathersProvider } from './feathers';
 
 @Injectable()
-export class AuthProvider extends APIService {
+export class AuthProvider {
 
-  constructor() {
-    super();
-  }
+  constructor(public app: FeathersProvider) { }
 
   login(credentials) {
     const payload = credentials ?
@@ -22,7 +18,8 @@ export class AuthProvider extends APIService {
     return this.app.authenticate(payload)
       .then(response => {
         console.log('Authenticated!', response);
-        return this.app.passport.verifyJWT(response.accessToken);
+        return this.app.getJwt(response.accessToken);
+        // return this.app.passport.verifyJWT(response.accessToken);
       })
       .catch((error) => console.info('ERROR::auth::login()', error));
   }
@@ -31,7 +28,7 @@ export class AuthProvider extends APIService {
     return this.app.authenticate()
       .then(response => {
         console.log('Authenticated!', response);
-        return this.app.passport.verifyJWT(response.accessToken);
+        // return this.app.passport.verifyJWT(response.accessToken);
       })
       .catch((error) => console.info('ERROR::auth::loginFromToken()', error));
   }
