@@ -20,7 +20,7 @@
           <ion-input type="password" formControlName="password" placeholder="Senha"></ion-input>
         </ion-item>
 
-        <button style="margin-top: 10px; margin-bottom: 0px;" ion-button full (click)="login()">Fazer login</button>
+        <button [disabled]="!form.valid" style="margin-top: 10px; margin-bottom: 0px;" ion-button full (click)="login()">Fazer login</button>
       </ion-list>
     </ion-card>
   </form>
