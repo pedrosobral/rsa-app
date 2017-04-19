@@ -1,3 +1,25 @@
+<a name="0.16.0"></a>
+# [0.16.0](https://github.com/pedrosobral/rsa-app/compare/0.15.0...v0.16.0) (2017-04-19)
+
+
+### Features
+
+* **add-students:** able to add students to a room ([65b964f](https://github.com/pedrosobral/rsa-app/commit/65b964f))
+* **auth:** add basic auth ([c3847c8](https://github.com/pedrosobral/rsa-app/commit/c3847c8))
+* **feathers:** refactor to a provider ([c8a6ff4](https://github.com/pedrosobral/rsa-app/commit/c8a6ff4))
+* **login:** basic professor login form ([e113792](https://github.com/pedrosobral/rsa-app/commit/e113792))
+* **login:** disabled button if form not valid ([b1f6ad5](https://github.com/pedrosobral/rsa-app/commit/b1f6ad5))
+* **login:** on login, redirect to Dashboard ([697e2d6](https://github.com/pedrosobral/rsa-app/commit/697e2d6))
+* **login:** wip login user ([f4264cc](https://github.com/pedrosobral/rsa-app/commit/f4264cc))
+* **questions:** refactor to use feathers provider ([c80e612](https://github.com/pedrosobral/rsa-app/commit/c80e612))
+* **room:** handle people online ([7962c5a](https://github.com/pedrosobral/rsa-app/commit/7962c5a))
+* **room:** show people online ([84ae365](https://github.com/pedrosobral/rsa-app/commit/84ae365))
+* **rooms:** refactor to use feathers provider ([cc93745](https://github.com/pedrosobral/rsa-app/commit/cc93745))
+* **services:** refactor to use feathers provider ([89fa664](https://github.com/pedrosobral/rsa-app/commit/89fa664))
+* **session:** add column # ([54ffda6](https://github.com/pedrosobral/rsa-app/commit/54ffda6))
+
+
+
 <a name="0.15.0"></a>
 # [0.15.0](https://github.com/pedrosobral/rsa-app/compare/0.14.1...v0.15.0) (2017-04-17)
 
