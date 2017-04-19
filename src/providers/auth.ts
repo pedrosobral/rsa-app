@@ -6,19 +6,13 @@ import {
   APIService
 } from './api-service';
 
-import * as authentication from 'feathers-authentication-client';
-
 @Injectable()
 export class AuthProvider extends APIService {
 
   constructor() {
     super();
-
-    this.app
-      .configure(authentication({ storage: localStorage }));
   }
 
-  // Log in either using the given email/password or the token from storage
   login(credentials) {
     const payload = credentials ?
       Object.assign({

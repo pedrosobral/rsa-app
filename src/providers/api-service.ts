@@ -5,6 +5,9 @@ import * as io from 'socket.io-client';
 import * as feathers from 'feathers/client';
 import * as socketio from 'feathers-socketio/client';
 import * as reactive from 'feathers-reactive';
+import * as hooks from 'feathers-hooks';
+import * as localstorage from 'feathers-localstorage';
+import * as authentication from 'feathers-authentication-client';
 
 export abstract class APIService {
 
@@ -25,8 +28,10 @@ export abstract class APIService {
     this.app = feathers();
 
     this.app
+      .configure(hooks())
       .configure(socketio(this.socket))
-      .configure(reactive(RxJS));
+      .configure(reactive(RxJS))
+      .configure(authentication({ storage: window.localStorage }));
   }
 
   get url(): string {

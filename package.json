@@ -35,6 +35,7 @@
     "chart.js": "^2.5.0",
     "feathers": "^2.1.1",
     "feathers-authentication-client": "^0.3.1",
+    "feathers-hooks": "^2.0.0",
     "feathers-localstorage": "^1.0.0",
     "feathers-reactive": "^0.4.1",
     "feathers-socketio": "^1.5.2",

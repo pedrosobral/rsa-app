@@ -11,10 +11,6 @@ export class UsersProvider extends APIService {
     this.users = this.app.service('users');
   }
 
-  user(id) {
-    return this.users.get(id);
-  }
-
   create(user) {
     return this.users.create(user);
   }
@@ -28,4 +24,3 @@ export class UsersProvider extends APIService {
     return this.users.remove(user._id);
   }
 }
-
