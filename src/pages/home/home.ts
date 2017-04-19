@@ -7,7 +7,6 @@ import { IonicPage, NavController } from 'ionic-angular';
   templateUrl: 'home.html',
 })
 export class HomePage {
-  room = 'FISC123';
 
   constructor(public navCtrl: NavController) { }
 

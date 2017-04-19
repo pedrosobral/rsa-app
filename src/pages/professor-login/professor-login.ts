@@ -50,13 +50,10 @@ export class ProfessorLoginPage {
   login() {
     this.auth.login(this.form.value)
       .then((payload) => {
-        console.info('payload', payload);
         return this.users.user(payload.userId);
       })
       .then((user) => {
-        console.info('user', user);
-        // this.auth.app.set('user', user);
-        // console.info('user', this.auth.app.get('user'));
+        this.navCtrl.push('ProfessorTabsPage');
       })
       .catch((error) => {
         console.info('error', error);
