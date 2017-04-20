@@ -1,4 +1,8 @@
 <ion-list>
+  <ion-item>
+    Estudantes
+    <span item-right>{{room?.people}}/{{room?.students.length}}</span>
+  </ion-item>
   <ion-item *ngFor="let student of room?.students">
     {{student.name}}
     <ion-icon name="ios-wifi" item-right [color]="student.online ? 'secondary' : ''"></ion-icon>
