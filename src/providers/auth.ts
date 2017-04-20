@@ -3,11 +3,15 @@ import {
 } from '@angular/core';
 
 import { FeathersProvider } from './feathers';
+import { UsersProvider } from './users';
 
 @Injectable()
 export class AuthProvider {
 
-  constructor(public app: FeathersProvider) { }
+  constructor(
+    public app: FeathersProvider,
+    public user: UsersProvider,
+  ) { }
 
   login(credentials) {
     const payload = credentials ?
@@ -24,7 +28,16 @@ export class AuthProvider {
 
   isLoggedIn(): Promise<boolean> {
     return this.app.authenticate()
-      .then(() => true)
+      .then((response) => {
+        return this.app.getJwt(response.accessToken)
+      })
+      .then((payload) => {
+        return this.user.user(payload.userId);
+      })
+      .then((user) => {
+        this.app.app.set('user', user);
+        return true;
+      })
       .catch(() => false);
   }
 }
