@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { 
-  IonicPage, 
+import {
+  IonicPage,
   NavParams,
   ViewController,
 } from 'ionic-angular';
@@ -43,7 +43,8 @@ export class NewRoomPage {
   }
 
   submit() {
-    this.rs.create(this.form.value);
+    this.rs.create(this.form.value)
+      .then(() => this.close());
   }
 
   close() {
