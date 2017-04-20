@@ -38,6 +38,12 @@ export class PollPage {
   ) { }
 
   ionViewDidEnter() {
+    this.app.socket().on('clear room', (data) => {
+      if (data.room === this.room._id) {
+        this.navCtrl.setRoot('HomePage');
+      }
+    });
+
     this.getRoomInfo();
   }
 

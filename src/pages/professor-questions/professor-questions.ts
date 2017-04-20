@@ -12,6 +12,7 @@ import {
 } from 'ionic-angular';
 
 import {
+  FeathersProvider,
   PollService,
   QuestionService,
   RoomsProvider,
@@ -34,6 +35,7 @@ export class ProfessorQuestionsPage {
 
   constructor(
     public events: Events,
+    public app: FeathersProvider,
     public ps: PollService,
     public qs: QuestionService,
     public rs: RoomsProvider,
@@ -163,6 +165,16 @@ export class ProfessorQuestionsPage {
       if (this.room && this.room.private) {
         this.room.people = this.room.students.filter(s => s.online).length;
       }
+    });
+  }
+
+  clearRoom() {
+    // TODO: move to provider
+    const room = {
+      _id: this.room._id,
+    };
+    this.app.socket().emit('clear room', {
+      room,
     });
   }
 

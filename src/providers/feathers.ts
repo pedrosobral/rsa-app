@@ -8,7 +8,7 @@ import * as feathers from 'feathers/client';
 import * as socketio from 'feathers-socketio/client';
 import * as reactive from 'feathers-reactive';
 import * as hooks from 'feathers-hooks';
-import * as localstorage from 'feathers-localstorage';
+// import * as localstorage from 'feathers-localstorage';
 import * as authentication from 'feathers-authentication-client';
 
 @Injectable()

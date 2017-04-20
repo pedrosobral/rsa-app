@@ -3,6 +3,10 @@
     Estudantes
     <span item-right>{{room?.people}}/{{room?.students.length}}</span>
   </ion-item>
+  <button ion-item class="button-clear" (click)="clear()">
+    <ion-icon name="close-circle" item-right color="danger"></ion-icon>
+    Limpar sala
+  </button>
   <ion-item *ngFor="let student of room?.students">
     {{student.name}}
     <ion-icon name="ios-wifi" item-right [color]="student.online ? 'secondary' : ''"></ion-icon>

@@ -1,3 +1,15 @@
 page-online-students {
+  ion-list {
+    .item {
+      color: #334148,;
+    }
+  }
 
+  ion-item:first-child {
+    font-weight: 500;
+  }
+
+  .button-clear {
+    font-weight: 500;
+  }
 }

@@ -7,6 +7,7 @@ import {
 } from 'ionic-angular';
 
 import {
+  FeathersProvider,
   RoomsProvider,
 } from '../../providers/providers';
 
@@ -16,10 +17,10 @@ import {
   templateUrl: 'online-students.html',
 })
 export class OnlineStudentsPage {
-  // room = this.navParams.get('room');
   room: any;
 
   constructor(
+    public app: FeathersProvider,
     public rs: RoomsProvider,
     public navCtrl: NavController,
     public navParams: NavParams
@@ -31,7 +32,17 @@ export class OnlineStudentsPage {
       this.room = room.data[0];
       this.room.people = this.room.students.filter(s => s.online).length;
     });
-    // console.info('room', this.room);
+  }
+
+  clear() {
+    // TODO: move to provider
+    const room = {
+      _id: this.room._id,
+    };
+
+    this.app.socket().emit('clear room', {
+      room,
+    });
   }
 
 }
