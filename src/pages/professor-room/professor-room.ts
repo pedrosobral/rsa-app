@@ -55,6 +55,11 @@ export class ProfessorRoomPage {
       .then(() => this.presentToast(`Turma #${room.code} ativada`));
   }
 
+  remove(room) {
+    this.rs.remove(room)
+      .then(() => this.presentToast(`Turma #${room.code} removida`));
+  }
+
   presentToast(message) {
     let toast = this.toastCtrl.create({
       message,
