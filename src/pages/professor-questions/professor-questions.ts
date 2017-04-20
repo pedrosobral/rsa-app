@@ -168,16 +168,6 @@ export class ProfessorQuestionsPage {
     });
   }
 
-  clearRoom() {
-    // TODO: move to provider
-    const room = {
-      _id: this.room._id,
-    };
-    this.app.socket().emit('clear room', {
-      room,
-    });
-  }
-
   presentPopover(ev) {
     this.popCtrl.create('OnlineStudentsPage', { room: this.room }).present({ ev });
   }

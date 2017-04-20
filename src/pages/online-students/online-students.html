@@ -1,7 +1,11 @@
 <ion-list>
   <ion-item>
     Estudantes
-    <span item-right>{{room?.people}}/{{room?.students.length}}</span>
+    <span item-right *ngIf="room?.private; else anonymousStats">{{room?.people}}/{{room?.students.length}}</span>
+    <ng-template #anonymousStats>
+      <span item-right>{{room?.peopleOnline}}</span>
+    </ng-template>
+
   </ion-item>
   <button ion-item class="button-clear" (click)="clear()">
     <ion-icon name="close-circle" item-right color="danger"></ion-icon>
