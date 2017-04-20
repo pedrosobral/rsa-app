@@ -10,6 +10,7 @@ import {
   FabContainer,
   NavController,
   NavParams,
+  ToastController,
 } from 'ionic-angular';
 
 import {
@@ -56,6 +57,7 @@ export class AddStudentsPage {
     public alertCtrl: AlertController,
     public navCtrl: NavController,
     public navParams: NavParams,
+    public toastCtrl: ToastController,
   ) {
     this.initForm();
   }
@@ -119,9 +121,12 @@ export class AddStudentsPage {
     this.form.value.students.sort((a, b) => a.name !== b.name ? a.name < b.name ? -1 : 1 : 0);
 
     this.rs.setStudents(this.room, this.form.value.students)
-      .then((res) => {
+      .then(() => {
         // disable undo button
         this.import = false;
+
+        // info
+        this.presentToast('Mudanças salvas');
     });
   }
 
@@ -158,5 +163,13 @@ export class AddStudentsPage {
         event.target.value = null;
       }
     });
+  }
+
+  presentToast(message) {
+    let toast = this.toastCtrl.create({
+      message,
+      duration: 3000,
+    });
+    return toast.present();
   }
 }
