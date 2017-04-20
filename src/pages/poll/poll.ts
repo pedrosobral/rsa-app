@@ -43,7 +43,7 @@ export class PollPage {
 
   getRoomInfo() {
     this.rooms.room(this.code)
-      .subscribe((result) => {
+      .then((result) => {
         if (!result.total) {
           // back if room does not exist
           this.navCtrl.pop();
