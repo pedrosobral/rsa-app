@@ -5,6 +5,7 @@ import {
   ModalController,
   NavController,
   NavParams,
+  ToastController,
 } from 'ionic-angular';
 
 import { RoomsProvider } from '../../providers/providers';
@@ -24,12 +25,14 @@ export class ProfessorRoomPage {
     public navParams: NavParams,
     public modalCtrl: ModalController,
     public rs: RoomsProvider,
+    public toastCtrl: ToastController,
   ) { }
 
   ionViewDidLoad() {
-    this.rs.find().subscribe((rooms) => {
-      this.rooms = rooms.data;
-    });
+    this.rs.find()
+      .subscribe((rooms) => {
+        this.rooms = rooms.data;
+      });
   }
 
   newRoom() {
@@ -48,7 +51,15 @@ export class ProfessorRoomPage {
         this.rs.activate(r, false);
       });
     }
-    this.rs.activate(room, room.online);
+    this.rs.activate(room, room.online)
+      .then(() => this.presentToast(`Turma #${room.code} ativada`));
+  }
 
+  presentToast(message) {
+    let toast = this.toastCtrl.create({
+      message,
+      duration: 3000,
+    });
+    return toast.present();
   }
 }
