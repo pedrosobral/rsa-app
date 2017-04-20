@@ -25,8 +25,8 @@ export class RoomsProvider {
     return this.rooms.find({
       query: {
         code: code,
-        $populate: [{ path: 'user', select: 'name'}],
-        $select: ['name', 'user'],
+        $populate: [{ path: 'user', select: 'name' }],
+        $select: ['name', 'user', 'private'],
       }
     });
   }
@@ -36,8 +36,11 @@ export class RoomsProvider {
   }
 
   active() {
+    const user = this.app.app.get('user');
+
     return this.rooms.find({
       query: {
+        user: user._id,
         online: true
       },
       rx: {
@@ -59,7 +62,36 @@ export class RoomsProvider {
   setStudents(room, students) {
     return this.rooms.patch(room._id, {
       students,
+      private: true,
     });
+  }
+
+  login(room, studentId) {
+    return this.rooms.find({
+      query: {
+        '_id': room._id,
+        'students.id': studentId,
+        '$select': ['name']
+      },
+    })
+    .then((result) => {
+      if (!result.total) return false;
+      return this.doLogin(room, studentId);
+    });
+  }
+
+  private doLogin(room, studentId) {
+    return this.rooms.patch(room._id, {
+      $set: {
+        'students.$.online': true
+      }
+    }, {
+      query: {
+        'students.id': studentId,
+        '$select': ['name']
+      }
+    })
+    .then(() => true);
   }
 
   remove(room) {
