@@ -6,9 +6,14 @@
    </button>
     <ion-title>{{room?.name}} #{{room?.code}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-left (click)="presentPopover($event)">
-        <ion-icon name="people"></ion-icon> <span class="people-online">{{room?.peopleOnline}}</span>
+      <button *ngIf="room?.private; else anonymousButton" ion-button icon-left (click)="presentPopover($event)">
+        <ion-icon name="people"></ion-icon> <span class="people-online">{{room?.people}}</span>
       </button>
+      <ng-template #anonymousButton>
+        <button ion-button icon-left (click)="clearRoom()">
+          <ion-icon name="people"></ion-icon> <span class="people-online">{{room?.peopleOnline}}</span>
+        </button>
+      </ng-template>
     </ion-buttons>
   </ion-navbar>
 
