@@ -160,7 +160,7 @@ export class ProfessorQuestionsPage {
     this.rs.active().subscribe((room) => {
       this.room = room.data[0];
 
-      if (this.room.private) {
+      if (this.room && this.room.private) {
         this.room.people = this.room.students.filter(s => s.online).length;
       }
     });
