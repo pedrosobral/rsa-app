@@ -6,7 +6,7 @@
    </button>
     <ion-title>{{room?.name}} #{{room?.code}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-left>
+      <button ion-button icon-left (click)="presentPopover($event)">
         <ion-icon name="people"></ion-icon> <span class="people-online">{{room?.peopleOnline}}</span>
       </button>
     </ion-buttons>

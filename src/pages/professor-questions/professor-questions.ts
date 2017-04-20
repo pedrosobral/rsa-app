@@ -8,6 +8,7 @@ import {
   NavController,
   NavParams,
   ToastController,
+  PopoverController,
 } from 'ionic-angular';
 
 import {
@@ -41,6 +42,7 @@ export class ProfessorQuestionsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
+    public popCtrl: PopoverController,
   ) {
     // filter by label event subscribe
     this.events.subscribe('label:filter', (label) => {
@@ -158,6 +160,10 @@ export class ProfessorQuestionsPage {
     this.rs.active().subscribe((room) => {
       this.room = room.data[0];
     });
+  }
+
+  presentPopover(ev) {
+    this.popCtrl.create('OnlineStudentsPage', { room: this.room }).present({ ev });
   }
 
   questionSelected() {
