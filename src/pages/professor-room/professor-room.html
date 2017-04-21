@@ -24,8 +24,11 @@
         <ion-row>
           <ion-col align-self-center col-3>{{room.name}}</ion-col>
           <ion-col align-self-center col-3>
-            <ion-icon name="finger-print" [color]="room.online ? 'secondary': ''"></ion-icon> {{ room.code }}
-            <ion-note *ngIf="room.default">(Padrão)</ion-note>
+            <ion-icon [name]="room.private ? 'lock' : 'unlock'" [color]="room.online ? 'secondary': ''"></ion-icon> {{ room.code }}
+            <ion-note *ngIf="room.private; else anonymous">(Acesso privada)</ion-note>
+            <ng-template #anonymous>
+              <ion-note>(Acesso livre)</ion-note>
+            </ng-template>
           </ion-col>
           <ion-col align-self-center col-2>
             <button ion-button icon-left clear (click)="students(room)">

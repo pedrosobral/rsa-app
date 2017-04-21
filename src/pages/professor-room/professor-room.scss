@@ -1,12 +1,19 @@
-  page-professor-room {
-    .room-head {
-      font-weight: 500;
-    }
-    ion-list {
-      @media screen and (min-width: 992px) {
-        margin-left: auto !important;
-        margin-right: auto !important;
-        width: 80vw !important;
-      }
+page-professor-room {
+  .room-head {
+    font-weight: 500;
+  }
+
+  ion-list {
+    @media screen and (min-width: 992px) {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: 80vw !important;
     }
   }
+
+  ion-note {
+    display: block;
+    margin-top: 5px;
+    font-size: 15px;
+  }
+}
