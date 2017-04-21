@@ -6,7 +6,7 @@
 
 <ion-content>
   <!-- old sessions list -->
-  <ion-list *ngIf="!poll" padding>
+  <ion-list [hidden]="appState !== 'SHOW_LIST'" padding>
     <h1>Sessões</h1>
     <div class="info" *ngIf="!sessions?.length">
       <p>Veja aqui todas as sessões encerradas.</p>
@@ -34,27 +34,31 @@
   </ion-list>
 
   <!-- slides -->
-  <div class="reveal" [hidden]="!poll">
+  <div class="reveal" [hidden]="appState === 'SHOW_LIST'">
     <div class="slides">
-      <section style="text-align: left;">
-        <slide *ngFor="let question of questions"
-          [settings]="settings"
-          [question]="question"
-          [poll]="poll">
+      <section style="text-align: left;" [hidden]="appState !== 'POLL_LIVE' && appState !== 'SHOW_OLD_POLL'">
+        <slide *ngFor="let question of questions" [settings]="settings" [question]="question" [poll]="poll">
         </slide>
       </section>
+      <attendance [hidden]="appState !== 'TAKE_ATTENDANCE'"></attendance>
     </div>
   </div>
 
   <!-- fab button -->
   <ion-fab bottom right #fab [hidden]="!poll">
     <button ion-fab>
-    <ion-icon name="settings"></ion-icon>
-  </button>
-    <ion-fab-list side="top" [hidden]="isViewMode">
+      <ion-icon name="settings"></ion-icon>
+    </button>
+
+    <!-- fab poll -->
+    <ion-fab-list side="top" [hidden]="appState !== 'POLL_LIVE'">
       <button (click)="end()" ion-fab color="danger">
         <ion-icon name="square"></ion-icon>
         <ion-label>Encerrar sessão</ion-label>
+      </button>
+      <button (click)="appState = 'TAKE_ATTENDANCE'" ion-fab color="secondary">
+        <ion-icon name="hand"></ion-icon>
+        <ion-label>Ver frequência</ion-label>
       </button>
       <button (click)="stop()" ion-fab [color]="poll?.available == currentSlide ? 'secondary' : ''">
         <ion-icon name="play"></ion-icon>
@@ -73,7 +77,9 @@
         <ion-label>{{isFullscreen ? 'Sair tela cheia' : 'Tela cheia'}}</ion-label>
       </button>
     </ion-fab-list>
-    <ion-fab-list side="top" [hidden]="!isViewMode">
+
+    <!-- fab list -->
+    <ion-fab-list side="top" [hidden]="appState !== 'SHOW_OLD_POLL'">
       <button ion-fab (click)="exitViewMode()">
         <ion-icon name="exit"></ion-icon>
         <ion-label>Sair</ion-label>
@@ -81,6 +87,26 @@
       <button ion-fab (click)="download()">
         <ion-icon name="cloud-download"></ion-icon>
         <ion-label>Exportar</ion-label>
+      </button>
+      <button ion-fab (click)="fullscreen()" [color]=" isFullscreen ? 'secondary' : ''">
+        <ion-icon [name]="isFullscreen ? 'contract' : 'expand'"></ion-icon>
+        <ion-label>{{isFullscreen ? 'Sair tela cheia' : 'Tela cheia'}}</ion-label>
+      </button>
+    </ion-fab-list>
+
+    <!-- fab attendance -->
+    <ion-fab-list side="top" [hidden]="appState !== 'TAKE_ATTENDANCE'">
+      <button ion-fab (click)="appState = 'POLL_LIVE'">
+        <ion-icon name="backspace"></ion-icon>
+        <ion-label>Voltar</ion-label>
+      </button>
+      <button ion-fab (click)="pauseAttendance()">
+        <ion-icon name="pause"></ion-icon>
+        <ion-label>Pausar frequência</ion-label>
+      </button>
+      <button ion-fab (click)="endAttendance()">
+        <ion-icon name="close"></ion-icon>
+        <ion-label>Encerrar frequência</ion-label>
       </button>
       <button ion-fab (click)="fullscreen()" [color]=" isFullscreen ? 'secondary' : ''">
         <ion-icon [name]="isFullscreen ? 'contract' : 'expand'"></ion-icon>

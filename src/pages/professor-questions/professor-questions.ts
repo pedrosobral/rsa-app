@@ -16,6 +16,7 @@ import {
   PollService,
   QuestionService,
   RoomsProvider,
+  AttendanceProvider,
 } from '../../providers/providers';
 
 @IonicPage({
@@ -39,6 +40,7 @@ export class ProfessorQuestionsPage {
     public ps: PollService,
     public qs: QuestionService,
     public rs: RoomsProvider,
+    public attendance: AttendanceProvider,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
     public navCtrl: NavController,
@@ -166,6 +168,19 @@ export class ProfessorQuestionsPage {
         this.room.people = this.room.students.filter(s => s.online).length;
       }
     });
+  }
+
+  takeAttendance() {
+    const fourRandomDigits = Math.floor(1000 + Math.random() * 9000);
+    const attendance = {
+      room: this.room,
+      code: fourRandomDigits,
+    };
+
+    this.attendance.create(attendance)
+      .then((res) => {
+        console.info('attendance', res);
+      })
   }
 
   presentPopover(ev) {

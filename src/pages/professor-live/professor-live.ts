@@ -1,8 +1,8 @@
 import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { 
-  IonicPage, 
+import {
+  IonicPage,
   Events,
-  NavController, 
+  NavController,
   FabContainer,
 } from 'ionic-angular';
 
@@ -36,12 +36,13 @@ export class ProfessorLivePage {
 
   settings = {};
 
-  room: any; 
+  room: any;
 
   /**
    * Used to control fab options
    */
   isViewMode: boolean = false;
+  appState: string = 'SHOW_LIST'; // 'TAKE_ATTENDANCE' 'POLL_LIVE', SHOW_OLD_POLL
 
   constructor(
     public ps: PollService,
@@ -63,6 +64,9 @@ export class ProfessorLivePage {
     // get poll
     this.initializeData();
 
+    // init slides just in case
+    this.initializeReveal();
+
     // get sessions
     this.getOldSessions();
 
@@ -78,7 +82,8 @@ export class ProfessorLivePage {
       if (!poll.data.length) return;
 
       // force no view mode
-      this.isViewMode = false;
+      // this.isViewMode = false;
+      this.appState = 'POLL_LIVE';
 
       this.poll = poll.data[0];
       this.questions = this.poll.questions;
@@ -112,7 +117,8 @@ export class ProfessorLivePage {
   }
 
   goToDetails(poll) {
-    this.isViewMode = true;
+    // this.isViewMode = true;
+    this.appState = 'SHOW_OLD_POLL';
 
     this.poll = poll;
     this.questions = this.poll.questions;
@@ -136,7 +142,8 @@ export class ProfessorLivePage {
   }
 
   exitViewMode() {
-    this.isViewMode = false;
+    // this.isViewMode = false;
+    this.appState = 'SHOW_LIST';
 
     this.end();
   }
@@ -213,9 +220,14 @@ export class ProfessorLivePage {
     // clear var
     this.poll = null;
 
+    // update app state
+    this.appState = 'SHOW_LIST';
+
     // old sessions
     this.getOldSessions();
   }
+
+  endAttendance() { }
 
   showChart() {
     const question = this.poll.questions[this.currentSlide];

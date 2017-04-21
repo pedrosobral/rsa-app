@@ -6,6 +6,10 @@
    </button>
     <ion-title>{{room?.name}} #{{room?.code}}</ion-title>
     <ion-buttons end>
+      <button *ngIf="room?.code" ion-button icon-left (click)="takeAttendance()">
+        <ion-icon name="hand"></ion-icon>
+        Frequência
+      </button>
       <button *ngIf="room?.private; else anonymousButton" ion-button icon-left (click)="presentPopover($event)">
         <ion-icon name="people"></ion-icon> <span class="people-online">{{room?.people}}</span>
       </button>

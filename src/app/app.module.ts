@@ -16,6 +16,7 @@ import {
   RoomsProvider,
   AuthProvider,
   UsersProvider,
+  AttendanceProvider,
 } from '../providers/providers';
 
 const listProviders = [
@@ -26,6 +27,7 @@ const listProviders = [
   RoomsProvider,
   AuthProvider,
   UsersProvider,
+  AttendanceProvider,
 
   SplashScreen,
   {
