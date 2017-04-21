@@ -7,7 +7,7 @@ import {
 import { Chart } from 'chart.js';
 
 @Component({
-  selector: 'section',
+  selector: 'slide',
   templateUrl: 'slide.html'
 })
 export class SlideComponent {

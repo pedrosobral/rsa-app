@@ -36,15 +36,15 @@
   <!-- slides -->
   <div class="reveal" [hidden]="!poll">
     <div class="slides">
-      <section style="text-align: left;"
-        *ngFor="let question of questions"
+      <section style="text-align: left;">
+        <slide *ngFor="let question of questions"
           [settings]="settings"
           [question]="question"
           [poll]="poll">
+        </slide>
       </section>
     </div>
   </div>
-
 
   <!-- fab button -->
   <ion-fab bottom right #fab [hidden]="!poll">
