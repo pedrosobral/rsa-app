@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Atividades</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list padding>
+    <ion-item class="list-header">
+      <ion-row>
+        <ion-col align-self-center col-3>Data</ion-col>
+        <ion-col align-self-center col-1>Frequência</ion-col>
+        <ion-col align-self-center col-1>Presentes</ion-col>
+        <ion-col align-self-center col-1>Ausentes</ion-col>
+        <ion-col align-self-center col-1></ion-col>
+      </ion-row>
+    </ion-item>
+    <ion-item *ngFor="let att of attendances">
+      <ion-label>
+        <ion-row>
+          <ion-col align-self-center col-3>{{att.createdAt | amCalendar }}</ion-col>
+          <ion-col align-self-center col-1>67%</ion-col>
+          <ion-col align-self-center col-1>20</ion-col>
+          <ion-col align-self-center col-1>10</ion-col>
+          <ion-col col-1>
+            <button ion-button clear icon-only (click)="remove(att)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+            <button ion-button clear icon-only (click)="edit(att)">
+              <ion-icon name="create"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

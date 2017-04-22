@@ -55,6 +55,10 @@ export class ProfessorRoomPage {
       .then(() => this.presentToast(`Turma #${room.code} ativada`));
   }
 
+  goToActivities(room) {
+    this.navCtrl.push('ProfessorAttendanceListPage', { room });
+  }
+
   remove(room) {
     this.rs.remove(room)
       .then(() => this.presentToast(`Turma #${room.code} removida`));

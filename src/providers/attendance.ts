@@ -20,6 +20,17 @@ export class AttendanceProvider {
     });
   }
 
+  all(room) {
+    return this.attendance.find({
+      query: {
+        room: room._id,
+      },
+      rx: {
+        listStrategy: 'always'
+      }
+    });
+  }
+
   room(room, student) {
     return this.attendance.find({
       query: {
