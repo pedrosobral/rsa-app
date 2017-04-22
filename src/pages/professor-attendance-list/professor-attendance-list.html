@@ -11,8 +11,8 @@
   <ion-list padding>
     <ion-item class="list-header">
       <ion-row>
-        <ion-col align-self-center col-3>Data</ion-col>
-        <ion-col align-self-center col-1>Frequência</ion-col>
+        <ion-col align-self-center col-4>Data</ion-col>
+        <ion-col align-self-center col-2>Frequência</ion-col>
         <ion-col align-self-center col-1>Presentes</ion-col>
         <ion-col align-self-center col-1>Ausentes</ion-col>
         <ion-col align-self-center col-1></ion-col>
@@ -21,10 +21,13 @@
     <ion-item *ngFor="let att of attendances">
       <ion-label>
         <ion-row>
-          <ion-col align-self-center col-3>{{att.createdAt | amCalendar }}</ion-col>
-          <ion-col align-self-center col-1>67%</ion-col>
-          <ion-col align-self-center col-1>20</ion-col>
-          <ion-col align-self-center col-1>10</ion-col>
+          <ion-col align-self-center col-4>
+            <div class="stats-date">{{att.createdAt | amDateFormat:'LL' }}</div>
+            <div class="stats-time">{{att.createdAt | amCalendar }} </div>
+          </ion-col>
+          <ion-col align-self-center col-2 class="stats-overall">{{att.overall}}%</ion-col>
+          <ion-col align-self-center col-1 class="stats-numbers green-800" >{{att.presents}}</ion-col>
+          <ion-col align-self-center col-1 class="stats-numbers" ion-text color="danger">{{att.abscents}}</ion-col>
           <ion-col col-1>
             <button ion-button clear icon-only (click)="remove(att)">
               <ion-icon name="trash"></ion-icon>

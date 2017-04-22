@@ -34,10 +34,23 @@ export class ProfessorAttendanceListPage {
 
   initAttendance() {
     this.attendanceProvider
-    .all(this.room)
-    .subscribe((result) => {
-      this.attendances = result.data;
+      .all(this.room)
+      .subscribe((result) => {
+        this.attendances = result.data;
+
+        this.setStats();
+      });
+  }
+
+  setStats() {
+    this.attendances.forEach((att) => {
+      att.presents = att.students.filter(x => x.present).length;
+      att.abscents = att.students.length - att.presents;
+      att.overall = Math.round(att.presents/att.students.length * 100);
     });
+  }
+
+  setAbscents() {
   }
 
 }

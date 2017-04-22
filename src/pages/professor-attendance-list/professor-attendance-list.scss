@@ -10,4 +10,31 @@ page-professor-attendance-list {
       width: 80vw !important;
     }
   }
+
+  .stats-overall {
+    font-size: 4rem;
+    font-weight: 500;
+    color: color($colors, primary);
+  }
+
+  .stats-date {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #9E9E9E;
+  }
+
+  .stats-time {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #BDBDBD;
+  }
+
+  .stats-numbers {
+    font-size: 2.5rem;
+    font-weight: 500;
+  }
+
+  .green-800 {
+    color: #2E7D32;
+  }
 }
