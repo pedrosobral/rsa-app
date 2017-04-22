@@ -56,7 +56,7 @@
         <ion-icon name="square"></ion-icon>
         <ion-label>Encerrar sessão</ion-label>
       </button>
-      <button (click)="appState = 'TAKE_ATTENDANCE'" ion-fab color="secondary">
+      <button (click)="setState('TAKE_ATTENDANCE')" ion-fab color="secondary">
         <ion-icon name="hand"></ion-icon>
         <ion-label>Ver frequência</ion-label>
       </button>
@@ -96,7 +96,7 @@
 
     <!-- fab attendance -->
     <ion-fab-list side="top" [hidden]="appState !== 'TAKE_ATTENDANCE'">
-      <button ion-fab (click)="appState = 'POLL_LIVE'">
+      <button ion-fab (click)="backState()">
         <ion-icon name="backspace"></ion-icon>
         <ion-label>Voltar</ion-label>
       </button>

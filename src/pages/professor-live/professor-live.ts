@@ -46,6 +46,7 @@ export class ProfessorLivePage {
    * Used to control fab options
    */
   appState: string = 'SHOW_LIST'; // 'TAKE_ATTENDANCE' 'POLL_LIVE', SHOW_OLD_POLL
+  previousState: string = 'SHOW_LIST';
 
   constructor(
     public attendanceProvider: AttendanceProvider,
@@ -93,7 +94,8 @@ export class ProfessorLivePage {
       if (!poll.data.length) return;
 
       // force no view mode
-      this.appState = 'POLL_LIVE';
+      // this.appState = 'POLL_LIVE';
+      this.setState('POLL_LIVE');
 
       this.poll = poll.data[0];
       this.questions = this.poll.questions;
@@ -123,8 +125,6 @@ export class ProfessorLivePage {
         if (!res.total) return;
         this.attendance = res.data[0];
 
-        // TODO
-        // go back on history
         this.appState = 'TAKE_ATTENDANCE';
       });
   }
@@ -139,7 +139,8 @@ export class ProfessorLivePage {
   }
 
   goToDetails(poll) {
-    this.appState = 'SHOW_OLD_POLL';
+    // this.appState = 'SHOW_OLD_POLL';
+    this.setState('SHOW_OLD_POLL');
 
     this.poll = poll;
     this.questions = this.poll.questions;
@@ -163,7 +164,8 @@ export class ProfessorLivePage {
   }
 
   exitViewMode() {
-    this.appState = 'SHOW_LIST';
+    // this.appState = 'SHOW_LIST';
+    this.setState('SHOW_LIST');
 
     this.end();
   }
@@ -241,7 +243,8 @@ export class ProfessorLivePage {
     this.poll = null;
 
     // update app state
-    this.appState = 'SHOW_LIST';
+    // this.appState = 'SHOW_LIST';
+    this.setState('SHOW_LIST');
 
     // old sessions
     this.getOldSessions();
@@ -252,7 +255,8 @@ export class ProfessorLivePage {
       .stop(this.attendance)
       .then(() => {
         // TODO: pop history
-        this.appState = 'SHOW_LIST';
+        // this.appState = 'SHOW_LIST';
+        this.backState();
       });
   }
 
@@ -261,8 +265,18 @@ export class ProfessorLivePage {
       .stop(this.attendance)
       .then(() => {
         // TODO: pop history
-        this.appState = 'SHOW_LIST';
+        // this.appState = 'SHOW_LIST';
+        this.backState();
       });
+  }
+
+  setState(state: string) {
+    this.previousState = this.appState;
+    this.appState = state;
+  }
+
+  backState() {
+    this.setState(this.previousState);
   }
 
   showChart() {
