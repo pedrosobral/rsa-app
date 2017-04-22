@@ -66,12 +66,13 @@ export class AttendanceProvider {
 
   take(attendance, code, student) {
     return this.attendance.patch(null, {
-      $addToSet: { students: student }
+      ['students.$.present']: true,
     }, {
       query: {
         _id: attendance._id,
         code: code,
         online: true,
+        'students._id': student._id,
         $select: ['']
       }
     });

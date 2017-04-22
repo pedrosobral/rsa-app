@@ -176,6 +176,7 @@ export class ProfessorQuestionsPage {
       room: this.room._id,
       name: this.room.name,
       code: fourRandomDigits,
+      students: this.room.students,
       online: true,
     };
 
