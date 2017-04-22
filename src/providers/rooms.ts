@@ -71,27 +71,30 @@ export class RoomsProvider {
       query: {
         '_id': room._id,
         'students.id': studentId,
-        '$select': ['name']
-      },
-    })
-    .then((result) => {
+        '$select': ['name', 'students']
+      }
+    }).then((result) => {
       if (!result.total) return false;
-      return this.doLogin(room, studentId);
+
+      // only student returned
+      // b/c of a hook after to filter students
+      const student = result.data[0].students;
+
+      return this.doLogin(room, studentId, student);
     });
   }
 
-  private doLogin(room, studentId) {
+  private doLogin(room, studentId, student) {
     return this.rooms.patch(room._id, {
       $set: {
         'students.$.online': true
       }
     }, {
-      query: {
-        'students.id': studentId,
-        '$select': ['name']
-      }
-    })
-    .then(() => true);
+        query: {
+          'students.id': studentId,
+          '$select': ['name']
+        }
+      }).then(() => student);
   }
 
   remove(room) {
