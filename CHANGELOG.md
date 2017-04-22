@@ -1,3 +1,46 @@
+<a name="0.17.0"></a>
+# [0.17.0](https://github.com/pedrosobral/rsa-app/compare/0.16.0...v0.17.0) (2017-04-22)
+
+
+### Bug Fixes
+
+* **new-room:** close on submit ([c2ca43b](https://github.com/pedrosobral/rsa-app/commit/c2ca43b))
+* **poll:** do not subscribe to room info ([0b18102](https://github.com/pedrosobral/rsa-app/commit/0b18102))
+* **room:** check if there's room available ([9fdf063](https://github.com/pedrosobral/rsa-app/commit/9fdf063))
+* **rooms:** toast on active room ([d2470e3](https://github.com/pedrosobral/rsa-app/commit/d2470e3))
+
+
+### Features
+
+* **add-students:** add toast on changes saved ([572b98b](https://github.com/pedrosobral/rsa-app/commit/572b98b))
+* **attendance:** add help methods to take attendance ([0cf9975](https://github.com/pedrosobral/rsa-app/commit/0cf9975))
+* **attendance:** add room name ([5cc1a81](https://github.com/pedrosobral/rsa-app/commit/5cc1a81))
+* **attendance:** input attendance ([f49c56f](https://github.com/pedrosobral/rsa-app/commit/f49c56f))
+* **attendance:** set online to true ([52cba7c](https://github.com/pedrosobral/rsa-app/commit/52cba7c))
+* **attendance:** show attendance slide ([b81e32c](https://github.com/pedrosobral/rsa-app/commit/b81e32c))
+* **attendance:** wip attendance feature ([11a5203](https://github.com/pedrosobral/rsa-app/commit/11a5203))
+* **auth:** add nav guard login professor ([4a53540](https://github.com/pedrosobral/rsa-app/commit/4a53540))
+* **auth:** set user on login ([4f37dd4](https://github.com/pedrosobral/rsa-app/commit/4f37dd4))
+* **home:** add form, so that on enter triggers click ([cebd3fc](https://github.com/pedrosobral/rsa-app/commit/cebd3fc))
+* **live:** wip states ([99262b7](https://github.com/pedrosobral/rsa-app/commit/99262b7))
+* **online:** show stats students online vs offline ([f409f32](https://github.com/pedrosobral/rsa-app/commit/f409f32))
+* **poll:** add parameter router, get room info ([78127da](https://github.com/pedrosobral/rsa-app/commit/78127da))
+* **poll:** add Professor info to poll ([af1d962](https://github.com/pedrosobral/rsa-app/commit/af1d962))
+* **poll:** ask student id, return if room does not exist ([73d49c9](https://github.com/pedrosobral/rsa-app/commit/73d49c9))
+* **poll:** handle attendance ([7297fb1](https://github.com/pedrosobral/rsa-app/commit/7297fb1))
+* **room:** add more info about room ([283e92b](https://github.com/pedrosobral/rsa-app/commit/283e92b))
+* **rooms:** able to clear students from room ([9afe008](https://github.com/pedrosobral/rsa-app/commit/9afe008))
+* **rooms:** able to remove room ([8fef823](https://github.com/pedrosobral/rsa-app/commit/8fef823))
+* **rooms:** methods to login students ([147445d](https://github.com/pedrosobral/rsa-app/commit/147445d))
+* **rooms:** popover anonymous room ([bc40440](https://github.com/pedrosobral/rsa-app/commit/bc40440))
+* **rooms:** return student info ([3993ec5](https://github.com/pedrosobral/rsa-app/commit/3993ec5))
+* **slides:** refactor to use slide selector instead of section ([b6b9945](https://github.com/pedrosobral/rsa-app/commit/b6b9945))
+* **students:** show students online on a private room ([627e6fd](https://github.com/pedrosobral/rsa-app/commit/627e6fd))
+* **students-online:** show list students online (WIP) ([d1a30a3](https://github.com/pedrosobral/rsa-app/commit/d1a30a3))
+* **style:** increase width ([2d2209a](https://github.com/pedrosobral/rsa-app/commit/2d2209a))
+
+
+
 <a name="0.16.0"></a>
 # [0.16.0](https://github.com/pedrosobral/rsa-app/compare/0.15.0...v0.16.0) (2017-04-19)
 

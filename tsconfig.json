@@ -17,7 +17,14 @@
     "src/**/*.ts"
   ],
   "exclude": [
-    "node_modules", "plugins", "platforms", "resources", "test-config", "wwww"
+    "node_modules",
+    "plugins",
+    "platforms",
+    "resources",
+    "test-config",
+    "wwww",
+    "typings/main",
+    "typings/main.d.ts"
   ],
   "compileOnSave": false,
   "atom": {
