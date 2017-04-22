@@ -1,4 +1,8 @@
 page-poll {
+  // workaround label fab-button
+  .fab {
+    contain: layout;
+  }
 
   #loading {
     padding: 16px;

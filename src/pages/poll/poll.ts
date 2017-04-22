@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+} from '@angular/core';
 
 import {
   AlertController,
   NavController,
   IonicPage,
   NavParams,
+  ToastController,
+  FabContainer,
 } from 'ionic-angular';
 
 import {
+  AttendanceProvider,
   FeathersProvider,
   PollService,
   RoomsProvider,
@@ -22,19 +28,24 @@ import {
   templateUrl: 'poll.html',
 })
 export class PollPage {
+  @ViewChild('fab') fab: FabContainer;
+
   code: String = this.navParams.get('id');
   poll: any;
   question: any;
   room: any;
   student: String;
+  attendance: any;
 
   constructor(
     public app: FeathersProvider,
+    public attendanceProvider: AttendanceProvider,
     public rooms: RoomsProvider,
     public ps: PollService,
     public navParams: NavParams,
     public navCtrl: NavController,
     public alertCtrl: AlertController,
+    public toastCtrl: ToastController,
   ) { }
 
   ionViewDidEnter() {
@@ -92,6 +103,74 @@ export class PollPage {
       });
   }
 
+  initAttendance() {
+    this.attendanceProvider
+      .room(this.room, this.student)
+      .subscribe((result) => {
+        if (!result.total) return;
+        this.attendance = result.data[0];
+
+        // open fab list options
+        this.fab.toggleList();
+
+        this.isToStopAttendance(this.attendance);
+      });
+  }
+
+  isToStopAttendance(attendance) {
+    this.attendanceProvider
+      .attendanceRoom(this.attendance)
+      .subscribe((result) => {
+        if (!result.total) return;
+
+        // stop attendance
+        this.attendance = null;
+      });
+  }
+
+  askAttendance(title = 'Frequência') {
+    let prompt = this.alertCtrl.create({
+      enableBackdropDismiss: false,
+      title,
+      message: "Entre com o código que o seu professor disponibilizou.",
+      inputs: [
+        {
+          name: 'code',
+          placeholder: 'Código'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: data => { }
+        },
+        {
+          text: 'Presente!',
+          handler: data => {
+            this.takeAttendance(data.code);
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
+  takeAttendance(code) {
+    this.attendanceProvider
+      .take(this.attendance, code, this.student)
+      .then((result) => {
+        if (!result.length) {
+          this.askAttendance('Código errado');
+          return;
+        }
+
+        this.presentToast('Frequência salva.');
+
+        // fab toggle
+        this.fab.toggleList();
+      });
+  }
+
   submit(answer) {
     this.ps.answer(this.poll, this.poll.available, answer)
       .then((res) => console.info(res));
@@ -118,9 +197,6 @@ export class PollPage {
         {
           text: 'Fazer login',
           handler: data => {
-            // save student info
-            this.student = data.id;
-
             // do login
             this.doLogin(data.id);
           }
@@ -132,10 +208,13 @@ export class PollPage {
 
   doLogin(id) {
     this.rooms.login(this.room, id)
-      .then((studentOk) => {
-        if (!studentOk) {
+      .then((student) => {
+        if (!student) {
           return this.askId();
         }
+
+        // save student info
+        this.student = student;
 
         // emit info about student to socket
         this.app.socket().emit('student enter room', {
@@ -145,6 +224,17 @@ export class PollPage {
 
         // poll!
         this.initPoll();
+
+        // attendance
+        this.initAttendance();
       })
+  }
+
+  presentToast(message) {
+    let toast = this.toastCtrl.create({
+      message,
+      duration: 3000,
+    });
+    return toast.present();
   }
 }

@@ -39,4 +39,18 @@
     <button (click)="submit(answer)" ion-button color="primary" full>ENVIAR</button>
   </div>
 
+  <ion-fab bottom right #fab [hidden]="!attendance">
+    <button ion-fab>
+      <ion-icon name="options"></ion-icon>
+    </button>
+
+    <!-- fab poll -->
+    <ion-fab-list side="top">
+      <button (click)="askAttendance()" ion-fab color="danger">
+        <ion-icon name="hand"></ion-icon>
+        <ion-label>Responder chamada</ion-label>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+
 </ion-content>
