@@ -1,4 +1,5 @@
 import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
+
 import {
   IonicPage,
   Events,
@@ -11,6 +12,7 @@ import * as Reveal from 'reveal.js';
 import {
   PollService,
   RoomsProvider,
+  AttendanceProvider,
 } from '../../providers/providers';
 
 @IonicPage({
@@ -38,13 +40,15 @@ export class ProfessorLivePage {
 
   room: any;
 
+  attendance: any;
+
   /**
    * Used to control fab options
    */
-  isViewMode: boolean = false;
   appState: string = 'SHOW_LIST'; // 'TAKE_ATTENDANCE' 'POLL_LIVE', SHOW_OLD_POLL
 
   constructor(
+    public attendanceProvider: AttendanceProvider,
     public ps: PollService,
     public rs: RoomsProvider,
     public navCtrl: NavController,
@@ -54,6 +58,10 @@ export class ProfessorLivePage {
     this.events.subscribe('room:live', (room) => {
       this.room = room;
       this.initializeData();
+    });
+    //
+    this.events.subscribe('attendance:live', (attendance) => {
+      this.initAttendance(this.room);
     });
   }
 
@@ -74,6 +82,9 @@ export class ProfessorLivePage {
     !this.room && this.rs.active().then((room) => {
       this.room = room.data[0];
       this.initializeData();
+
+      // attendance
+      this.initAttendance(this.room);
     });
   }
 
@@ -82,7 +93,6 @@ export class ProfessorLivePage {
       if (!poll.data.length) return;
 
       // force no view mode
-      // this.isViewMode = false;
       this.appState = 'POLL_LIVE';
 
       this.poll = poll.data[0];
@@ -107,6 +117,18 @@ export class ProfessorLivePage {
     });
   }
 
+  initAttendance(attendance) {
+    this.attendanceProvider.find(attendance)
+      .subscribe((res) => {
+        if (!res.total) return;
+        this.attendance = res.data[0];
+
+        // TODO
+        // go back on history
+        this.appState = 'TAKE_ATTENDANCE';
+      });
+  }
+
   getOldSessions() {
     this.ps.sessions().then((sessions) => {
       this.sessions = [];
@@ -117,7 +139,6 @@ export class ProfessorLivePage {
   }
 
   goToDetails(poll) {
-    // this.isViewMode = true;
     this.appState = 'SHOW_OLD_POLL';
 
     this.poll = poll;
@@ -142,7 +163,6 @@ export class ProfessorLivePage {
   }
 
   exitViewMode() {
-    // this.isViewMode = false;
     this.appState = 'SHOW_LIST';
 
     this.end();
@@ -227,7 +247,23 @@ export class ProfessorLivePage {
     this.getOldSessions();
   }
 
-  endAttendance() { }
+  pauseAttendance() {
+    this.attendanceProvider
+      .stop(this.attendance)
+      .then(() => {
+        // TODO: pop history
+        this.appState = 'SHOW_LIST';
+      });
+  }
+
+  endAttendance() {
+    this.attendanceProvider
+      .stop(this.attendance)
+      .then(() => {
+        // TODO: pop history
+        this.appState = 'SHOW_LIST';
+      });
+  }
 
   showChart() {
     const question = this.poll.questions[this.currentSlide];
