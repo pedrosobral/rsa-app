@@ -1,16 +1,16 @@
 <section>
   <h3>Frequência para</h3>
-  <b>Engenharia de Software 2017.1</b>
-  <h1 style="color: #387ef5">9614</h1>
+  <b>{{attendance?.name}}</b>
+  <h1 style="color: #387ef5">{{attendance?.code}}</h1>
   <small>
     Estudantes entrem com o código acima para marcarem presença na aula.
   </small>
   <p><br></p>
   <h3 style="color: #387ef5">
-    <p>20 alunos presentes</p>
+    <p>{{attendance?.students?.length}} alunos presentes</p>
   </h3>
   <p><br></p>
   <b>Accese ou baixe o aplicativo:
-    <a href="resposta.univasf.edu.br/#/poll/ENGSOF171">resposta.univasf.edu.br/#/poll/ENGSOF171</a>
+    <a href="resposta.univasf.edu.br/#/poll/">resposta.univasf.edu.br/#/poll/{{attendance?.room?.code}}</a>
   </b>
 </section>
