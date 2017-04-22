@@ -173,13 +173,15 @@ export class ProfessorQuestionsPage {
   takeAttendance() {
     const fourRandomDigits = Math.floor(1000 + Math.random() * 9000);
     const attendance = {
-      room: this.room,
+      room: this.room._id,
       code: fourRandomDigits,
+      online: true,
     };
 
     this.attendance.create(attendance)
       .then((res) => {
-        console.info('attendance', res);
+        this.events.publish('attendance:live', res);
+        this.events.publish('tabs:select', 1);
       })
   }
 
