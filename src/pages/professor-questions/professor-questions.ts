@@ -174,6 +174,7 @@ export class ProfessorQuestionsPage {
     const fourRandomDigits = Math.floor(1000 + Math.random() * 9000);
     const attendance = {
       room: this.room._id,
+      name: this.room.name,
       code: fourRandomDigits,
       online: true,
     };
