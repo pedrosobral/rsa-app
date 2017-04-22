@@ -7,15 +7,61 @@ export class AttendanceProvider {
 
   constructor(public app: FeathersProvider) { }
 
-  find() {
+  find(room) {
     return this.attendance.find({
       query: {
-        $sort: {
-          text: 1
-        }
+        $limit: 1,
+        room: room._id,
+        online: true,
       },
       rx: {
         listStrategy: 'always'
+      }
+    });
+  }
+
+  room(room, student) {
+    return this.attendance.find({
+      query: {
+        room: room._id,
+        online: true,
+        $select: ['']
+      }
+    });
+  }
+
+  attendanceRoom(attendance) {
+    return this.attendance.find({
+      query: {
+        _id: attendance._id,
+        online: false,
+        $select: ['']
+      },
+      rx: {
+        listStrategy: 'always'
+      }
+    });
+  }
+
+  stop(attendance) {
+    return this.attendance.patch(attendance._id, {
+      online: false,
+    }, {
+      query: {
+        $select: ['']
+      }
+    });
+  }
+
+  take(attendance, code, student) {
+    return this.attendance.patch(null, {
+      $addToSet: { students: student }
+    }, {
+      query: {
+        _id: attendance._id,
+        code: code,
+        online: true,
+        $select: ['']
       }
     });
   }
