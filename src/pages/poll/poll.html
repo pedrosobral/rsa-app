@@ -16,7 +16,10 @@
 
     <div class="welcome">
       <p>
-        Bem vindo à apresentação de <span ion-text color="primary">{{room?.user?.name}}</span> na sala <span ion-text color="primary">{{room?.name}}</span>
+        <span *ngIf="!student?.name">Bem</span>
+        <span *ngIf="student?.name">
+          <span ion-text color="primary">{{student?.name}}</span>, bem
+        </span> vindo à apresentação de <span ion-text color="primary">{{room?.user?.name}}</span> na turma de <span ion-text color="primary">{{room?.name}}</span>
       </p>
       <p>
         Assim que {{room?.user?.name.split(' ')[0]}} ativar uma atividade, você vai poder participar aqui.
