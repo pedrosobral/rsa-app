@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 
 import {
+  AlertController,
   IonicPage,
   NavController,
   NavParams,
+  ToastController,
 } from 'ionic-angular';
 
 import {
@@ -24,6 +26,8 @@ export class ProfessorAttendanceListPage {
   attendances: any;
 
   constructor(
+    public toastCtrl: ToastController,
+    public alertCtrl: AlertController,
     public attendanceProvider: AttendanceProvider,
     public navCtrl: NavController,
     public navParams: NavParams) { }
@@ -52,6 +56,43 @@ export class ProfessorAttendanceListPage {
 
   edit(attendance) {
     this.navCtrl.push('ProfessorAttendanceDetailsPage', { attendance });
+  }
+
+  remove(attendance) {
+    this.attendanceProvider
+      .remove(attendance)
+      .then(() => {
+        this.presentToast('Mudança salva');
+      });
+  }
+
+  askToRemove(attendance) {
+    let confirm = this.alertCtrl.create({
+      title: 'Remover registro de frequêcia?',
+      message: 'Essa operação não pode ser desfeita.',
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+            this.presentToast('Remoção cancelada');
+          }
+        },
+        {
+          text: 'OK',
+          handler: () => {
+            this.remove(attendance);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  presentToast(msg) {
+    return this.toastCtrl.create({
+      duration: 3000,
+      message: msg,
+    }).present();
   }
 
 }

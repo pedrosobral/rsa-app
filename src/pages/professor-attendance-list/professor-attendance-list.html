@@ -29,11 +29,11 @@
           <ion-col align-self-center col-1 class="stats-numbers green-800" >{{att.presents}}</ion-col>
           <ion-col align-self-center col-1 class="stats-numbers" ion-text color="danger">{{att.abscents}}</ion-col>
           <ion-col col-1>
-            <button ion-button clear icon-only (click)="remove(att)">
-              <ion-icon name="trash"></ion-icon>
-            </button>
             <button ion-button clear icon-only (click)="edit(att)">
               <ion-icon name="create"></ion-icon>
+            </button>
+            <button ion-button clear icon-only (click)="askToRemove(att)" color="danger">
+              <ion-icon name="trash"></ion-icon>
             </button>
           </ion-col>
         </ion-row>
