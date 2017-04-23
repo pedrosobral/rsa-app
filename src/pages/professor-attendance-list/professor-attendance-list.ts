@@ -50,7 +50,8 @@ export class ProfessorAttendanceListPage {
     });
   }
 
-  setAbscents() {
+  edit(attendance) {
+    this.navCtrl.push('ProfessorAttendanceDetailsPage', { attendance });
   }
 
 }

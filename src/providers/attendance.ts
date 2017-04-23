@@ -20,6 +20,22 @@ export class AttendanceProvider {
     });
   }
 
+  get(id) {
+    return this.attendance.get(id);
+  }
+
+  setAttendance(attendance, student, value) {
+    console.info('value', value);
+    return this.attendance.patch(attendance._id, {
+      ['students.$.present']: value,
+    }, {
+      query: {
+        'students._id': student._id,
+        $select: ['_id']
+      }
+    });
+  }
+
   all(room) {
     return this.attendance.find({
       query: {

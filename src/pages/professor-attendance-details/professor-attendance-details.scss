@@ -1,0 +1,49 @@
+page-professor-attendance-details {
+  .list-header {
+    font-weight: 500;
+  }
+
+  .stats-overall {
+    font-size: 2.6rem;
+    font-weight: 500;
+    color: color($colors, primary);
+  }
+
+  .student-name {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #828181;
+  }
+
+  .student-id {
+    font-size: 1.4rem;
+    color: #9E9E9E;
+  }
+
+  .button-present {
+    button {
+      border-radius: 0;
+      box-shadow: 0 0 0 0;
+    }
+
+    .no-color {
+      background-color: #c8cbd0;
+    }
+  }
+
+  .button-present button:first-child {
+    margin-right: 0;
+  }
+
+  .button-present button:nth-child(2) {
+    margin-left: -4px;
+  }
+
+  ion-list {
+    @media screen and (min-width: 992px) {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: 80vw !important;
+    }
+  }
+}

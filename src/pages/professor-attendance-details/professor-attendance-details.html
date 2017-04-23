@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Lista de Frequência</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list padding>
+    <ion-list-header>
+      <h1>{{attendance?.name}} &#9675; {{attendance?.createdAt | amDateFormat:'LL'}} &#9675; {{attendance?.createdAt | amCalendar}} </h1>
+      <h1><span class="stats-overall">{{attendance?.overall}}%</span> &#9675; {{attendance?.presents}} presentes &#9675; {{attendance?.abscents}} ausentes</h1>
+    </ion-list-header>
+    <ion-item class="list-header">
+      <ion-row>
+        <ion-col align-self-center col-4>Nome</ion-col>
+        <ion-col align-self-center col-3>Situação</ion-col>
+      </ion-row>
+    </ion-item>
+    <ion-item *ngFor="let student of attendance?.students">
+      <ion-label>
+        <ion-row>
+          <ion-col align-self-center col-4>
+            <div class="student-name">{{student.name}} </div>
+            <div class="student-id">ID: {{student.id}}</div>
+          </ion-col>
+          <ion-col align-self-center col-3>
+            <div class="button-present">
+              <div *ngIf="student.present; else studentAbscent">
+                <button ion-button outline>Presente</button>
+                <button ion-button class="no-color" color="danger" (click)="changePresence(student, false)">Ausente</button>
+              </div>
+              <ng-template #studentAbscent>
+                <button ion-button class="no-color" (click)="changePresence(student, true)">Presente</button>
+                <button ion-button outline color="danger">Ausente</button>
+              </ng-template>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
