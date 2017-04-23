@@ -25,7 +25,6 @@ export class AttendanceProvider {
   }
 
   setAttendance(attendance, student, value) {
-    console.info('value', value);
     return this.attendance.patch(attendance._id, {
       ['students.$.present']: value,
     }, {
@@ -40,6 +39,9 @@ export class AttendanceProvider {
     return this.attendance.find({
       query: {
         room: room._id,
+        $sort: {
+          createdAt: 1
+        }
       },
       rx: {
         listStrategy: 'always'
@@ -52,7 +54,7 @@ export class AttendanceProvider {
       query: {
         room: room._id,
         online: true,
-        $select: ['']
+        $select: ['_id', 'room']
       }
     });
   }
