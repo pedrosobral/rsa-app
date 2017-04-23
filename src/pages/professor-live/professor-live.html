@@ -7,7 +7,9 @@
 <ion-content>
   <!-- old sessions list -->
   <ion-list [hidden]="appState !== 'SHOW_LIST'" padding>
-    <h1>Sessões</h1>
+    <ion-list-header>
+      <h1>Sessões encerradas</h1>
+    </ion-list-header>
     <div class="info" *ngIf="!sessions?.length">
       <p>Veja aqui todas as sessões encerradas.</p>
       <p>Clique para ver os resultados dos estudantes.</p>
@@ -23,7 +25,7 @@
     </ion-item>
     <button class="sessions-rows" ion-item *ngFor="let session of sessions" (click)="goToDetails(session)">
       <ion-row>
-        <ion-col align-self-center col-3>{{session.room.name}}</ion-col>
+        <ion-col align-self-center col-3><span class="break-word">{{session.room.name}}</span></ion-col>
         <ion-col align-self-center col-2>{{session.room.code}}</ion-col>
         <ion-col align-self-center col-2><ion-icon name="list"></ion-icon> {{session.questions?.length}}</ion-col>
         <ion-col align-self-center col-2><ion-icon name="ios-people"></ion-icon> {{session.participants || 0}}</ion-col>
