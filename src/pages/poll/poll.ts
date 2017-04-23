@@ -37,6 +37,12 @@ export class PollPage {
   student: String;
   attendance: any;
 
+  /**
+   * Keep track of any active overlay to dismiss
+   * when will leave.
+   */
+  currentModal: any;
+
   constructor(
     public app: FeathersProvider,
     public attendanceProvider: AttendanceProvider,
@@ -49,13 +55,21 @@ export class PollPage {
   ) { }
 
   ionViewDidEnter() {
+    this.getRoomInfo();
+  }
+
+  ionViewWillLeave() {
+    // dismiss any current overlay
+    this.currentModal && this.currentModal.dismiss();
+  }
+
+  clearRoom() {
     this.app.socket().on('clear room', (data) => {
       if (data.room === this.room._id) {
-        this.navCtrl.setRoot('HomePage');
+        // pop to home
+        this.navCtrl.popToRoot();
       }
     });
-
-    this.getRoomInfo();
   }
 
   getRoomInfo() {
@@ -80,6 +94,9 @@ export class PollPage {
           // poll
           this.initPoll();
         }
+
+        // listening to event `clear room`
+        this.clearRoom();
       });
   }
 
@@ -142,7 +159,9 @@ export class PollPage {
       buttons: [
         {
           text: 'Cancelar',
-          handler: data => { }
+          handler: data => {
+            this.currentModal = null;
+          }
         },
         {
           text: 'Presente!',
@@ -153,6 +172,11 @@ export class PollPage {
       ]
     });
     prompt.present();
+
+    this.currentModal = prompt;
+    prompt.onDidDismiss(() => {
+      this.currentModal = null;
+    });
   }
 
   takeAttendance(code) {
@@ -191,7 +215,7 @@ export class PollPage {
         {
           text: 'Cancelar',
           handler: data => {
-            this.navCtrl.pop();
+            this.navCtrl.canGoBack() && this.navCtrl.pop();
           }
         },
         {
@@ -204,6 +228,11 @@ export class PollPage {
       ]
     });
     prompt.present();
+
+    this.currentModal = prompt;
+    prompt.onDidDismiss(() => {
+      this.currentModal = null;
+    });
   }
 
   doLogin(id) {
@@ -222,7 +251,7 @@ export class PollPage {
           student: id,
         });
 
-        // poll!
+        // poll
         this.initPoll();
 
         // attendance
