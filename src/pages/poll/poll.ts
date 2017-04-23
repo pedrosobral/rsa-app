@@ -67,7 +67,7 @@ export class PollPage {
     this.app.socket().on('clear room', (data) => {
       if (data.room === this.room._id) {
         // pop to home
-        this.navCtrl.popToRoot();
+        this.navCtrl.canGoBack() && this.navCtrl.popToRoot();
       }
     });
   }
@@ -101,7 +101,7 @@ export class PollPage {
   }
 
   ionViewDidLeave() {
-    if (this.room.private) {
+    if (this.student && this.room && this.room.private) {
       this.app.socket().emit('student leave room');
     } else {
       this.app.socket().emit('anonymous leave room');
@@ -214,8 +214,11 @@ export class PollPage {
       buttons: [
         {
           text: 'Cancelar',
-          handler: data => {
-            this.navCtrl.canGoBack() && this.navCtrl.pop();
+          handler: (data) => {
+            prompt.dismiss()
+              .then(() => {
+                this.navCtrl.canGoBack() && this.navCtrl.popToRoot();
+              });
           }
         },
         {
