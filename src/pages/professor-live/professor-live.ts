@@ -80,13 +80,16 @@ export class ProfessorLivePage {
     this.getOldSessions();
 
     // get default room
-    !this.room && this.rs.active().then((room) => {
-      this.room = room.data[0];
-      this.initializeData();
+    !this.room && this.rs.active()
+      .then((result) => {
+        if (!result.total) return;
 
-      // attendance
-      this.initAttendance(this.room);
-    });
+        this.room = result.data[0];
+        this.initializeData();
+
+        // attendance
+        this.initAttendance(this.room);
+      });
   }
 
   initializeData() {
