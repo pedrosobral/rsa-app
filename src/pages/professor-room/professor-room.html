@@ -45,7 +45,7 @@
             <ion-toggle (click)="activate(room)" [(ngModel)]="room.online"></ion-toggle>
           </ion-col>
           <ion-col col-1>
-            <button [disabled]="room.online" ion-button clear icon-only (click)="remove(room)">
+            <button [disabled]="room.online" ion-button clear icon-only (click)="askToRemove(room)">
               <ion-icon name="trash"></ion-icon>
             </button>
           </ion-col>

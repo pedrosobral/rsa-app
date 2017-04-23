@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import {
+  AlertController,
   IonicPage,
   ModalController,
   NavController,
@@ -21,6 +22,7 @@ export class ProfessorRoomPage {
   rooms: any;
 
   constructor(
+    public alertCtrl: AlertController,
     public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
@@ -70,5 +72,27 @@ export class ProfessorRoomPage {
       duration: 3000,
     });
     return toast.present();
+  }
+
+  askToRemove(room) {
+    let confirm = this.alertCtrl.create({
+      title: 'Remover turma?',
+      message: 'Essa operação não pode ser desfeita.',
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+            this.presentToast('Remoção cancelada');
+          }
+        },
+        {
+          text: 'OK',
+          handler: () => {
+            this.remove(room);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }
