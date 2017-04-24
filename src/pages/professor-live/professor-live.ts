@@ -73,9 +73,6 @@ export class ProfessorLivePage {
     // get poll
     this.initializeData();
 
-    // init slides just in case
-    this.initializeReveal();
-
     // get sessions
     this.getOldSessions();
 
@@ -123,6 +120,8 @@ export class ProfessorLivePage {
   }
 
   initAttendance(attendance) {
+    this.initializeReveal();
+
     this.attendanceProvider.find(attendance)
       .subscribe((res) => {
         if (!res.total) return;
