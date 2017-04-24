@@ -51,7 +51,7 @@
   </div>
 
   <!-- fab button -->
-  <ion-fab bottom right #fab [hidden]="appState === 'SHOW_LIST'">
+  <ion-fab bottom right #fab>
     <button ion-fab>
       <ion-icon name="settings"></ion-icon>
     </button>
@@ -62,7 +62,7 @@
         <ion-icon name="square"></ion-icon>
         <ion-label>Encerrar sessão</ion-label>
       </button>
-      <button (click)="setState('TAKE_ATTENDANCE')" ion-fab color="secondary">
+      <button [hidden]="!attendance" (click)="setState('TAKE_ATTENDANCE')" ion-fab color="secondary">
         <ion-icon name="hand"></ion-icon>
         <ion-label>Ver frequência</ion-label>
       </button>
@@ -102,21 +102,32 @@
 
     <!-- fab attendance -->
     <ion-fab-list side="top" [hidden]="appState !== 'TAKE_ATTENDANCE'">
-      <button ion-fab (click)="backState()">
+      <button [hidden]="!poll" ion-fab (click)="backToPoll()">
+        <ion-icon name="backspace"></ion-icon>
+        <ion-label>Questões</ion-label>
+      </button>
+      <button [hidden]="poll" ion-fab (click)="backState()">
         <ion-icon name="backspace"></ion-icon>
         <ion-label>Voltar</ion-label>
       </button>
-      <button ion-fab (click)="pauseAttendance()">
+      <!-- <button ion-fab (click)="pauseAttendance()">
         <ion-icon name="pause"></ion-icon>
         <ion-label>Pausar frequência</ion-label>
-      </button>
-      <button ion-fab (click)="endAttendance()">
+      </button> -->
+      <button ion-fab (click)="endAttendance()" color="danger">
         <ion-icon name="close"></ion-icon>
         <ion-label>Encerrar frequência</ion-label>
       </button>
       <button ion-fab (click)="fullscreen()" [color]=" isFullscreen ? 'secondary' : ''">
         <ion-icon [name]="isFullscreen ? 'contract' : 'expand'"></ion-icon>
         <ion-label>{{isFullscreen ? 'Sair tela cheia' : 'Tela cheia'}}</ion-label>
+      </button>
+    </ion-fab-list>
+
+    <ion-fab-list *ngIf="attendance" side="top" [hidden]="appState !== 'SHOW_LIST'">
+      <button (click)="setState('TAKE_ATTENDANCE')" ion-fab color="secondary">
+        <ion-icon name="hand"></ion-icon>
+        <ion-label>Ver frequência</ion-label>
       </button>
     </ion-fab-list>
 

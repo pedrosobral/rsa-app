@@ -257,18 +257,22 @@ export class ProfessorLivePage {
       .stop(this.attendance)
       .then(() => {
         // TODO: pop history
-        // this.appState = 'SHOW_LIST';
         this.backState();
       });
+  }
+
+  backToPoll() {
+    this.setState('POLL_LIVE');
   }
 
   endAttendance() {
     this.attendanceProvider
       .stop(this.attendance)
       .then(() => {
-        // TODO: pop history
-        // this.appState = 'SHOW_LIST';
         this.backState();
+
+        // clear attendance object
+        this.attendance = null;
       });
   }
 
