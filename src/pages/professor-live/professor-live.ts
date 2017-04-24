@@ -120,11 +120,11 @@ export class ProfessorLivePage {
   }
 
   initAttendance(attendance) {
-    this.initializeReveal();
 
     this.attendanceProvider.find(attendance)
       .subscribe((res) => {
         if (!res.total) return;
+
         this.attendance = res.data[0];
 
         this.appState = 'TAKE_ATTENDANCE';
