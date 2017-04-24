@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
 })
 export class AttendanceComponent {
   @Input('attendance') attendance: any;
+  @Input('info') info: any;
 
   constructor() { }
 

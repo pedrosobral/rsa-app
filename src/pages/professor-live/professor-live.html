@@ -38,11 +38,15 @@
   <!-- slides -->
   <div class="reveal" [hidden]="appState === 'SHOW_LIST'">
     <div class="slides">
-      <section *ngFor="let question of questions" style="text-align: left;" [hidden]="appState !== 'POLL_LIVE' && appState !== 'SHOW_OLD_POLL'">
-        <slide  [settings]="settings" [question]="question" [poll]="poll">
+      <section *ngFor="let question of questions" style="text-align: left;">
+        <slide *ngIf="appState === 'POLL_LIVE' || appState === 'SHOW_OLD_POLL'" [settings]="settings" [question]="question" [poll]="poll">
         </slide>
       </section>
-      <attendance [attendance]="attendance" [hidden]="appState !== 'TAKE_ATTENDANCE'"></attendance>
+      <attendance
+        [attendance]="attendance"
+        [hidden]="appState !== 'TAKE_ATTENDANCE'"
+        [info]="room">
+      </attendance>
     </div>
   </div>
 
