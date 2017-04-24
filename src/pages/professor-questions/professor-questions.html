@@ -4,9 +4,13 @@
     <button ion-button menuToggle>
      <ion-icon name="menu"></ion-icon>
    </button>
-    <ion-title>{{room?.name}} #{{room?.code}}</ion-title>
+    <ion-title *ngIf="room; else noRoomTitle">{{room?.name}} #{{room?.code}}</ion-title>
+    <ng-template #noRoomTitle>
+      <ion-title>Nenhuma turma disponível</ion-title>
+    </ng-template>
+
     <ion-buttons end>
-      <button *ngIf="room?.code" ion-button icon-left (click)="takeAttendance()">
+      <button *ngIf="room && room?.code" ion-button icon-left (click)="takeAttendance()">
         <ion-icon name="hand"></ion-icon>
         Frequência
       </button>
@@ -14,7 +18,7 @@
         <ion-icon name="people"></ion-icon> <span class="people-online">{{room?.people}}</span>
       </button>
       <ng-template #anonymousButton>
-        <button ion-button icon-left (click)="presentPopover($event)">
+        <button *ngIf="room" ion-button icon-left (click)="presentPopover($event)">
           <ion-icon name="people"></ion-icon> <span class="people-online">{{room?.peopleOnline}}</span>
         </button>
       </ng-template>
