@@ -1,11 +1,9 @@
 section {
-  .chart {
-    margin-left: auto;
-    margin-right: auto;
-    @media screen and (min-width: 992px) {
-      height: 65% !important;
-      width: 50% !important;
-    }
+  .results {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold !important;
+    font-size: 3rem !important;
   }
 
   .correct {
