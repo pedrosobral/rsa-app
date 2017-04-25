@@ -1,3 +1,36 @@
+<a name="0.18.0"></a>
+# [0.18.0](https://github.com/pedrosobral/rsa-app/compare/0.17.0...v0.18.0) (2017-04-25)
+
+
+### Bug Fixes
+
+* **list:** add word-space to break long strings ([03ae809](https://github.com/pedrosobral/rsa-app/commit/03ae809))
+* **live:** guard case no room ([68b4d59](https://github.com/pedrosobral/rsa-app/commit/68b4d59))
+* **poll:** avoid pop to nothing on clear room ([f4cdecc](https://github.com/pedrosobral/rsa-app/commit/f4cdecc))
+* **poll:** dismiss any overlay when is about to leave ([8259648](https://github.com/pedrosobral/rsa-app/commit/8259648))
+* **reveal:** don't need to init reveal on attendance. ([19cf102](https://github.com/pedrosobral/rsa-app/commit/19cf102))
+* **reveal:** just init when necessary ([0f45626](https://github.com/pedrosobral/rsa-app/commit/0f45626))
+* **slides:** put ngFor right position ([4e3f061](https://github.com/pedrosobral/rsa-app/commit/4e3f061))
+
+
+### Features
+
+* **attendance:** add remove ([3cbe1f2](https://github.com/pedrosobral/rsa-app/commit/3cbe1f2))
+* **attendance:** add sort, remove console, select ([35c0a74](https://github.com/pedrosobral/rsa-app/commit/35c0a74))
+* **attendance:** refactor attendance code. ([97951c2](https://github.com/pedrosobral/rsa-app/commit/97951c2))
+* **attendance:** show details, able to edit ([ebb2e80](https://github.com/pedrosobral/rsa-app/commit/ebb2e80))
+* **attendance-list:** wip show previous attendances ([09d7e0b](https://github.com/pedrosobral/rsa-app/commit/09d7e0b))
+* **attendances:** show stats, style ([00ebd2f](https://github.com/pedrosobral/rsa-app/commit/00ebd2f))
+* **index:** remove cordova for now ([92e3a2b](https://github.com/pedrosobral/rsa-app/commit/92e3a2b))
+* **live:** hidden/show buttons accordingly ([3901c90](https://github.com/pedrosobral/rsa-app/commit/3901c90))
+* **poll:** add name student ([317bebe](https://github.com/pedrosobral/rsa-app/commit/317bebe))
+* **questions:** show/hide info when no room ([ed4b253](https://github.com/pedrosobral/rsa-app/commit/ed4b253))
+* **room:** alert to remove ([c4f62b1](https://github.com/pedrosobral/rsa-app/commit/c4f62b1))
+* **slide:** refactor how to show results. ([d1ccde6](https://github.com/pedrosobral/rsa-app/commit/d1ccde6))
+* **slides:** show room info attendance slide ([5531076](https://github.com/pedrosobral/rsa-app/commit/5531076))
+
+
+
 <a name="0.17.0"></a>
 # [0.17.0](https://github.com/pedrosobral/rsa-app/compare/0.16.0...v0.17.0) (2017-04-22)
 
