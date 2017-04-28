@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>professor-students-results</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list padding>
+    <ion-item class="list-header">
+      <ion-row>
+        <ion-col align-self-center col-4>Nome</ion-col>
+        <ion-col align-self-center col-1>Resposta</ion-col>
+      </ion-row>
+    </ion-item>
+    <ion-item *ngFor="let student of question?.students">
+      <ion-label>
+        <ion-row>
+          <ion-col align-self-center col-4 class="break-word">{{student.name}}</ion-col>
+          <ion-col align-self-center col-1>{{student.answer?.text || '-'}}</ion-col>
+        </ion-row>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

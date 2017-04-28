@@ -141,6 +141,10 @@ export class ProfessorLivePage {
   }
 
   goToDetails(poll) {
+
+    this.navCtrl.push('ProfessorSessionResultsPage', { poll });
+
+    // TODO: REMOVE 
     // this.appState = 'SHOW_OLD_POLL';
     this.setState('SHOW_OLD_POLL');
 

@@ -1,0 +1,69 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-segment [(ngModel)]="viewMode">
+      <ion-segment-button value="questions">
+        Questões
+      </ion-segment-button>
+      <ion-segment-button value="students">
+        Estudantes
+      </ion-segment-button>
+    </ion-segment>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <div [ngSwitch]="pet"></div> -->
+  <ion-list *ngIf="viewMode === 'questions'; else studentsView">
+    <ion-item class="list-header">
+      <ion-row>
+        <ion-col align-self-center col-4>Questão</ion-col>
+        <!-- <ion-col align-self-center col-2>Data</ion-col> -->
+        <ion-col align-self-center col-1>Desempenho</ion-col>
+        <ion-col align-self-center col-1>Corretos</ion-col>
+        <ion-col align-self-center col-1>Errados</ion-col>
+        <ion-col align-self-center col-1>Participantes</ion-col>
+        <ion-col align-self-center col-1>Não Responderam</ion-col>
+      </ion-row>
+    </ion-item>
+    <button ion-item *ngFor="let question of poll?.questions" (click)="goToDetails(question)">
+      <ion-label>
+        <ion-row>
+        <ion-col align-self-center col-4 class="break-word">{{question.question}}</ion-col>
+          <!-- <ion-col align-self-center col-2>
+            <div class="stats-date">{{question.createdAt | amDateFormat:'LL' }}</div>
+            <div class="stats-time">{{question.createdAt | amDateFormat:'dddd &#9702; LT' }} </div>
+          </ion-col> -->
+          <ion-col align-self-center col-1>{{question.overall}}</ion-col>
+          <ion-col align-self-center col-1>{{question.correctAnswers}}</ion-col>
+          <ion-col align-self-center col-1>{{question.wrongAnswers}}</ion-col>
+          <ion-col align-self-center col-1>{{question.correctAnswers + question.wrongAnswers }}</ion-col>
+          <ion-col align-self-center col-1>{{question.unanswer}}</ion-col>
+        </ion-row>
+      </ion-label>
+    </button>
+  </ion-list>
+
+  <ng-template #studentsView>
+    <ion-list>
+      <ion-item class="list-header">
+        <ion-row>
+          <ion-col align-self-center col-4>Nome</ion-col>
+          <ion-col align-self-center col-1 *ngFor="let q of poll?.questions; let i = index">Q{{i + 1}}</ion-col>
+          <ion-col align-self-center col-1>%</ion-col>
+        </ion-row>
+      </ion-item>
+      <button ion-item *ngFor="let student of poll?.room?.students">
+      <ion-label>
+        <ion-row>
+          <ion-col align-self-center col-4 class="break-word">{{student.name}}</ion-col>
+          <ion-col align-self-center col-1 *ngFor="let a of student.answers">{{a.correct === undefined ? '-' : a.correct ? 'C' : 'E' }}</ion-col>
+          <ion-col align-self-center col-1>{{student.overall}}</ion-col>
+        </ion-row>
+      </ion-label>
+    </button>
+    </ion-list>
+  </ng-template>
+</ion-content>
