@@ -51,7 +51,7 @@
   </div>
 
   <!-- fab button -->
-  <ion-fab bottom right #fab>
+  <ion-fab bottom right #fab [hidden]="appState === 'SHOW_LIST'">
     <button ion-fab>
       <ion-icon name="settings"></ion-icon>
     </button>
