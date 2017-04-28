@@ -34,7 +34,7 @@ export class PollPage {
   poll: any;
   question: any;
   room: any;
-  student: String;
+  student: any;
   attendance: any;
 
   /**
@@ -114,10 +114,31 @@ export class PollPage {
         if (poll.data.length > 0 && poll.data[0].available !== -1) {
           this.poll = poll.data[0];
           this.question = this.poll.questions[this.poll.available];
+
+          if (this.checkAlreadyAnswered(this.question)) {
+            this.poll = null;
+          }
+
+          this.setIndexToOptions(this.question);
         } else {
           this.poll = null;
         }
       });
+  }
+
+  setIndexToOptions(question) {
+    if (question.options)
+      question.options.forEach((x, index) => {
+        x.index = index;
+      });
+  }
+
+  checkAlreadyAnswered(question) {
+    if (question.students) {
+      const student = question.students.find(x => x._id === this.student._id);
+      return student && student.answer;
+    }
+    return false;
   }
 
   initAttendance() {
@@ -196,8 +217,10 @@ export class PollPage {
   }
 
   submit(answer) {
-    this.ps.answer(this.poll, this.poll.available, answer)
-      .then((res) => console.info(res));
+    this.ps.answer(this.poll, this.student, this.poll.available, answer)
+      .then((res) => {
+        this.poll = null;
+      });
   }
 
   askId() {

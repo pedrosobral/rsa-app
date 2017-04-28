@@ -16,7 +16,7 @@ export class PollService {
     return this.polls.find({
       query: {
         'room.code': room.code,
-        isOver: false
+        isOver: false,
       },
       rx: {
         listStrategy: 'always'
@@ -52,15 +52,17 @@ export class PollService {
     });
   }
 
-  answer(poll, questionIndex, answer) {
+  answer(poll, student, questionIndex, answer) {
     return this.polls.patch(poll._id, {
       "$inc": {
-        [`questions.${questionIndex}.options.$.votes`]: 1,
+        [`questions.${questionIndex}.options.${answer.index}.votes`]: 1,
         [`questions.${questionIndex}.votes`]: 1,
-      }
+      },
+      [`questions.${questionIndex}.students.$.answer`]: answer,
     }, {
         query: {
-          [`questions.${questionIndex}.options.text`]: answer
+          [`questions.${questionIndex}.students._id`]: student._id,
+          $select: ['']
         }
       })
   }
