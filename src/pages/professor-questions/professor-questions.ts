@@ -147,7 +147,16 @@ export class ProfessorQuestionsPage {
     this.modalCtrl.create('AddLabelPage', { questions: this.sessionQuestions }).present();
   }
 
+  populateWithStudents(questions) {
+    questions.forEach((q) => {
+      q.students = this.room.students;
+      delete q.online;
+    });
+  }
+
   goLive() {
+    this.populateWithStudents(this.sessionQuestions);
+
     const poll = {
       questions: this.sessionQuestions,
       room: this.room,
