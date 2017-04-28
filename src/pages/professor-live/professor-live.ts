@@ -45,7 +45,7 @@ export class ProfessorLivePage {
   /**
    * Used to control fab options
    */
-  appState: string = 'SHOW_LIST'; // 'TAKE_ATTENDANCE' 'POLL_LIVE', SHOW_OLD_POLL
+  appState: string = 'SHOW_LIST'; // 'TAKE_ATTENDANCE' 'POLL_LIVE'
   previousState: string = 'SHOW_LIST';
 
   constructor(
@@ -94,7 +94,6 @@ export class ProfessorLivePage {
       if (!poll.data.length) return;
 
       // force no view mode
-      // this.appState = 'POLL_LIVE';
       this.setState('POLL_LIVE');
 
       this.poll = poll.data[0];
@@ -141,36 +140,10 @@ export class ProfessorLivePage {
   }
 
   goToDetails(poll) {
-
     this.navCtrl.push('ProfessorSessionResultsPage', { poll });
-
-    // TODO: REMOVE 
-    // this.appState = 'SHOW_OLD_POLL';
-    this.setState('SHOW_OLD_POLL');
-
-    this.poll = poll;
-    this.questions = this.poll.questions;
-
-    // $scope.$apply()
-    this.cdf.detectChanges();
-
-    // init slides engine
-    this.initializeReveal();
-
-    // apply changes
-    Reveal.setState(Reveal.getState());
-
-    // set fab actions state
-    this.currentSlide = Reveal.getState().indexh;
-    this.isChartAvailable = this.poll.questions[this.currentSlide].showChart;
-    this.isAnswerAvailable = this.poll.questions[this.currentSlide].showAnswer;
-
-    // settings
-    this.updateSettings();
   }
 
   exitViewMode() {
-    // this.appState = 'SHOW_LIST';
     this.setState('SHOW_LIST');
 
     this.end();
@@ -249,7 +222,6 @@ export class ProfessorLivePage {
     this.poll = null;
 
     // update app state
-    // this.appState = 'SHOW_LIST';
     this.setState('SHOW_LIST');
 
     // old sessions
