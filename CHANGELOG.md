@@ -1,3 +1,15 @@
+<a name="0.19.0"></a>
+# [0.19.0](https://github.com/pedrosobral/rsa-app/compare/0.18.0...v0.19.0) (2017-04-28)
+
+
+### Features
+
+* **poll:** add page to break down result by student and question ([7312124](https://github.com/pedrosobral/rsa-app/commit/7312124))
+* **poll-answer:** save student answer ([aaef173](https://github.com/pedrosobral/rsa-app/commit/aaef173))
+* **poll-questions:** add students to each question to save answers ([38195a9](https://github.com/pedrosobral/rsa-app/commit/38195a9))
+
+
+
 <a name="0.18.0"></a>
 # [0.18.0](https://github.com/pedrosobral/rsa-app/compare/0.17.0...v0.18.0) (2017-04-25)
 
