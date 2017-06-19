@@ -9,8 +9,11 @@ export class RoomsProvider {
   constructor(public app: FeathersProvider) { }
 
   find() {
+    const user = this.app.app.get('user');
+
     return this.rooms.find({
       query: {
+        user: user._id,
         $sort: {
           name: 1
         }

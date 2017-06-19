@@ -8,8 +8,11 @@ export class LabelService {
   constructor(public app: FeathersProvider) { }
 
   find() {
+    const user = this.app.app.get('user');
+
     return this.labels.find({
       query: {
+        user: user._id,
         $sort: {
           text: 1
         }

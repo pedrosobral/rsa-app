@@ -9,16 +9,22 @@ export class QuestionService {
   constructor(public app: FeathersProvider) { }
 
   find() {
+    const user = this.app.app.get('user');
+
     return this.questions.find({
       query: {
+        user: user._id,
         $populate: ['labels']
       }
     });
   }
 
   findByLabel(label) {
+    const user = this.app.app.get('user');
+
     return this.questions.find({
       query: {
+        user: user._id,
         labels: label,
         $populate: ['labels']
       }

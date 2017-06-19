@@ -13,8 +13,11 @@ export class PollService {
   }
 
   poll(room: any) {
+    const user = this.app.app.get('user');
+
     return this.polls.find({
       query: {
+        user: user._id,
         'room.code': room.code,
         isOver: false,
       },
@@ -25,7 +28,14 @@ export class PollService {
   }
 
   sessions() {
-    return this.polls.find({ query: { isOver: true, $sort: { createdAt: -1 } } });
+    const user = this.app.app.get('user');
+
+    return this.polls.find({
+      query: {
+        user: user._id,
+        isOver: true, $sort: { createdAt: -1 }
+      }
+    });
   }
 
   setIsOver(poll) {
