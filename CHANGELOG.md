@@ -1,3 +1,13 @@
+<a name="0.20.0"></a>
+# [0.20.0](https://github.com/pedrosobral/rsa-app/compare/0.19.1...v0.20.0) (2017-06-19)
+
+
+### Features
+
+* **models:** get just user own data ([4199d9b](https://github.com/pedrosobral/rsa-app/commit/4199d9b))
+
+
+
 <a name="0.19.0"></a>
 # [0.19.0](https://github.com/pedrosobral/rsa-app/compare/0.18.0...v0.19.0) (2017-04-28)
 
