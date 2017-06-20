@@ -10,7 +10,9 @@ import {
   LabelService,
 } from '../../providers/providers';
 
-@IonicPage()
+@IonicPage({
+  segment: 'questions'
+})
 @Component({
   selector: 'page-professor-questions-list',
   templateUrl: 'professor-questions-list.html',
