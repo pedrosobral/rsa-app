@@ -28,9 +28,9 @@ export class NewRoomPage {
     public formBuilder: FormBuilder,
     public rs: RoomsProvider,
     public viewCtrl: ViewController,
-    ) {
-      this.initForm();
-    }
+  ) {
+    this.initForm();
+  }
 
   ionViewDidLoad() { }
 
@@ -43,6 +43,9 @@ export class NewRoomPage {
   }
 
   submit() {
+    // uuper case code string
+    this.form.value.code = this.form.value.code.toUpperCase();
+
     this.rs.create(this.form.value)
       .then(() => this.close());
   }
