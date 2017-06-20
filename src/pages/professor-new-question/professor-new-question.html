@@ -43,12 +43,15 @@
       <ion-list reorder="true" radio-group formControlName="correct" (ionItemReorder)="reorder($event)">
         <ion-item *ngFor="let option of options; let i = index;">
           <button clear ion-button item-right>
-          <ion-radio value="{{i}}"></ion-radio>
-        </button>
-          <ion-input type="text" [(ngModel)]="option.text" [ngModelOptions]="{standalone: true}" placeholder="Alternativa {{i}}"> </ion-input>
+            <ion-radio value="{{i}}"></ion-radio>
+          </button>
+          <ion-label>
+            Correta
+          </ion-label>
+            <ion-input type="text" [(ngModel)]="option.text" [ngModelOptions]="{standalone: true}" placeholder="Alternativa {{i}}"> </ion-input>
           <button (click)="delete(i)" clear ion-button item-right icon-only>
-          <ion-icon name="close"></ion-icon>
-        </button>
+            <ion-icon name="close"></ion-icon>
+          </button>
         </ion-item>
       </ion-list>
 
