@@ -1,3 +1,21 @@
+<a name="0.21.0"></a>
+# [0.21.0](https://github.com/pedrosobral/rsa-app/compare/0.20.0...v0.21.0) (2017-06-22)
+
+
+### Bug Fixes
+
+* **aot:** export custom components just once ([6d1c244](https://github.com/pedrosobral/rsa-app/commit/6d1c244))
+* **poll:** poll is unique, so user is not necessary ([63cd72a](https://github.com/pedrosobral/rsa-app/commit/63cd72a))
+* **question:** indicate correct answer MC question ([86a0c78](https://github.com/pedrosobral/rsa-app/commit/86a0c78))
+* **questions-url:** rename segment to questions ([744605b](https://github.com/pedrosobral/rsa-app/commit/744605b))
+
+
+### Features
+
+* **room:** upper case room CODE ([c18a968](https://github.com/pedrosobral/rsa-app/commit/c18a968))
+
+
+
 <a name="0.20.0"></a>
 # [0.20.0](https://github.com/pedrosobral/rsa-app/compare/0.19.1...v0.20.0) (2017-06-19)
 
