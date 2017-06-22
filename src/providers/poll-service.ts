@@ -13,11 +13,8 @@ export class PollService {
   }
 
   poll(room: any) {
-    const user = this.app.app.get('user');
-
     return this.polls.find({
       query: {
-        user: user._id,
         'room.code': room.code,
         isOver: false,
       },
