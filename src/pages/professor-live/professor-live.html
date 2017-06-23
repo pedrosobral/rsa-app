@@ -51,6 +51,19 @@
   </div>
 
   <!-- fab button -->
+  <ion-fab bottom right #fab *ngIf="attendance" [hidden]="appState !== 'SHOW_LIST'">
+    <button ion-fab>
+      <ion-icon name="settings"></ion-icon>
+    </button>
+
+    <ion-fab-list side="top">
+      <button (click)="setState('TAKE_ATTENDANCE')" ion-fab color="secondary">
+        <ion-icon name="hand"></ion-icon>
+        <ion-label>Ver frequência</ion-label>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+
   <ion-fab bottom right #fab [hidden]="appState === 'SHOW_LIST'">
     <button ion-fab>
       <ion-icon name="settings"></ion-icon>

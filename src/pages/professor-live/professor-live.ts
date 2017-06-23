@@ -224,6 +224,9 @@ export class ProfessorLivePage {
     // update app state
     this.setState('SHOW_LIST');
 
+    // end poll can not be previous anymore
+    this.previousState = 'SHOW_LIST';
+
     // old sessions
     this.getOldSessions();
   }
