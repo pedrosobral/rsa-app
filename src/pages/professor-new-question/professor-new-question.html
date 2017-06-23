@@ -12,17 +12,25 @@
 
 
 <ion-content padding>
+  <ul>
+    <li>
+      <p [style.text-decoration]=" !form.controls.question.valid ? '' : 'line-through'">Digite a questão</p>
+    </li>
+    <li>
+      <p [style.text-decoration]=" !form.controls.correct.valid ? '' : 'line-through'">Escolha uma opção como correta</p>
+    </li>
+  </ul>
 
   <form [formGroup]="form">
     <ion-item>
-      <ion-label stacked>Título</ion-label>
+      <ion-label stacked>Questão</ion-label>
       <ion-input type="text" formControlName="question" placeholder="Digite a sua questão aqui"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Descrição</ion-label>
       <ion-textarea formControlName="description" placeholder="Você pode usar este espaço para adicionar detalhes"></ion-textarea>
     </ion-item>
-    <ion-list radio-group formControlName="type">
+    <ion-list radio-group formControlName="type" (ionChange)="updateValidators()">
       <ion-item>
         <ion-label>Múltipla escolha</ion-label>
         <ion-radio checked="true" value="mc"></ion-radio>

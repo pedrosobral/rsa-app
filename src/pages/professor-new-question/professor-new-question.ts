@@ -9,6 +9,7 @@ import {
   Validators,
   FormBuilder,
   FormGroup,
+  NgControl
 } from '@angular/forms';
 
 import { reorderArray } from 'ionic-angular';
@@ -44,11 +45,25 @@ export class ProfessorNewQuestionPage {
       question: ['', Validators.required],
       description: [''],
       type: ['mc', Validators.required],
-      correct: ['']
+      correct: ['', Validators.required]
     });
 
     const question = this.navParams.get('question');
     question && this.handleEditMode(question);
+  }
+
+  updateValidators() {
+    this.removeValidatorsOnFreeType();
+  }
+
+  removeValidatorsOnFreeType() {
+    if (this.form.value.type === 'free') {
+      this.form.controls['correct'].setValidators(null);
+      this.form.controls['correct'].updateValueAndValidity();
+    } else {
+      this.form.controls['correct'].setValidators(Validators.required);
+      this.form.controls['correct'].updateValueAndValidity();
+    }
   }
 
   handleEditMode(question) {
