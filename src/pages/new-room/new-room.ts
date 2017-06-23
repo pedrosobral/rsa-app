@@ -47,7 +47,10 @@ export class NewRoomPage {
     this.form.value.code = this.form.value.code.toUpperCase();
 
     this.rs.create(this.form.value)
-      .then(() => this.close());
+      .then(() => this.close())
+      .catch((error) => {
+        console.info('error', error);
+      })
   }
 
   close() {
