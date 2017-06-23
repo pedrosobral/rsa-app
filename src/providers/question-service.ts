@@ -36,7 +36,7 @@ export class QuestionService {
   }
 
   edit(question) {
-    return this.questions.update(question._id, question);
+    return this.questions.patch(question._id, question);
   }
 
   setLabels(question, labels) {
