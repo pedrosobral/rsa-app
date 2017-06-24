@@ -224,7 +224,7 @@ export class ProfessorLivePage {
     // update app state
     this.setState('SHOW_LIST');
 
-    // end poll can not be previous anymore
+    // end poll cannot be previous anymore
     this.previousState = 'SHOW_LIST';
 
     // old sessions
@@ -249,6 +249,9 @@ export class ProfessorLivePage {
       .stop(this.attendance)
       .then(() => {
         this.backState();
+
+        // end attendance cannot be previous anymore
+        this.previousState = 'SHOW_LIST';
 
         // clear attendance object
         this.attendance = null;
