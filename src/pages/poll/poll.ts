@@ -118,18 +118,9 @@ export class PollPage {
           if (this.checkAlreadyAnswered(this.question)) {
             this.poll = null;
           }
-
-          this.setIndexToOptions(this.question);
         } else {
           this.poll = null;
         }
-      });
-  }
-
-  setIndexToOptions(question) {
-    if (question.options)
-      question.options.forEach((x, index) => {
-        x.index = index;
       });
   }
 
