@@ -60,6 +60,14 @@ export class PollService {
   }
 
   answer(poll, student, questionIndex, answer) {
+    if (!student) {
+      return this.anonymousAnswer(poll, questionIndex, answer);
+    }
+
+    return this.studentAnswer(poll, student, questionIndex, answer);
+  }
+
+  private studentAnswer(poll, student, questionIndex, answer) {
     return this.polls.patch(poll._id, {
       "$inc": {
         [`questions.${questionIndex}.options.${answer.index}.votes`]: 1,
@@ -68,9 +76,18 @@ export class PollService {
       [`questions.${questionIndex}.students.$.answer`]: answer,
     }, {
         query: {
-          [`questions.${questionIndex}.students._id`]: student._id,
+          [`questions.${questionIndex}.students._id`]: student && student._id,
           $select: ['']
         }
-      })
+      });
+  }
+
+  private anonymousAnswer(poll, questionIndex, answer) {
+    return this.polls.patch(poll._id, {
+      "$inc": {
+        [`questions.${questionIndex}.options.${answer.index}.votes`]: 1,
+        [`questions.${questionIndex}.votes`]: 1,
+      },
+    }, { query: { $select: [''] } });
   }
 }
