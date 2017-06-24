@@ -31,6 +31,9 @@
     <div class="question">
       <span>{{question?.question}}</span>
     </div>
+    <div class="description">
+      <span>{{question?.description}}</span>
+    </div>
 
     <ion-list radio-group [(ngModel)]="answer">
       <ion-item *ngFor="let option of question.options; let i = index">
