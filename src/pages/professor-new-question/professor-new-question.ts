@@ -7,12 +7,12 @@ import {
 
 import {
   Validators,
+  FormArray,
   FormBuilder,
   FormGroup,
-  NgControl
 } from '@angular/forms';
 
-import { reorderArray } from 'ionic-angular';
+// import { reorderArray } from 'ionic-angular';
 
 import {
   ViewController,
@@ -30,8 +30,6 @@ import {
 })
 export class ProfessorNewQuestionPage {
   form: FormGroup;
-  options = [{}];
-
   isEditMode: boolean = false;
 
   constructor(
@@ -45,15 +43,34 @@ export class ProfessorNewQuestionPage {
       question: ['', Validators.required],
       description: [''],
       type: ['mc', Validators.required],
-      correct: ['', Validators.required]
+      correct: ['', Validators.required],
+      options: this.formBuilder.array([], Validators.minLength(2))
     });
 
+    // check edit option
     const question = this.navParams.get('question');
     question && this.handleEditMode(question);
   }
 
   updateValidators() {
     this.removeValidatorsOnFreeType();
+    this.addBooleanOption();
+  }
+
+  addBooleanOption() {
+    if (this.form.value.type === 'bool') {
+      const control = <FormArray>this.form.controls['options'];
+      this.clearControlOptions(control);
+      this.addOption('Verdadeiro');
+      this.addOption('Falso');
+    }
+  }
+
+  clearControlOptions(control) {
+    const length = control.length;
+    for (let i = 0; i < length; i++) {
+      control.removeAt(0);
+    }
   }
 
   removeValidatorsOnFreeType() {
@@ -73,29 +90,33 @@ export class ProfessorNewQuestionPage {
       question: [question.question, Validators.required],
       description: [question.description],
       type: [question.type, Validators.required],
-      correct: [question.correct],
+      correct: [question.correct, Validators.required],
+      options: this.formBuilder.array(this.getOptions(question.options), Validators.minLength(2)),
       _id: [question._id]
     });
 
-    // mc case
-    if (question.type === 'mc') {
-      this.options = question.options;
-    }
+    this.updateValidators();
   }
 
-  addOption() {
-    this.options.push({ text: '' });
+  // map array of objects to array of strings
+  getOptions(options: Array<any>) {
+    return options.map(o => o.text);
+  }
+
+  addOption(option?) {
+    const control = <FormArray>this.form.controls['options'];
+    control.push(this.formBuilder.control(option || '', Validators.required));
   }
 
   submit() {
+    // prevent invalid form from submit
+    if (!this.form.valid) {
+      return;
+    }
+
     let question = Object.assign({}, this.form.value);
 
-    // append options
-    if (this.form.value.type === 'mc') {
-      Object.assign(question, { options: this.options });
-    } else if (this.form.value.type === 'bool') {
-      Object.assign(question, { options: [{ text: 'Verdadeiro' }, { text: 'Falso' }] });
-    }
+    this.createOptionsObject(question);
 
     if (this.isEditMode) {
       this.qs.edit(question)
@@ -106,18 +127,32 @@ export class ProfessorNewQuestionPage {
     }
   }
 
-  delete(item) {
-    this.options.splice(item, 1);
-  }
+  createOptionsObject(question) {
+    if (question.type === 'mc' || question.type === 'bool') {
+      let options = [];
+      question.options.forEach((option, index) => {
+        options.push({ index, text: option });
+      });
 
-  reorder(indexes) {
-    this.options = reorderArray(this.options, indexes);
-
-    // handle correct answer choice reorder
-    if (indexes.from === this.form.value.correct) {
-      this.form.value.correct = indexes.to;
+      question.options = options;
     }
   }
+
+  delete(index) {
+    const control = <FormArray>this.form.controls['options'];
+    control.removeAt(index);
+  }
+
+  // reorder(indexes) {
+  //   const options = this.form.value.options
+  //
+  //   this.form.controls['options'].setValue(reorderArray(options, indexes));
+  //
+  //   // handle correct answer choice reorder
+  //   if (indexes.from == this.form.value.correct) {
+  //     this.form.controls['correct'].setValue(indexes.to);
+  //   }
+  // }
 
   close(message) {
     this.viewCtrl.dismiss(this.isEditMode)
