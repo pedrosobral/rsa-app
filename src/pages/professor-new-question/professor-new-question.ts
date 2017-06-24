@@ -141,6 +141,13 @@ export class ProfessorNewQuestionPage {
   delete(index) {
     const control = <FormArray>this.form.controls['options'];
     control.removeAt(index);
+
+    this.resetCorrectOptionIndex();
+  }
+
+  resetCorrectOptionIndex() {
+    this.form.controls['correct'].setValue('');
+    this.form.controls['correct'].updateValueAndValidity();
   }
 
   // reorder(indexes) {
