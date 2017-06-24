@@ -25,7 +25,7 @@
           <ion-col align-self-center col-4><span class="break-word">{{room.name}} </span></ion-col>
           <ion-col align-self-center col-2>
             <ion-icon [name]="room.private ? 'lock' : 'unlock'" [color]="room.online ? 'secondary': ''"></ion-icon> {{ room.code }}
-            <ion-note *ngIf="room.private; else anonymous">(Acesso privada)</ion-note>
+            <ion-note *ngIf="room.private; else anonymous">(Acesso privado)</ion-note>
             <ng-template #anonymous>
               <ion-note>(Acesso livre)</ion-note>
             </ng-template>
