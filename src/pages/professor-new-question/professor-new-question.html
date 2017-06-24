@@ -20,7 +20,7 @@
       <p [style.text-decoration]=" !form.controls.correct.valid ? '' : 'line-through'">Escolha uma opção como correta</p>
     </li>
     <li>
-      <p [style.text-decoration]="form.controls.options.touched && form.controls.options.valid ? 'line-through' : ''">Adicione pelo menos duas alternativas</p>
+      <p [style.text-decoration]="form.controls.options.length && form.controls.options.valid ? 'line-through' : ''">Adicione pelo menos duas alternativas</p>
     </li>
   </ul>
 
