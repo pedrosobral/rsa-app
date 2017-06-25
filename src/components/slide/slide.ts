@@ -46,6 +46,14 @@ export class SlideComponent {
 
       freq.push([student.answer, 5]);
     });
+
+    // case anonymous answers
+    this.question.anonymousShortAnswers.forEach((answer) => {
+      if (!answer) return;
+
+      freq.push([answer, 5]);
+    });
+
     return freq;
   }
 
