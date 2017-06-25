@@ -19,7 +19,7 @@
       <ion-label>
         <ion-row>
           <ion-col align-self-center col-4 class="break-word">{{student.name}}</ion-col>
-          <ion-col align-self-center col-1>{{student.answer?.text || '-'}}</ion-col>
+          <ion-col align-self-center col-1>{{student.answer?.text || student.answer || '-'}}</ion-col>
         </ion-row>
       </ion-label>
     </ion-item>

@@ -36,11 +36,11 @@
             <div class="stats-date">{{question.createdAt | amDateFormat:'LL' }}</div>
             <div class="stats-time">{{question.createdAt | amDateFormat:'dddd &#9702; LT' }} </div>
           </ion-col> -->
-          <ion-col align-self-center col-1>{{question.overall}}</ion-col>
-          <ion-col align-self-center col-1>{{question.correctAnswers}}</ion-col>
-          <ion-col align-self-center col-1>{{question.wrongAnswers}}</ion-col>
-          <ion-col align-self-center col-1>{{question.correctAnswers + question.wrongAnswers }}</ion-col>
-          <ion-col align-self-center col-1>{{question.unanswer}}</ion-col>
+          <ion-col align-self-center col-1>{{question.overall || '-'}}</ion-col>
+          <ion-col align-self-center col-1>{{question.correctAnswers || '-'}}</ion-col>
+          <ion-col align-self-center col-1>{{question.wrongAnswers || '-'}}</ion-col>
+          <ion-col align-self-center col-1>{{question.correctAnswers + question.wrongAnswers || question.votes }}</ion-col>
+          <ion-col align-self-center col-1>{{question.unanswer || question.students?.length - question.votes }}</ion-col>
         </ion-row>
       </ion-label>
     </button>
