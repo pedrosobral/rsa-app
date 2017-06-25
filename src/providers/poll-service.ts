@@ -81,6 +81,21 @@ export class PollService {
       });
   }
 
+  anonymousShortAnswer(poll, questionIndex, answer) {
+    return this.polls.patch(poll._id, {
+      "$inc": {
+        [`questions.${questionIndex}.votes`]: 1,
+      },
+      "$push": {
+        [`questions.${questionIndex}.anonymousShortAnswers`]: answer,
+      }
+    }, {
+        query: {
+          $select: ['']
+        }
+      });
+  }
+
   private studentAnswer(poll, student, questionIndex, answer) {
     return this.polls.patch(poll._id, {
       "$inc": {
