@@ -6,6 +6,11 @@ section {
     font-size: 3rem !important;
   }
 
+  #canvas {
+    width: 1000px;
+    height: 400px;
+  }
+
   .correct {
     background-color: color($colors, secondary);
     width: 48%;

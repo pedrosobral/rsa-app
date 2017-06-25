@@ -9,3 +9,6 @@
   <span class="results" [hidden]="!question.showChart">{{results[i]}}</span>
   <span ion-text color="primary" class="alternative-label">{{labels[i]}})</span> {{option.text}}
 </p>
+<div [hidden]="!(question?.type === 'free') || !question.showChart">
+  <div id="canvas"></div>
+</div>

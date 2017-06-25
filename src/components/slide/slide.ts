@@ -3,6 +3,8 @@ import {
   Input,
 } from '@angular/core';
 
+import * as WordCloud from 'wordcloud';
+
 @Component({
   selector: 'slide',
   templateUrl: 'slide.html'
@@ -19,7 +21,11 @@ export class SlideComponent {
 
   ngOnChanges(changes) {
     if (changes.question) {
-      this.dataChart();
+      if (this.question.type === 'free') {
+        setTimeout(() => this.doWordCloud(), 100);
+      } else {
+        this.dataChart();
+      }
     }
   }
 
@@ -31,6 +37,19 @@ export class SlideComponent {
     this.results = this.question.options
       .map(option => calcPercentage(option.votes, totalVotes))
       .map(toPercentage);
+  }
+
+  doWordFreq() {
+    let freq = [];
+    this.question.students.forEach((student) => {
+      freq.push([student.answer, 5]);
+    });
+    return freq;
+  }
+
+  doWordCloud() {
+    const data = this.doWordFreq();
+    WordCloud(document.getElementById('canvas'), { list: data, gridSize: 20, minFont: 100, weightFactor: 12 });
   }
 
 }
