@@ -40,7 +40,7 @@ export class AttendanceProvider {
       query: {
         room: room._id,
         $sort: {
-          createdAt: 1
+          createdAt: -1
         }
       },
       rx: {
