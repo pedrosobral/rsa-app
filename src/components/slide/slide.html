@@ -10,5 +10,5 @@
   <span ion-text color="primary" class="alternative-label">{{labels[i]}})</span> {{option.text}}
 </p>
 <div [hidden]="!(question?.type === 'free') || !question.showChart">
-  <div id="canvas"></div>
+  <div [attr.id]="question._id" class="word-cloud"></div>
 </div>

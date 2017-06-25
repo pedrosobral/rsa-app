@@ -42,6 +42,8 @@ export class SlideComponent {
   doWordFreq() {
     let freq = [];
     this.question.students.forEach((student) => {
+      if (!student.answer) return;
+
       freq.push([student.answer, 5]);
     });
     return freq;
@@ -49,7 +51,7 @@ export class SlideComponent {
 
   doWordCloud() {
     const data = this.doWordFreq();
-    WordCloud(document.getElementById('canvas'), { list: data, gridSize: 20, minFont: 100, weightFactor: 12 });
+    WordCloud(document.getElementById(this.question._id+''), { list: data, gridSize: 20, minFont: 100, weightFactor: 12 });
   }
 
 }
