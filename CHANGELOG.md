@@ -1,3 +1,39 @@
+<a name="0.22.0"></a>
+# [0.22.0](https://github.com/pedrosobral/rsa-app/compare/0.21.0...v0.22.0) (2017-06-25)
+
+
+### Bug Fixes
+
+* **attendance:** sort by date DESC ([4db5265](https://github.com/pedrosobral/rsa-app/commit/4db5265))
+* **live:** prevent wrong state ([bf05cb1](https://github.com/pedrosobral/rsa-app/commit/bf05cb1))
+* **live:** return to list when finish a poll ([de35921](https://github.com/pedrosobral/rsa-app/commit/de35921))
+* **new-question:** only check when length > 0 ([1f18284](https://github.com/pedrosobral/rsa-app/commit/1f18284))
+* **new-question:** require correct answer when necessary ([d31eb78](https://github.com/pedrosobral/rsa-app/commit/d31eb78))
+* **new-question:** reset correct option index on remove option ([0928ffa](https://github.com/pedrosobral/rsa-app/commit/0928ffa))
+* **new-room:** remove unused option ([9bf992b](https://github.com/pedrosobral/rsa-app/commit/9bf992b))
+* **poll:** add question description ([7892751](https://github.com/pedrosobral/rsa-app/commit/7892751))
+* **poll:** clear answer var after submit ([711c2e0](https://github.com/pedrosobral/rsa-app/commit/711c2e0))
+* **poll-question:** no need to add index anymore ([999d18b](https://github.com/pedrosobral/rsa-app/commit/999d18b))
+* **question:** use patch to edit ([dc3f2c7](https://github.com/pedrosobral/rsa-app/commit/dc3f2c7))
+* **results:** handle open question stats ([6f48f86](https://github.com/pedrosobral/rsa-app/commit/6f48f86))
+* **slide:** add dynamic attr id, so that the selection will work ([ac53ef6](https://github.com/pedrosobral/rsa-app/commit/ac53ef6))
+
+
+### Features
+
+* **attendance:** present toast after finish ([5ee904d](https://github.com/pedrosobral/rsa-app/commit/5ee904d))
+* **new-question:** add Validators to options ([1654152](https://github.com/pedrosobral/rsa-app/commit/1654152))
+* **new-room:** show already taken code error ([4ad35f2](https://github.com/pedrosobral/rsa-app/commit/4ad35f2))
+* **poll:** able to answer open question ([bfe967f](https://github.com/pedrosobral/rsa-app/commit/bfe967f))
+* **poll:** add anonymous class free short answer ([0e77703](https://github.com/pedrosobral/rsa-app/commit/0e77703))
+* **poll:** add answer for anonymous class ([87014e5](https://github.com/pedrosobral/rsa-app/commit/87014e5))
+* **poll:** add loading feedback ([06b1333](https://github.com/pedrosobral/rsa-app/commit/06b1333))
+* **poll:** answer anonymous free type question ([d261d4d](https://github.com/pedrosobral/rsa-app/commit/d261d4d))
+* **poll:** show word cloud from open question ([459e2bf](https://github.com/pedrosobral/rsa-app/commit/459e2bf))
+* **slide:** add case anonymous short answers ([f4ca494](https://github.com/pedrosobral/rsa-app/commit/f4ca494))
+
+
+
 <a name="0.21.0"></a>
 # [0.21.0](https://github.com/pedrosobral/rsa-app/compare/0.20.0...v0.21.0) (2017-06-22)
 

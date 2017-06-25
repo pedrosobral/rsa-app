@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "Resposta em Sala de Aula",
+  "short_name": "RSA",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
