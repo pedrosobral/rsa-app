@@ -5,6 +5,7 @@ import {
   Events,
   NavController,
   FabContainer,
+  ToastController,
 } from 'ionic-angular';
 
 import * as Reveal from 'reveal.js';
@@ -49,6 +50,7 @@ export class ProfessorLivePage {
   previousState: string = 'SHOW_LIST';
 
   constructor(
+    public toastCtrl: ToastController,
     public attendanceProvider: AttendanceProvider,
     public ps: PollService,
     public rs: RoomsProvider,
@@ -255,7 +257,28 @@ export class ProfessorLivePage {
 
         // clear attendance object
         this.attendance = null;
+
+        // show action button to see list
+        this.presentToastWithButton();
       });
+  }
+
+  presentToastWithButton() {
+    let toast = this.toastCtrl.create({
+      message: 'Frequência encerrada',
+      duration: 4000,
+      position: 'bottom',
+      showCloseButton: true,
+      closeButtonText: 'Ver lista'
+    });
+
+    toast.present();
+
+    toast.onDidDismiss((data, role) => {
+      if (role === 'close') {
+        this.navCtrl.push('ProfessorAttendanceListPage', { room: this.room });
+      }
+    });
   }
 
   setState(state: string) {
