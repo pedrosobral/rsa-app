@@ -67,6 +67,20 @@ export class PollService {
     return this.studentAnswer(poll, student, questionIndex, answer);
   }
 
+  shortAnswer(poll, student, questionIndex, answer) {
+    return this.polls.patch(poll._id, {
+      "$inc": {
+        [`questions.${questionIndex}.votes`]: 1,
+      },
+      [`questions.${questionIndex}.students.$.answer`]: answer,
+    }, {
+        query: {
+          [`questions.${questionIndex}.students._id`]: student && student._id,
+          $select: ['']
+        }
+      });
+  }
+
   private studentAnswer(poll, student, questionIndex, answer) {
     return this.polls.patch(poll._id, {
       "$inc": {

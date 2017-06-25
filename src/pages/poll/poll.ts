@@ -208,6 +208,11 @@ export class PollPage {
   }
 
   submit(answer) {
+    if (this.question.type === 'free') {
+      this.ps.shortAnswer(this.poll, this.student, this.poll.available, answer);
+      return;
+    }
+
     this.ps.answer(this.poll, this.student, this.poll.available, answer)
       .then((res) => {
         this.poll = null;

@@ -42,6 +42,11 @@
       </ion-item>
     </ion-list>
 
+    <ion-item *ngIf="question?.type === 'free'">
+      <ion-label stacked>Resposta</ion-label>
+      <ion-textarea placeholder="Digite aqui a sua resposta" [(ngModel)]="answer"></ion-textarea>
+    </ion-item>
+
     <button (click)="submit(answer)" ion-button color="primary" full>ENVIAR</button>
   </div>
 
