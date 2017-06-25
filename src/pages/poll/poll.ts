@@ -224,6 +224,16 @@ export class PollPage {
 
   submit(answer) {
     if (this.question.type === 'free') {
+      // anonymous free answer
+      if (!this.student) {
+        this.ps.anonymousShortAnswer(this.poll, this.poll.available, answer)
+          .then(() => {
+            this.answer = '';
+            this.presentToast('Resposta enviada');
+          });
+        return;
+      }
+
       this.ps.shortAnswer(this.poll, this.student, this.poll.available, answer)
         .then(() => {
           this.answer = '';
