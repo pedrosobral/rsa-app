@@ -10,6 +10,7 @@ import {
   NavParams,
   ToastController,
   FabContainer,
+  LoadingController,
 } from 'ionic-angular';
 
 import {
@@ -54,6 +55,7 @@ export class PollPage {
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public toastCtrl: ToastController,
+    public loadCtrl: LoadingController,
   ) { }
 
   ionViewDidEnter() {
@@ -74,9 +76,20 @@ export class PollPage {
     });
   }
 
+  presentLoading(msg) {
+    return this.loadCtrl.create({
+      content: msg,
+    });
+  }
+
   getRoomInfo() {
+    const loader = this.presentLoading('Carregando...');
+    loader.present();
+
     this.rooms.room(this.code)
       .then((result) => {
+        loader.dismiss();
+
         if (!result.total) {
           // back if room does not exist
           this.navCtrl.pop();
@@ -202,7 +215,7 @@ export class PollPage {
           return;
         }
 
-        this.presentToast('Frequência salva.');
+        this.presentToast('Frequência salva');
 
         // fab toggle
         this.fab.toggleList();
@@ -211,8 +224,11 @@ export class PollPage {
 
   submit(answer) {
     if (this.question.type === 'free') {
-      this.ps.shortAnswer(this.poll, this.student, this.poll.available, answer);
-      this.answer = '';
+      this.ps.shortAnswer(this.poll, this.student, this.poll.available, answer)
+        .then(() => {
+          this.answer = '';
+          this.presentToast('Resposta enviada');
+        });
       return;
     }
 
@@ -220,6 +236,7 @@ export class PollPage {
       .then((res) => {
         this.poll = null;
         this.answer = '';
+        this.presentToast('Resposta enviada');
       });
   }
 
@@ -262,8 +279,13 @@ export class PollPage {
   }
 
   doLogin(id) {
+    const loading = this.presentLoading('Carregando informações da sala...');
+    loading.present();
+
     this.rooms.login(this.room, id)
       .then((student) => {
+        loading.dismiss();
+
         if (!student) {
           return this.askId();
         }
