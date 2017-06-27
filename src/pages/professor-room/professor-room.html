@@ -54,6 +54,16 @@
     </ion-item>
   </ion-list>
 
+  <div class="no-rooms" *ngIf="!rooms?.length">
+    <div>
+      <ion-icon name="school"></ion-icon>
+    </div>
+    Você ainda não tem nenhuma turma cadastrada. Começe adicionando uma.
+    <br>
+    <button ion-button (click)="newRoom()">Adicionar turma</button>
+  </div>
+
+
   <ion-fab right bottom>
     <button (click)="newRoom()" ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>
   </ion-fab>

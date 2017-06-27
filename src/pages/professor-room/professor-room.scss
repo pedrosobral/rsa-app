@@ -11,6 +11,15 @@ page-professor-room {
     }
   }
 
+  .no-rooms {
+    ion-icon {
+      font-size: 40px;
+    }
+    margin-top: 20vh;
+    text-align: center;
+    font-size: 20px;
+  }
+
   ion-note {
     display: block;
     margin-top: 5px;
