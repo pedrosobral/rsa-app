@@ -1,3 +1,19 @@
+<a name="0.23.0"></a>
+# [0.23.0](https://github.com/pedrosobral/rsa-app/compare/0.22.0...v0.23.0) (2017-06-27)
+
+
+### Bug Fixes
+
+* **modal:** change defaults modal height size ([5171b40](https://github.com/pedrosobral/rsa-app/commit/5171b40))
+
+
+### Features
+
+* **questions:** better button placement to add questions ([b5e7fe9](https://github.com/pedrosobral/rsa-app/commit/b5e7fe9))
+* **room:** add warning when there's no room available ([63b7bc2](https://github.com/pedrosobral/rsa-app/commit/63b7bc2))
+
+
+
 <a name="0.22.0"></a>
 # [0.22.0](https://github.com/pedrosobral/rsa-app/compare/0.21.0...v0.22.0) (2017-06-25)
 
