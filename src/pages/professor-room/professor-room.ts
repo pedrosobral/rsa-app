@@ -38,7 +38,7 @@ export class ProfessorRoomPage {
   }
 
   newRoom() {
-    this.modalCtrl.create('NewRoomPage').present();
+    this.modalCtrl.create('NewRoomPage', null, {cssClass: 'new-room-modal'}).present();
   }
 
   students(room) {
