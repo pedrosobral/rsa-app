@@ -34,9 +34,11 @@
     <div class="info-header" *ngIf="!questions?.length">
       <p>Você ainda não tem nenhuma questão cadastrada.</p>
       <p>Para iniciar uma sessão, você precisa criar uma questão primeiro.</p>
+      <button ion-button (click)="newQuestion()">Adicionar questão</button>
     </div>
 
     <!-- header selected questions -->
+    <button ion-button *ngIf="questions?.length" (click)="newQuestion()">Adicionar questão</button>
     <ion-item>
       <span *ngIf="questions?.length > 0" i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões} =1 {1 questão selecionada} other {{{sessionQuestions.length}} questões selecionadas}}
       </span>
