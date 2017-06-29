@@ -1,3 +1,14 @@
+<a name="0.24.0"></a>
+# [0.24.0](https://github.com/pedrosobral/rsa-app/compare/0.23.0...v0.24.0) (2017-06-29)
+
+
+### Bug Fixes
+
+* **image:** add . ([794286e](https://github.com/pedrosobral/rsa-app/commit/794286e))
+* **poll:** on get room info error go back ([c3380e7](https://github.com/pedrosobral/rsa-app/commit/c3380e7))
+
+
+
 <a name="0.23.0"></a>
 # [0.23.0](https://github.com/pedrosobral/rsa-app/compare/0.22.0...v0.23.0) (2017-06-27)
 
