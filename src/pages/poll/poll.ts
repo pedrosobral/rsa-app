@@ -112,6 +112,11 @@ export class PollPage {
 
         // listening to event `clear room`
         this.clearRoom();
+      })
+      .catch(() => {
+        loader.dismiss().then(() => {
+          this.navCtrl.pop();
+        });
       });
   }
 
