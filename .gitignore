@@ -5,6 +5,10 @@
 database.rules.json
 firebase.json
 
+# android
+*.apk
+*.keystore
+
 *~
 *.sw[mnpcod]
 *.log
