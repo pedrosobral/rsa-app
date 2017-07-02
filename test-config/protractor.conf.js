@@ -5,9 +5,12 @@
 var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 
 exports.config = {
-  allScriptsTimeout: 50000,
+  allScriptsTimeout: 11000,
   specs: [
     '../e2e/**/*.e2e-spec.ts'
+    // '../e2e/add-question.e2e-spec.ts',
+    // '../e2e/poll.e2e-spec.ts',
+    // '../e2e/student-login.e2e-spec.ts',
   ],
   capabilities: {
     'browserName': 'chrome'
@@ -38,8 +41,7 @@ exports.config = {
     browser.driver.findElement(by.css('#password > input')).sendKeys('123');
     browser.driver.findElement(by.id('login')).click();
 
-    // browser.
-    // browser.waitForAngularEnabled(false);
+    browser.waitForAngularEnabled(false);
 
     // Login takes some time, so wait until it's done.
     // For the test app's login, we know it's done when it redirects to
