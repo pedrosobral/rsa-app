@@ -51,6 +51,7 @@
     </ion-list>
 
     <div *ngIf="form.value.type !== 'free'">
+      <button ion-button clear (click)="addOption()">Adicionar Alternativa</button>
       <!-- <ion-list reorder="true" radio-group formControlName="correct" (ionItemReorder)="reorder($event)"> -->
       <ion-list radio-group formControlName="correct">
         <ion-item formArrayName="options" *ngFor="let student of form?.controls?.options?.controls; let i = index" >
@@ -67,7 +68,6 @@
         </ion-item>
       </ion-list>
 
-      <button ion-button clear (click)="addOption()">Adicionar Alternativa</button>
     </div>
   </form>
 
