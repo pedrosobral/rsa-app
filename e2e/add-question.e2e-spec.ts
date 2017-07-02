@@ -6,18 +6,21 @@ describe('Questions Tab', () => {
   let questionsTab: QuestionsTab;
 
   beforeEach(() => {
-    browser.waitForAngularEnabled(false);
     questionsTab = new QuestionsTab();
   });
 
   describe('add new questions', () => {
+
     it('should open new question form', () => {
-      questionsTab.sleep();
-      questionsTab.getAddQuestionButton().click();
-      questionsTab.sleep();
+      questionsTab.navigateToPage();
+      browser.refresh().then(() => {
+        questionsTab.sleep(1000);
 
+        questionsTab.getAddQuestionButton().click();
+        questionsTab.sleep();
 
-      expect(questionsTab.getModalAddQuestion().isDisplayed()).toBeTruthy();
+        expect(questionsTab.getModalAddQuestion().isDisplayed()).toBeTruthy();
+      })
     });
 
     it('should add true or false question', () => {
@@ -54,11 +57,13 @@ describe('Questions Tab', () => {
       form.setAlternativeText(1, 'NOT TO BE');
 
       expect(form.save().isEnabled()).toBeFalsy();
+
+      form.cancel();
     });
 
     it('should not allow mc question with one option', () => {
-      questionsTab.navigateToPage();
-      browser.refresh().then(() => {
+      // questionsTab.navigateToPage();
+      // browser.refresh().then(() => {
 
         questionsTab.sleep(1000);
         questionsTab.getAddQuestionButton().click();
@@ -71,7 +76,9 @@ describe('Questions Tab', () => {
         form.setAlternativeText(0, 'TO BE');
 
         expect(form.save().isEnabled()).toBeFalsy();
-      })
+
+        form.cancel();
+      // })
     })
   });
 });

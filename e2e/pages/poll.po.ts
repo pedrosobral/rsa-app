@@ -5,8 +5,16 @@ import { Page } from './pages';
 export class PollPage extends Page {
 
   navigateToPage() {
-    return this.navigateTo('/#/home');
+    return this.navigateTo('#/dashboard/class/questions/list');
   }
+
+  // selectQuestion(index) {
+  //   return element.all(by.css('ion-item')).get(index + 1).click();
+  // }
+  //
+  // startSession() {
+  //   return element(by.buttonText('Iniciar sessão')).click();
+  // }
 
   getLoginModal() {
     return element(by.buttonText('Fazer login'));
