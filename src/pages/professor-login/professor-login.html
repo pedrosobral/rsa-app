@@ -13,14 +13,14 @@
       <img src="./assets/rsa_icon.png" padding>
       <ion-list>
         <ion-item>
-          <ion-input type="text" formControlName="email" placeholder="Email"></ion-input>
+          <ion-input type="text" formControlName="email" placeholder="Email" id="email"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input type="password" formControlName="password" placeholder="Senha"></ion-input>
+          <ion-input type="password" formControlName="password" placeholder="Senha" id="password"></ion-input>
         </ion-item>
 
-        <button [disabled]="!form.valid" style="margin-top: 10px; margin-bottom: 0px;" ion-button full (click)="login()">Fazer login</button>
+        <button [disabled]="!form.valid" style="margin-top: 10px; margin-bottom: 0px;" ion-button full id="login" (click)="login()">Fazer login</button>
       </ion-list>
     </ion-card>
   </form>
