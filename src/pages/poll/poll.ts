@@ -274,13 +274,15 @@ export class PollPage {
               .then(() => {
                 this.navCtrl.canGoBack() && this.navCtrl.popToRoot();
               });
+              return false;
           }
         },
         {
           text: 'Fazer login',
           handler: data => {
             // do login
-            this.doLogin(data.id);
+            this.doLogin(data.id)
+              .then(() => { return true });
           }
         }
       ]
@@ -293,11 +295,11 @@ export class PollPage {
     });
   }
 
-  doLogin(id) {
+  doLogin(id): Promise<any> {
     const loading = this.presentLoading('Carregando informações da sala...');
     loading.present();
 
-    this.rooms.login(this.room, id)
+    return this.rooms.login(this.room, id)
       .then((student) => {
         loading.dismiss();
 
@@ -319,7 +321,7 @@ export class PollPage {
 
         // attendance
         this.initAttendance();
-      })
+      });
   }
 
   presentToast(message) {
