@@ -71,7 +71,7 @@
 
     <!-- fab poll -->
     <ion-fab-list side="top" [hidden]="appState !== 'POLL_LIVE'">
-      <button (click)="end()" ion-fab color="danger">
+      <button id="end-button" (click)="end()" ion-fab color="danger">
         <ion-icon name="square"></ion-icon>
         <ion-label>Encerrar sessão</ion-label>
       </button>
@@ -79,7 +79,7 @@
         <ion-icon name="hand"></ion-icon>
         <ion-label>Ver frequência</ion-label>
       </button>
-      <button (click)="stop()" ion-fab [color]="poll?.available == currentSlide ? 'secondary' : ''">
+      <button id="play-button" (click)="stop()" ion-fab [color]="poll?.available == currentSlide ? 'secondary' : ''">
         <ion-icon name="play"></ion-icon>
         <ion-label>{{poll?.available == currentSlide ? 'Pausar votação' : 'Ativar votação'}}</ion-label>
       </button>

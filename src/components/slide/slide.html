@@ -1,7 +1,7 @@
 <h6>
   <span *ngIf="settings?.available"> Responda agora em <span ion-text color="secondary">{{poll?.room?.code}}</span></span>
   <span *ngIf="!settings?.available">Votação indisponível <span ion-text color="secondary">{{poll?.room?.code}}</span></span>
-  <span style="float: right"><ion-icon name="ios-people" color="secondary"></ion-icon> {{question.votes}}</span>
+  <span style="float: right" class="number-votes"><ion-icon name="ios-people" color="secondary"></ion-icon> {{question.votes}}</span>
 </h6>
 <p>{{question.question}}</p>
 <!-- <canvas [hidden]="!question.showChart" width="50%" style="float: right" class="chart" #canvas></canvas> -->
