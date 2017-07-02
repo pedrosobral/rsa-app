@@ -1,3 +1,13 @@
+<a name="0.26.0"></a>
+# [0.26.0](https://github.com/pedrosobral/rsa-app/compare/0.25.0...v0.26.0) (2017-07-02)
+
+
+### Features
+
+* **e2e:** basic poll test student'n'professor ([940323f](https://github.com/pedrosobral/rsa-app/commit/940323f))
+
+
+
 <a name="0.25.0"></a>
 # [0.25.0](https://github.com/pedrosobral/rsa-app/compare/0.24.0...v0.25.0) (2017-07-02)
 
