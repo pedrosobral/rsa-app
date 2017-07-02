@@ -4,12 +4,10 @@ import { Page, PollPage, ProfessorLive, ProfessorQuestions } from './pages/pages
 
 describe('Poll Page', () => {
   let poll: PollPage;
-  let livePage: ProfessorLive;
   let questionsPage: ProfessorQuestions;
 
   beforeEach(() => {
     poll = new PollPage();
-    // livePage = new ProfessorLive();
     questionsPage = new ProfessorQuestions();
   });
 
