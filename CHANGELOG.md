@@ -1,3 +1,19 @@
+<a name="0.25.0"></a>
+# [0.25.0](https://github.com/pedrosobral/rsa-app/compare/0.24.0...v0.25.0) (2017-07-02)
+
+
+### Bug Fixes
+
+* **new-question:** move button add alternative to be fixed ([a6ea2c0](https://github.com/pedrosobral/rsa-app/commit/a6ea2c0))
+* **poll:** fix break when user cancels login ([1da0d19](https://github.com/pedrosobral/rsa-app/commit/1da0d19))
+
+
+### Features
+
+* **e2e:** start with e2e tests ([74c5271](https://github.com/pedrosobral/rsa-app/commit/74c5271))
+
+
+
 <a name="0.24.0"></a>
 # [0.24.0](https://github.com/pedrosobral/rsa-app/compare/0.23.0...v0.24.0) (2017-06-29)
 
