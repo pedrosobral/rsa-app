@@ -34,11 +34,16 @@
     <div class="info-header" *ngIf="!questions?.length">
       <p>Você ainda não tem nenhuma questão cadastrada.</p>
       <p>Para iniciar uma sessão, você precisa criar uma questão primeiro.</p>
-      <button ion-button (click)="newQuestion()">Adicionar questão</button>
+      <button ion-button (click)="newQuestion()" icon-left>
+        <ion-icon name="add"></ion-icon>
+        Adicionar questão
+      </button>
     </div>
 
     <!-- header selected questions -->
-    <button ion-button *ngIf="questions?.length" (click)="newQuestion()">Adicionar questão</button>
+    <button ion-button icon-left *ngIf="questions?.length" (click)="newQuestion()">
+      <ion-icon name="add"></ion-icon>
+      Adicionar questão</button>
     <ion-item>
       <span *ngIf="questions?.length > 0" i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões} =1 {1 questão selecionada} other {{{sessionQuestions.length}} questões selecionadas}}
       </span>
@@ -77,7 +82,7 @@
   </div>
 
   <!-- fab button -->
-  <ion-fab right bottom>
+  <!-- <ion-fab right bottom>
     <button (click)="newQuestion()" ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>
-  </ion-fab>
+  </ion-fab> -->
 </ion-content>

@@ -8,7 +8,11 @@
 
 <ion-content>
   <!-- rooms list -->
-  <ion-list padding>
+  <ion-list padding *ngIf="rooms?.length">
+    <button ion-button icon-left (click)="newRoom()">
+      <ion-icon name="add"></ion-icon>
+      Adicionar turma
+    </button>
     <ion-item class="room-head">
       <ion-row>
         <ion-col align-self-center col-4>Nome</ion-col>
@@ -60,11 +64,14 @@
     </div>
     Você ainda não tem nenhuma turma cadastrada. Começe adicionando uma.
     <br>
-    <button ion-button (click)="newRoom()">Adicionar turma</button>
+    <button ion-button icon-left (click)="newRoom()">
+      <ion-icon name="add"></ion-icon>
+      Adicionar turma
+    </button>
   </div>
 
 
-  <ion-fab right bottom>
+  <!-- <ion-fab right bottom>
     <button (click)="newRoom()" ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>
-  </ion-fab>
+  </ion-fab> -->
 </ion-content>
