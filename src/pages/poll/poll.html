@@ -37,7 +37,10 @@
 
     <ion-list *ngIf="question?.type !== 'free'" radio-group [(ngModel)]="answer">
       <ion-item *ngFor="let option of question.options; let i = index">
-        <ion-label>{{option.text}}</ion-label>
+        <ion-label>
+          <span ion-text color="primary">{{labels[i]}})</span>
+          {{option.text}}
+        </ion-label>
         <ion-radio [value]="option"></ion-radio>
       </ion-item>
     </ion-list>

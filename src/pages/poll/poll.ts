@@ -30,6 +30,7 @@ import {
 })
 export class PollPage {
   @ViewChild('fab') fab: FabContainer;
+  labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   code: String = this.navParams.get('id');
   poll: any;
