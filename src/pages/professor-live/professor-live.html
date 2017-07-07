@@ -8,29 +8,33 @@
   <!-- old sessions list -->
   <ion-list [hidden]="appState !== 'SHOW_LIST'" padding>
     <ion-list-header>
-      <h1>Sessões encerradas</h1>
+      <h1>Sessões encerradas
+      <p>Clique para ver o resultado dos estudantes.</p>
+      </h1>
+      <div class="info">
+        <p *ngIf="!sessions?.length">Veja aqui todas as sessões encerradas.</p>
+      </div>
     </ion-list-header>
-    <div class="info" *ngIf="!sessions?.length">
-      <p>Veja aqui todas as sessões encerradas.</p>
-      <p>Clique para ver os resultados dos estudantes.</p>
-    </div>
     <ion-item class="sessions-head">
       <ion-row>
         <ion-col align-self-center col-3>Nome</ion-col>
         <ion-col align-self-center col-2>#</ion-col>
         <ion-col align-self-center col-2>Questões</ion-col>
-        <ion-col align-self-center col-2>Alunos</ion-col>
-        <ion-col align-self-center col-2>Última atividade</ion-col>
+        <ion-col align-self-center col-3>Última atividade</ion-col>
+        <ion-col align-self-center col-2>Respostas</ion-col>
       </ion-row>
     </ion-item>
-    <button class="sessions-rows" ion-item *ngFor="let session of sessions" (click)="goToDetails(session)">
+    <button ion-item class="sessions-rows" *ngFor="let session of sessions" (click)="goToDetails(session)">
       <ion-row>
-        <ion-col align-self-center col-3><span class="break-word">{{session.room.name}}</span></ion-col>
+        <ion-col align-self-center col-3><span class="break-word">{{session.room.name}}</span>
+        </ion-col>
         <ion-col align-self-center col-2>{{session.room.code}}</ion-col>
         <ion-col align-self-center col-2><ion-icon name="list"></ion-icon> {{session.questions?.length}}</ion-col>
-        <ion-col align-self-center col-2><ion-icon name="ios-people"></ion-icon> {{session.participants || 0}}</ion-col>
-        <ion-col align-self-center col-2><ion-icon name="timer"></ion-icon> {{session.updatedAt | amTimeAgo }}</ion-col>
-      </ion-row>
+        <ion-col align-self-center col-3><ion-icon name="timer"></ion-icon> {{session.updatedAt | amTimeAgo }}</ion-col>
+        <ion-col align-self-center col-2>
+          <button outline ion-button>Detalhes</button>
+        </ion-col>
+    </ion-row>
     </button>
     <ion-item *ngIf="sessions?.length < 1">Nenhuma sessão encerrada</ion-item>
   </ion-list>
@@ -42,10 +46,7 @@
         <slide *ngIf="appState === 'POLL_LIVE' || appState === 'SHOW_OLD_POLL'" [settings]="settings" [question]="question" [poll]="poll">
         </slide>
       </section>
-      <attendance
-        [attendance]="attendance"
-        [hidden]="appState !== 'TAKE_ATTENDANCE'"
-        [info]="room">
+      <attendance [attendance]="attendance" [hidden]="appState !== 'TAKE_ATTENDANCE'" [info]="room">
       </attendance>
     </div>
   </div>
