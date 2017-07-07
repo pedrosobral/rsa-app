@@ -1,5 +1,10 @@
-<ion-list *ngIf="log">
-  <ion-list-header>Acessos recentes</ion-list-header>
+<ion-list *ngIf="log?.length">
+  <ion-item>
+    Acessos recentes
+    <button ion-button clear item-right icon-only (click)="clear()">
+      <ion-icon name="trash"></ion-icon>
+    </button>
+  </ion-item>
   <ion-item *ngFor="let entry of log" text-wrap>
     <span color="primary" ion-text>
         #{{entry.code}} &#8226; {{entry.name}}

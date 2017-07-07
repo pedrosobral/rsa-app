@@ -37,6 +37,10 @@ export class LogAccessProvider {
     });
   }
 
+  clear() {
+    return this.saveHistory([]);
+  }
+
   saveHistory(data) {
     return this.saveToDatabase(LOGACCESS, data);
   }
