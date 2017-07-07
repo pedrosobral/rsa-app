@@ -10,16 +10,12 @@
     </ng-template>
 
     <ion-buttons end>
-      <button *ngIf="room && room?.code" ion-button icon-left (click)="takeAttendance()">
-        <ion-icon name="hand"></ion-icon>
-        Frequência
-      </button>
-      <button *ngIf="room?.private; else anonymousButton" ion-button icon-left (click)="presentPopover($event)">
-        <ion-icon name="people"></ion-icon> <span class="people-online">{{room?.people}}</span>
+      <button *ngIf="room?.private; else anonymousButton" ion-button (click)="presentPopover($event)">
+        Estudantes Online <span class="people-online"> {{room?.people}}</span>
       </button>
       <ng-template #anonymousButton>
-        <button *ngIf="room" ion-button icon-left (click)="presentPopover($event)">
-          <ion-icon name="people"></ion-icon> <span class="people-online">{{room?.peopleOnline}}</span>
+        <button *ngIf="room" ion-button (click)="presentPopover($event)">
+          Estudantes Online <span class="people-online">{{room?.peopleOnline}}</span>
         </button>
       </ng-template>
     </ion-buttons>
@@ -38,12 +34,23 @@
         <ion-icon name="add"></ion-icon>
         Adicionar questão
       </button>
+      <button *ngIf="room?.private" ion-button (click)="takeAttendance()" icon-left>
+        <ion-icon name="hand"></ion-icon>
+        Realizar Frequência
+      </button>
     </div>
 
     <!-- header selected questions -->
-    <button ion-button icon-left *ngIf="questions?.length" (click)="newQuestion()">
-      <ion-icon name="add"></ion-icon>
-      Adicionar questão</button>
+    <div *ngIf="questions?.length">
+      <button ion-button icon-left (click)="newQuestion()">
+        <ion-icon name="add"></ion-icon>
+        Adicionar questão
+      </button>
+      <button *ngIf="room?.private" ion-button (click)="takeAttendance()" icon-left>
+        <ion-icon name="hand"></ion-icon>
+        Realizar Frequência
+      </button>
+    </div>
     <ion-item>
       <span *ngIf="questions?.length > 0" i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões} =1 {1 questão selecionada} other {{{sessionQuestions.length}} questões selecionadas}}
       </span>
