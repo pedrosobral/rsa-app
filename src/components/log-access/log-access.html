@@ -1,0 +1,13 @@
+<ion-list *ngIf="log">
+  <ion-list-header>Acessos recentes</ion-list-header>
+  <ion-item *ngFor="let entry of log" text-wrap>
+    <span color="primary" ion-text>
+        #{{entry.code}} &#8226; {{entry.name}}
+      </span>
+    <br>
+    <ion-note>
+      Professor {{entry.user?.name}}
+    </ion-note>
+    <button ion-button outline item-right (click)="goToPoll(entry.code)">Entrar</button>
+  </ion-item>
+</ion-list>

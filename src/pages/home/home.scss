@@ -41,6 +41,10 @@ page-home {
       }
     }
   }
+
+  ion-list-header {
+    margin-bottom: -10px !important;
+  }
 }
 
 ::-webkit-input-placeholder {

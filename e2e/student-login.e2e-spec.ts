@@ -40,6 +40,23 @@ describe('Home Page', () => {
       expect(poll.getWelcomeMessage().getText()).toContain(', bem vindo');
     });
 
+    it('should have a history of early access', () => {
+      browser.driver.sleep(500);
+      expect(home.joinFromHistory().count()).toBeGreaterThan(0);
+    });
+
+    it('should join #ENGSOFT123 from early access', () => {
+      browser.driver.sleep(500);
+      home.joinFromHistory().click();
+
+      browser.driver.sleep(500);
+      browser.waitForAngularEnabled(false);
+
+      page.getTitle().then(title => {
+        expect(title).toEqual('#ENGSOFT123');
+      });
+    })
+
     it('should come back to home page when student cancels', () => {
       home.joinRoom('ENGSOFT123');
 

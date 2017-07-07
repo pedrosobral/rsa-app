@@ -20,6 +20,10 @@ export class HomePage extends Page {
     return element(by.css('.text-input')).sendKeys(code);
   }
 
+  joinFromHistory() {
+    return element.all(by.css('log-access button'));
+  }
+
   joinRoom(code) {
     return this.digitCode(code).then(() => {
       return this.joinButton.click();

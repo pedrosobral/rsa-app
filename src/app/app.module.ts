@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 import { MyApp } from './app.component';
 
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,6 +19,7 @@ import {
   AuthProvider,
   UsersProvider,
   AttendanceProvider,
+  LogAccessProvider,
 } from '../providers/providers';
 
 const listProviders = [
@@ -28,6 +31,7 @@ const listProviders = [
   AuthProvider,
   UsersProvider,
   AttendanceProvider,
+  LogAccessProvider,
 
   SplashScreen,
   {
@@ -44,7 +48,8 @@ export function provider() {
   declarations: [MyApp],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],

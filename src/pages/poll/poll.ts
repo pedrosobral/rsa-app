@@ -18,6 +18,7 @@ import {
   FeathersProvider,
   PollService,
   RoomsProvider,
+  LogAccessProvider,
 } from '../../providers/providers';
 
 @IonicPage({
@@ -57,6 +58,7 @@ export class PollPage {
     public alertCtrl: AlertController,
     public toastCtrl: ToastController,
     public loadCtrl: LoadingController,
+    public logAccess: LogAccessProvider,
   ) { }
 
   ionViewDidEnter() {
@@ -113,6 +115,9 @@ export class PollPage {
 
         // listening to event `clear room`
         this.clearRoom();
+
+        // add room entry to log access
+        this.logAccess.addHistory(Object.assign({}, this.room, {'code': this.code}));
       })
       .catch(() => {
         loader.dismiss().then(() => {
