@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {
   IonicPage,
   NavController,
+  LoadingController,
 } from 'ionic-angular';
 
 import {
@@ -32,6 +33,7 @@ export class ProfessorLoginPage {
     public users: UsersProvider,
     public fb: FormBuilder,
     public navCtrl: NavController,
+    public loadCtrl: LoadingController,
   ) {
     this.initForm();
   }
@@ -48,6 +50,14 @@ export class ProfessorLoginPage {
   }
 
   login() {
+    const loading = this.loadCtrl.create({
+      content: 'Carregando...',
+      dismissOnPageChange: true,
+      duration: 11000
+    });
+
+    loading.present();
+
     this.auth.login(this.form.value)
       .then((payload) => {
         return this.users.user(payload.userId);
@@ -56,6 +66,7 @@ export class ProfessorLoginPage {
         this.navCtrl.push('ProfessorTabsPage');
       })
       .catch((error) => {
+        loading.dismiss();
         console.info('error', error);
       });
   }
