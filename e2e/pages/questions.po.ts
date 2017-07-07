@@ -16,7 +16,7 @@ export class QuestionsTab extends Page {
   }
 
   navigateToPage() {
-    return this.navigateTo('/#/dashboard/class/questions/list');
+    return this.navigateTo(browser.baseUrl + 'dashboard/tabs/t0/class/questions/nav/n8/list');
   }
 
   getAddQuestionButton() {

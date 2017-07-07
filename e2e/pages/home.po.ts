@@ -13,7 +13,7 @@ export class HomePage extends Page {
   }
 
   navigateToPage() {
-    return this.navigateTo('/#/home');
+    return this.navigateTo('home');
   }
 
   digitCode(code) {

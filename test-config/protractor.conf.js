@@ -16,7 +16,7 @@ exports.config = {
     'browserName': 'chrome'
   },
   directConnect: true,
-  baseUrl: 'http://localhost:8100/',
+  baseUrl: 'http://localhost:8100/#/nav/n4/',
   // baseUrl: 'https://rsa-beta-a263f.firebaseapp.com/',
   framework: 'jasmine',
   jasmineNodeOpts: {
@@ -33,7 +33,7 @@ exports.config = {
   onPrepare: function() {
     jasmine.getEnv().addReporter(new SpecReporter());
 
-    browser.driver.get(browser.baseUrl + '#/teacher/login');
+    browser.driver.get(browser.baseUrl + 'teacher/login');
 
     browser.driver.sleep(1000);
 

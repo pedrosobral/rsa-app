@@ -37,7 +37,7 @@ describe('Home Page', () => {
 
       browser.driver.sleep(1000);
 
-      expect(poll.getWelcomeMessage().getText()).toContain('Pedro, bem vindo');
+      expect(poll.getWelcomeMessage().getText()).toContain(', bem vindo');
     });
 
     it('should come back to home page when student cancels', () => {
@@ -51,7 +51,7 @@ describe('Home Page', () => {
       browser.driver.sleep(1000);
 
       browser.getCurrentUrl().then(url => {
-        expect(url).toEqual(browser.baseUrl + '#/home');
+        expect(url).toEqual(browser.baseUrl + 'home');
       });
     });
 
@@ -63,7 +63,7 @@ describe('Home Page', () => {
       browser.driver.sleep(500);
 
       browser.getCurrentUrl().then(url => {
-        expect(url).toEqual(browser.baseUrl + '#/home');
+        expect(url).toEqual(browser.baseUrl + 'home');
       });
     });
   })

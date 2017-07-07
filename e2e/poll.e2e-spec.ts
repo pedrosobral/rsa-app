@@ -26,7 +26,7 @@ describe('Poll Page', () => {
     browser.sleep(2000);
 
     browser.getCurrentUrl().then(url => {
-      expect(url).toEqual(browser.baseUrl + '#/dashboard/live/polls');
+      expect(url).toEqual(browser.baseUrl + 'dashboard/tabs/t0/live/polls');
     });
   });
 
@@ -38,7 +38,7 @@ describe('Poll Page', () => {
     var $2 = studentBrowser.$;
     var $$2 = studentBrowser.$$;
 
-    studentBrowser.get(browser.baseUrl + '#/poll/ENGSOFT123')
+    studentBrowser.get(browser.baseUrl + 'poll/ENGSOFT123')
       .then(() => {
         studentBrowser.driver.sleep(1000);
         studentBrowser.waitForAngularEnabled(false);
