@@ -89,6 +89,12 @@ export class ProfessorLivePage {
         // attendance
         this.initAttendance(this.room);
       });
+
+    // live update students online
+    // TODO: try to init and update all room info here
+    this.rs.active().subscribe((room) => {
+      this.room = room.data[0];
+    });
   }
 
   initializeData() {

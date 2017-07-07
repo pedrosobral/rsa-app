@@ -8,7 +8,6 @@ import {
   NavController,
   NavParams,
   ToastController,
-  PopoverController,
 } from 'ionic-angular';
 
 import {
@@ -46,7 +45,6 @@ export class ProfessorQuestionsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public popCtrl: PopoverController,
   ) {
     // filter by label event subscribe
     this.events.subscribe('label:filter', (label) => {
@@ -172,10 +170,6 @@ export class ProfessorQuestionsPage {
   getActiveRoom() {
     this.rs.active().subscribe((room) => {
       this.room = room.data[0];
-
-      if (this.room && this.room.private) {
-        this.room.people = this.room.students.filter(s => s.online).length;
-      }
     });
   }
 
@@ -194,10 +188,6 @@ export class ProfessorQuestionsPage {
         this.events.publish('attendance:live', res);
         this.events.publish('tabs:select', 1);
       })
-  }
-
-  presentPopover(ev) {
-    this.popCtrl.create('OnlineStudentsPage', { room: this.room }).present({ ev });
   }
 
   questionSelected() {

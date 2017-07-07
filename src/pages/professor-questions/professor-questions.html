@@ -10,14 +10,7 @@
     </ng-template>
 
     <ion-buttons end>
-      <button *ngIf="room?.private; else anonymousButton" ion-button (click)="presentPopover($event)">
-        Estudantes Online <span class="people-online"> {{room?.people}}</span>
-      </button>
-      <ng-template #anonymousButton>
-        <button *ngIf="room" ion-button (click)="presentPopover($event)">
-          Estudantes Online <span class="people-online">{{room?.peopleOnline}}</span>
-        </button>
-      </ng-template>
+      <students-online [room]="room"></students-online>
     </ion-buttons>
   </ion-navbar>
 
