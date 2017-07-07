@@ -6,7 +6,7 @@
    </button>
     <ion-title *ngIf="room; else noRoomTitle">{{room?.name}} #{{room?.code}}</ion-title>
     <ng-template #noRoomTitle>
-      <ion-title>Nenhuma turma disponível</ion-title>
+      <ion-title>Nenhuma turma ativa</ion-title>
     </ng-template>
 
     <ion-buttons end>

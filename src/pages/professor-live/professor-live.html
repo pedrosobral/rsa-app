@@ -1,6 +1,11 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Ao Vivo</ion-title>
+    <!-- <ion-title>Ao Vivo</ion-title> -->
+    <ion-title *ngIf="room; else noRoomTitle">{{room?.name}} #{{room?.code}}</ion-title>
+    <ng-template #noRoomTitle>
+      <ion-title>Nenhuma turma ativa no momento</ion-title>
+    </ng-template>
+
     <ion-buttons end>
       <students-online [room]="room"></students-online>
     </ion-buttons>
