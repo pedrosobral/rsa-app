@@ -1,3 +1,18 @@
+<a name="0.28.0"></a>
+# [0.28.0](https://github.com/pedrosobral/rsa-app/compare/0.27.0...v0.28.0) (2017-07-07)
+
+
+### Bug Fixes
+
+* **image:** add <br> image description ([6bc9e46](https://github.com/pedrosobral/rsa-app/commit/6bc9e46))
+
+
+### Features
+
+* **log-access:** add to home page list early rooms access from students ([6b2d75b](https://github.com/pedrosobral/rsa-app/commit/6b2d75b))
+
+
+
 <a name="0.27.0"></a>
 # [0.27.0](https://github.com/pedrosobral/rsa-app/compare/0.26.0...v0.27.0) (2017-07-07)
 
