@@ -1,3 +1,24 @@
+<a name="0.27.0"></a>
+# [0.27.0](https://github.com/pedrosobral/rsa-app/compare/0.26.0...v0.27.0) (2017-07-07)
+
+
+### Bug Fixes
+
+* **chart:** remove width ([78520fe](https://github.com/pedrosobral/rsa-app/commit/78520fe))
+
+
+### Features
+
+* **buttons:** remove some fab buttons ([f93ea85](https://github.com/pedrosobral/rsa-app/commit/f93ea85))
+* **poll:** add label to alternatives ([a7ecd82](https://github.com/pedrosobral/rsa-app/commit/a7ecd82))
+* **question:** able to add image url to a question ([9ade22c](https://github.com/pedrosobral/rsa-app/commit/9ade22c))
+* **questions:** change attendance button location ([d3e9e37](https://github.com/pedrosobral/rsa-app/commit/d3e9e37))
+* **refactor-students-live:** refactor to a component students online popover ([b7343e3](https://github.com/pedrosobral/rsa-app/commit/b7343e3))
+* **style:** better visual feedback ([8c8c582](https://github.com/pedrosobral/rsa-app/commit/8c8c582))
+* **toolbar:** add name class active on live tab ([84a4d8e](https://github.com/pedrosobral/rsa-app/commit/84a4d8e))
+
+
+
 <a name="0.26.0"></a>
 # [0.26.0](https://github.com/pedrosobral/rsa-app/compare/0.25.0...v0.26.0) (2017-07-02)
 
