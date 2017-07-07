@@ -24,13 +24,22 @@
     </li>
   </ul>
 
+  <div class="image" *ngIf="form.value.imageUrl">
+    <img [src]="form.value.imageUrl"/>
+    Imagem vai ficar disponível apenas no aplicativo dos estudantes.
+  </div>
+
   <form [formGroup]="form">
     <ion-item>
       <ion-label stacked>Questão</ion-label>
       <ion-input type="text" formControlName="question" placeholder="Digite a sua questão aqui"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Descrição</ion-label>
+      <ion-label stacked>Imagem (opcional)</ion-label>
+      <ion-input type="url" formControlName="imageUrl" placeholder="Cole aqui a URL da imagem"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Descrição (opcional)</ion-label>
       <ion-textarea formControlName="description" placeholder="Você pode usar este espaço para adicionar detalhes"></ion-textarea>
     </ion-item>
     <ion-list radio-group formControlName="type" (ionChange)="updateValidators()">

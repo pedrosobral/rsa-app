@@ -42,6 +42,7 @@ export class ProfessorNewQuestionPage {
     this.form = this.formBuilder.group({
       question: ['', Validators.required],
       description: [''],
+      imageUrl: [''],
       type: ['mc', Validators.required],
       correct: ['', Validators.required],
       options: this.formBuilder.array([], Validators.minLength(2))
@@ -89,6 +90,7 @@ export class ProfessorNewQuestionPage {
     this.form = this.formBuilder.group({
       question: [question.question, Validators.required],
       description: [question.description],
+      imageUrl: [question.imageUrl],
       type: [question.type, Validators.required],
       correct: [question.correct, Validators.required],
       options: this.formBuilder.array(this.getOptions(question.options), Validators.minLength(2)),

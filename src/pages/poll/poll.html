@@ -34,10 +34,13 @@
     <div class="description">
       <span>{{question?.description}}</span>
     </div>
+    <div class="image" *ngIf="question?.imageUrl">
+      <img [src]="question?.imageUrl">
+    </div>
 
     <ion-list *ngIf="question?.type !== 'free'" radio-group [(ngModel)]="answer">
       <ion-item *ngFor="let option of question.options; let i = index">
-        <ion-label>
+        <ion-label class="break-word">
           <span ion-text color="primary">{{labels[i]}})</span>
           {{option.text}}
         </ion-label>
