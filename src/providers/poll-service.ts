@@ -17,6 +17,7 @@ export class PollService {
       query: {
         'room.code': room.code,
         isOver: false,
+        $select: ['available', 'user', 'questions']
       },
       rx: {
         listStrategy: 'always'
@@ -38,24 +39,40 @@ export class PollService {
   setIsOver(poll) {
     return this.polls.patch(poll._id, {
       isOver: true
+    }, {
+      query: {
+        $select: ['']
+      }
     });
   }
 
   setAvailable(poll, value) {
     return this.polls.patch(poll._id, {
       "available": value
+    }, {
+      query: {
+        $select: ['']
+      }
     });
   }
 
   showChart(poll, questionIndex, value) {
     return this.polls.patch(poll._id, {
       [`questions.${questionIndex}.showChart`]: value
+    }, {
+      query: {
+        $select: ['']
+      }
     });
   }
 
   showAnswer(poll, questionIndex, value) {
     return this.polls.patch(poll._id, {
       [`questions.${questionIndex}.showAnswer`]: value
+    }, {
+      query: {
+        $select: ['']
+      }
     });
   }
 
@@ -76,7 +93,7 @@ export class PollService {
     }, {
         query: {
           [`questions.${questionIndex}.students._id`]: student && student._id,
-          $select: ['']
+          $select: ['user']
         }
       });
   }
@@ -91,7 +108,7 @@ export class PollService {
       }
     }, {
         query: {
-          $select: ['']
+          $select: ['user']
         }
       });
   }
@@ -106,7 +123,7 @@ export class PollService {
     }, {
         query: {
           [`questions.${questionIndex}.students._id`]: student && student._id,
-          $select: ['']
+          $select: ['user']
         }
       });
   }
@@ -117,6 +134,6 @@ export class PollService {
         [`questions.${questionIndex}.options.${answer.index}.votes`]: 1,
         [`questions.${questionIndex}.votes`]: 1,
       },
-    }, { query: { $select: [''] } });
+    }, { query: { $select: ['user'] } });
   }
 }
