@@ -30,7 +30,7 @@ export class OnlineStudentsPage {
   ionViewDidLoad() {
     this.rs.active().subscribe((room) => {
       this.room = room.data[0];
-      this.room.people = this.room.students.filter(s => s.online).length;
+      this.room.people = this.room.students && this.room.students.filter(s => s.online).length || 0;
     });
   }
 
