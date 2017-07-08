@@ -8,6 +8,7 @@ import {
   NavController,
   NavParams,
   ToastController,
+  LoadingController,
 } from 'ionic-angular';
 
 import {
@@ -45,6 +46,7 @@ export class ProfessorQuestionsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
+    public loadCtrl: LoadingController,
   ) {
     // filter by label event subscribe
     this.events.subscribe('label:filter', (label) => {
@@ -153,6 +155,14 @@ export class ProfessorQuestionsPage {
   }
 
   goLive() {
+    const loading = this.presentLoading();
+    loading.present();
+
+    this.events.subscribe('session:loaded', () => {
+      this.events.unsubscribe('session:loaded');
+      loading.dismiss();
+    });
+
     this.populateWithStudents(this.sessionQuestions);
 
     const poll = {
@@ -174,6 +184,14 @@ export class ProfessorQuestionsPage {
   }
 
   takeAttendance() {
+    const loading = this.presentLoading();
+    loading.present();
+
+    this.events.subscribe('attendance:loaded', () => {
+      this.events.unsubscribe('attendance:loaded');
+      loading.dismiss();
+    });
+
     const fourRandomDigits = Math.floor(1000 + Math.random() * 9000);
     const attendance = {
       room: this.room._id,
@@ -192,6 +210,13 @@ export class ProfessorQuestionsPage {
 
   questionSelected() {
     this.sessionQuestions = this.questions.filter(x => x.isChecked);
+  }
+
+  presentLoading() {
+    return this.loadCtrl.create({
+      content: 'Carregando...',
+      duration: 5000
+    });
   }
 
   presentToast(message) {

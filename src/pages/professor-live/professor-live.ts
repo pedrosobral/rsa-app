@@ -123,11 +123,13 @@ export class ProfessorLivePage {
 
       // settings
       this.updateSettings();
+
+      // to dismiss loading
+      this.events.publish('session:loaded');
     });
   }
 
   initAttendance(attendance) {
-
     this.attendanceProvider.find(attendance)
       .subscribe((res) => {
         if (!res.total) return;
@@ -135,6 +137,8 @@ export class ProfessorLivePage {
         this.attendance = res.data[0];
 
         this.appState = 'TAKE_ATTENDANCE';
+
+        this.events.publish('attendance:loaded');
       });
   }
 
