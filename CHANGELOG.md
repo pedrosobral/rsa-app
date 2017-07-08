@@ -1,3 +1,23 @@
+<a name="0.29.0"></a>
+# [0.29.0](https://github.com/pedrosobral/rsa-app/compare/0.28.0...v0.29.0) (2017-07-08)
+
+
+### Bug Fixes
+
+* **online-students:** check room students array ([20dfcfa](https://github.com/pedrosobral/rsa-app/commit/20dfcfa))
+* **rooms-page:** remove segment, Ionic Page url at 3.5.0 is not working properly ([a3014ec](https://github.com/pedrosobral/rsa-app/commit/a3014ec))
+
+
+### Features
+
+* **home:** add loading on professor login ([86a12a7](https://github.com/pedrosobral/rsa-app/commit/86a12a7))
+* **loading:** show loading on init session and attendance ([ba9c487](https://github.com/pedrosobral/rsa-app/commit/ba9c487))
+* **log-access:** add button to clear history ([9067444](https://github.com/pedrosobral/rsa-app/commit/9067444))
+* **login:** add loading on login ([ac5f33e](https://github.com/pedrosobral/rsa-app/commit/ac5f33e))
+* **poll:** only return needed info ([594f5e5](https://github.com/pedrosobral/rsa-app/commit/594f5e5))
+
+
+
 <a name="0.28.0"></a>
 # [0.28.0](https://github.com/pedrosobral/rsa-app/compare/0.27.0...v0.28.0) (2017-07-07)
 
