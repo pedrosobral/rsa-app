@@ -11,9 +11,7 @@ import {
 
 import { RoomsProvider } from '../../providers/providers';
 
-@IonicPage({
-  segment: 'list'
-})
+@IonicPage({ })
 @Component({
   selector: 'page-professor-room',
   templateUrl: 'professor-room.html',
