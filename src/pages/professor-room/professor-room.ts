@@ -65,15 +65,15 @@ export class ProfessorRoomPage {
   }
 
   presentToast(message) {
-    let toast = this.toastCtrl.create({
+    const toast = this.toastCtrl.create({
       message,
-      duration: 3000,
+      duration: 2000,
     });
     return toast.present();
   }
 
   askToRemove(room) {
-    let confirm = this.alertCtrl.create({
+    const confirm = this.alertCtrl.create({
       title: 'Remover turma?',
       message: 'Essa operação não pode ser desfeita.',
       buttons: [
