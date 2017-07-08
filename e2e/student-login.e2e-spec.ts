@@ -42,12 +42,15 @@ describe('Home Page', () => {
 
     it('should have a history of early access', () => {
       browser.driver.sleep(500);
-      expect(home.joinFromHistory().count()).toBeGreaterThan(0);
+      expect(home.joinFromHistory().count()).toBeGreaterThan(1);
     });
 
     it('should join #ENGSOFT123 from early access', () => {
       browser.driver.sleep(500);
-      home.joinFromHistory().click();
+
+      // first button is clear history
+      // from second is the history itself
+      home.joinFromHistory().get(1).click();
 
       browser.driver.sleep(500);
       browser.waitForAngularEnabled(false);
