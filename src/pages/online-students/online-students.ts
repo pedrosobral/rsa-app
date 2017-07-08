@@ -35,13 +35,8 @@ export class OnlineStudentsPage {
   }
 
   clear() {
-    // TODO: move to provider
-    const room = {
-      _id: this.room._id,
-    };
-
     this.app.socket().emit('clear room', {
-      room,
+      room: { _id: this.room._id },
     });
   }
 
