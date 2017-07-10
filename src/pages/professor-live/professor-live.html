@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <!-- <ion-title>Ao Vivo</ion-title> -->
-    <ion-title *ngIf="room; else noRoomTitle">{{room?.name}} #{{room?.code}}</ion-title>
+    <ion-title *ngIf="room; else noRoomTitle">#{{room?.code}}</ion-title>
     <ng-template #noRoomTitle>
       <ion-title>Nenhuma turma ativa no momento</ion-title>
     </ng-template>
@@ -14,7 +14,7 @@
 
 <ion-content>
   <!-- old sessions list -->
-  <ion-list [hidden]="appState !== 'SHOW_LIST'" padding>
+  <!-- <ion-list [hidden]="appState !== 'SHOW_LIST'" padding>
     <ion-list-header>
       <h1>Sessões encerradas
       <p>Clique para ver o resultado dos estudantes.</p>
@@ -34,16 +34,35 @@
     </ion-item>
     <button ion-item class="sessions-rows" *ngFor="let session of sessions" (click)="goToDetails(session)">
       <ion-row>
-        <ion-col align-self-center col-3><span class="break-word">{{session.room.name}}</span>
+        <ion-col align-self-center col-3 col-sm><span class="break-word">{{session.room.name}}</span>
         </ion-col>
-        <ion-col align-self-center col-2>{{session.room.code}}</ion-col>
-        <ion-col align-self-center col-2><ion-icon name="list"></ion-icon> {{session.questions?.length}}</ion-col>
-        <ion-col align-self-center col-3><ion-icon name="timer"></ion-icon> {{session.updatedAt | amTimeAgo }}</ion-col>
-        <ion-col align-self-center col-2>
+        <ion-col align-self-center col-2 col-sm>{{session.room.code}}</ion-col>
+        <ion-col align-self-center col-2 col-sm><ion-icon name="list"></ion-icon> {{session.questions?.length}}</ion-col>
+        <ion-col align-self-center col-3 col-sm><ion-icon name="timer"></ion-icon> {{session.updatedAt | amTimeAgo }}</ion-col>
+        <ion-col align-self-center col-2 col-sm>
           <button outline ion-button>Detalhes</button>
         </ion-col>
     </ion-row>
     </button>
+    <ion-item *ngIf="sessions?.length < 1">Nenhuma sessão encerrada</ion-item>
+  </ion-list> -->
+
+  <ion-list [hidden]="appState !== 'SHOW_LIST'" text-wrap>
+    <ion-list-header>
+      <h1>Sessões encerradas
+      <!-- <p>Clique para ver o resultado dos estudantes.</p> -->
+      </h1>
+      <div class="info">
+        <p *ngIf="!sessions?.length">Veja aqui todas as sessões encerradas.</p>
+      </div>
+    </ion-list-header>
+    <ion-item class="sessions-rows" *ngFor="let session of sessions" (click)="goToDetails(session)">
+      <span>#{{session.room?.code}} &#8226; {{session.room?.name}}</span>
+      <p>
+        <span i18n>{session.questions?.length, plural, =1 {{{session.questions?.length}} questão} other {{{session.questions?.length}} questões}}</span> &#8226; {{session.updatedAt | amCalendar }}
+      </p>
+      <button outline ion-button item-right>Detalhes</button>
+    </ion-item>
     <ion-item *ngIf="sessions?.length < 1">Nenhuma sessão encerrada</ion-item>
   </ion-list>
 
@@ -82,25 +101,25 @@
     <ion-fab-list side="top" [hidden]="appState !== 'POLL_LIVE'">
       <button id="end-button" (click)="end()" ion-fab color="danger">
         <ion-icon name="square"></ion-icon>
-        <ion-label>Encerrar sessão</ion-label>
+        <ion-label hideWhen="android,ios">Encerrar sessão</ion-label>
       </button>
       <button [hidden]="!attendance" (click)="setState('TAKE_ATTENDANCE')" ion-fab color="secondary">
         <ion-icon name="hand"></ion-icon>
-        <ion-label>Ver frequência</ion-label>
+        <ion-label hideWhen="android,ios">Ver frequência</ion-label>
       </button>
       <button id="play-button" (click)="stop()" ion-fab [color]="poll?.available == currentSlide ? 'secondary' : ''">
         <ion-icon name="play"></ion-icon>
-        <ion-label>{{poll?.available == currentSlide ? 'Pausar votação' : 'Ativar votação'}}</ion-label>
+        <ion-label hideWhen="android,ios">{{poll?.available == currentSlide ? 'Pausar votação' : 'Ativar votação'}}</ion-label>
       </button>
       <button ion-fab (click)="showChart()" [color]=" isChartAvailable ? 'secondary' : ''">
         <ion-icon name="stats"></ion-icon>
-        <ion-label>{{isChartAvailable ? 'Esconder resultado' : 'Mostrar resultado'}}</ion-label>
+        <ion-label hideWhen="android,ios">{{isChartAvailable ? 'Esconder resultado' : 'Mostrar resultado'}}</ion-label>
       </button>
       <button (click)="showAnswer()" ion-fab [color]="isAnswerAvailable ? 'secondary' : ''">
         <ion-icon name="checkmark"></ion-icon>
-        <ion-label>{{!isAnswerAvailable ? 'Mostrar resposta' : 'Esconder resposta'}}</ion-label>
+        <ion-label hideWhen="android,ios">{{!isAnswerAvailable ? 'Mostrar resposta' : 'Esconder resposta'}}</ion-label>
       </button>
-      <button ion-fab (click)="fullscreen()" [color]=" isFullscreen ? 'secondary' : ''">
+      <button hideWhen="android,ios" ion-fab (click)="fullscreen()" [color]=" isFullscreen ? 'secondary' : ''">
         <ion-icon [name]="isFullscreen ? 'contract' : 'expand'"></ion-icon>
         <ion-label>{{isFullscreen ? 'Sair tela cheia' : 'Tela cheia'}}</ion-label>
       </button>
