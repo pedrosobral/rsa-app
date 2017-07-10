@@ -15,41 +15,19 @@
 
 
 <ion-content>
-  <!-- <div [ngSwitch]="pet"></div> -->
-  <!-- <ion-list *ngIf="viewMode === 'questions'; else studentsView">
-    <ion-item class="list-header">
-      <ion-row>
-        <ion-col align-self-center col-3>Questão</ion-col>
-        <ion-col align-self-center col-2>Desempenho</ion-col>
-        <ion-col align-self-center col-2>Corretos</ion-col>
-        <ion-col align-self-center col-1>Errados</ion-col>
-        <ion-col align-self-center col-2>Participantes</ion-col>
-        <ion-col align-self-center col-2>Não Responderam</ion-col>
-      </ion-row>
-    </ion-item>
-    <button ion-item class="sessions-rows" *ngFor="let question of poll?.questions" (click)="goToDetails(question)">
-      <ion-label>
-        <ion-row>
-        <ion-col align-self-center col-3 class="break-word">{{question.question}}</ion-col>
-          <ion-col align-self-center col-2>{{question.overall || '-'}}</ion-col>
-          <ion-col align-self-center col-2>{{question.correctAnswers || '-'}}</ion-col>
-          <ion-col align-self-center col-1>{{question.wrongAnswers || '-'}}</ion-col>
-          <ion-col align-self-center col-2>{{question.correctAnswers + question.wrongAnswers || question.votes }}</ion-col>
-          <ion-col align-self-center col-2>{{question.unanswer || question.students?.length - question.votes }}</ion-col>
-        </ion-row>
-      </ion-label>
-    </button>
-  </ion-list> -->
-
   <ion-list *ngIf="viewMode === 'questions'; else studentsView" text-wrap>
     <button ion-item class="sessions-rows" *ngFor="let question of poll?.questions" (click)="goToDetails(question)">
       <h2>{{question.question}}</h2>
-      <ion-item no-lines>
-        <span ion-text class="overall" color="primary" item-left>{{question.overall || '-'}}</span>
-        <h2 class="stats" ion-text color="secondary">{{question.correctAnswers || '-'}} respostas corretas</h2>
-        <h2 class="stats" ion-text color="danger">{{question.wrongAnswers || '-'}} respostas erradas</h2>
-        <h2 class="stats" ion-text color="light">{{question.unanswer || question.students?.length - question.votes }} não responderam</h2>
-      </ion-item>
+      <ion-row justify-content-center>
+        <ion-col col-4 align-self-center>
+          <span ion-text class="overall" color="primary" item-left>{{question.overall || '-'}}</span>
+        </ion-col>
+        <ion-col col-8>
+          <h2 class="stats" ion-text color="secondary">{{question.correctAnswers || '-'}} respostas corretas</h2>
+          <h2 class="stats" ion-text color="danger">{{question.wrongAnswers || '-'}} respostas erradas</h2>
+          <h2 class="stats" ion-text color="light">{{question.unanswer || question.students?.length - question.votes }} não responderam</h2>
+        </ion-col>
+      </ion-row>
     </button>
   </ion-list>
 
