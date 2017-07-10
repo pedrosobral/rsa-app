@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 
 @IonicPage({
   segment: 'poll/question/students'
@@ -11,12 +11,5 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ProfessorStudentsResultsPage {
   question = this.navParams.get('question');
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.info('questions', this.question);
-    console.log('ionViewDidLoad ProfessorStudentsResultsPage');
-  }
-
+  constructor(public navParams: NavParams) { }
 }
