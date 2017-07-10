@@ -105,6 +105,10 @@
         <ion-label>{{isFullscreen ? 'Sair tela cheia' : 'Tela cheia'}}</ion-label>
       </button>
     </ion-fab-list>
+    <ion-fab-list side="left">
+      <button ion-fab (click)="moveSlideTo('right')"><ion-icon name="arrow-dropright"></ion-icon></button>
+      <button ion-fab (click)="moveSlideTo('left')"><ion-icon name="arrow-dropleft"></ion-icon></button>
+    </ion-fab-list>
 
     <!-- fab attendance -->
     <ion-fab-list side="top" [hidden]="appState !== 'TAKE_ATTENDANCE'">

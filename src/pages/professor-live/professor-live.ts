@@ -300,6 +300,14 @@ export class ProfessorLivePage {
     this.setState(this.previousState);
   }
 
+  moveSlideTo(side) {
+    if (side === 'right') {
+      Reveal.right();
+    } else if (side === 'left') {
+      Reveal.left();
+    }
+  }
+
   showChart() {
     const question = this.poll.questions[this.currentSlide];
     this.isChartAvailable = !question.showChart;
