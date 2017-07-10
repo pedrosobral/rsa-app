@@ -61,7 +61,10 @@ export class ProfessorSessionResultsPage {
     students.forEach((s) => {
       const answers = [];
       questions.forEach((q) => {
-        if (q.type === 'free') return;
+        if (q.type === 'free') {
+          answers.push({});
+          return;
+        }
 
         const answer = q.students.find(x => x._id === s._id).answer;
         answers.push({ answer, correct: answer && answer.index === q.correct });
