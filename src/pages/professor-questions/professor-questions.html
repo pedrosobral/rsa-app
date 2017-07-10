@@ -17,39 +17,27 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list>
+<ion-content>
+  <ion-list padding>
     <!-- header info -->
     <div class="info-header" *ngIf="!questions?.length">
       <p>Você ainda não tem nenhuma questão cadastrada.</p>
       <p>Para iniciar uma sessão, você precisa criar uma questão primeiro.</p>
-      <button ion-button (click)="newQuestion()" icon-left>
-        <ion-icon name="add"></ion-icon>
-        Adicionar questão
-      </button>
-      <button *ngIf="room?.private" ion-button (click)="takeAttendance()" icon-left>
-        <ion-icon name="hand"></ion-icon>
-        Realizar Frequência
-      </button>
     </div>
 
+    <button ion-button icon-left (click)="newQuestion()">
+      <ion-icon name="add"></ion-icon>
+      Adicionar questão
+    </button>
+
     <!-- header selected questions -->
-    <div *ngIf="questions?.length">
-      <button ion-button icon-left (click)="newQuestion()">
-        <ion-icon name="add"></ion-icon>
-        Adicionar questão
-      </button>
-      <button *ngIf="room?.private" ion-button (click)="takeAttendance()" icon-left>
-        <ion-icon name="hand"></ion-icon>
-        Realizar Frequência
-      </button>
-    </div>
+    <p *ngIf="questions?.length > 0" i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões} =1 {1 questão selecionada} other {{{sessionQuestions.length}} questões selecionadas}}
+    </p>
+
     <ion-item>
-      <span *ngIf="questions?.length > 0" i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões} =1 {1 questão selecionada} other {{{sessionQuestions.length}} questões selecionadas}}
-      </span>
       <button ion-button item-right clear icon-left [disabled]="sessionQuestions.length === 0" (click)="labelIt()">
         <ion-icon name="pricetag"></ion-icon>
-          Adicionar marcador
+          Adicionar Marcador
       </button>
       <button ion-button item-right clear icon-left [disabled]="sessionQuestions.length === 0" (click)="goLive()">
         <ion-icon name="play"></ion-icon>
@@ -58,7 +46,7 @@
     </ion-item>
 
     <!-- list questions -->
-    <ion-item *ngFor="let q of questions">
+    <ion-item *ngFor="let q of questions" no-padding>
       <ion-label>
         <span class="title">{{q.question}}</span>
         <h3 class="description">{{q.typeDescription}} <span *ngIf="q.description"> &#8226; {{q.description}}</span></h3>

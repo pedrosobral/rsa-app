@@ -7,6 +7,10 @@
     </ng-template>
 
     <ion-buttons end>
+      <button *ngIf="room?.private" ion-button icon-left (click)="takeAttendance()">
+        <ion-icon name="hand"></ion-icon>
+        Frequência
+      </button>
       <students-online [room]="room"></students-online>
     </ion-buttons>
   </ion-navbar>

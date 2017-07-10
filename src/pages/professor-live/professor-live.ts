@@ -6,6 +6,7 @@ import {
   NavController,
   FabContainer,
   ToastController,
+  LoadingController,
 } from 'ionic-angular';
 
 import * as Reveal from 'reveal.js';
@@ -57,6 +58,7 @@ export class ProfessorLivePage {
     public navCtrl: NavController,
     public cdf: ChangeDetectorRef,
     public events: Events,
+    public loadCtrl: LoadingController,
   ) {
     this.events.subscribe('room:live', (room) => {
       this.room = room;
@@ -137,8 +139,6 @@ export class ProfessorLivePage {
         this.attendance = res.data[0];
 
         this.appState = 'TAKE_ATTENDANCE';
-
-        this.events.publish('attendance:loaded');
       });
   }
 
@@ -241,6 +241,44 @@ export class ProfessorLivePage {
 
     // old sessions
     this.getOldSessions();
+  }
+
+  takeAttendance() {
+    const loading = this.presentLoading();
+    loading.present();
+
+    const fourRandomDigits = Math.floor(1000 + Math.random() * 9000);
+    const attendance = {
+      room: this.room._id,
+      name: this.room.name,
+      code: fourRandomDigits,
+      students: this.room.students,
+      online: true,
+    };
+
+    this.attendanceProvider.create(attendance)
+      .then((res) => {
+        loading.dismiss();
+      })
+      .catch((error) => {
+        this.presentToast('Algo inesperado aconteceu. Verifique a sua conexão com a internet');
+      });
+  }
+
+  presentToast(msg) {
+    const toast = this.toastCtrl.create({
+      message: msg,
+      duration: 2000,
+      position: 'bottom',
+      showCloseButton: true,
+    });
+  }
+
+  presentLoading() {
+    return this.loadCtrl.create({
+      content: 'Carregando...',
+      duration: 5000
+    });
   }
 
   pauseAttendance() {

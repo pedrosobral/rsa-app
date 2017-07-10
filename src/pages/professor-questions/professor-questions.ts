@@ -183,31 +183,6 @@ export class ProfessorQuestionsPage {
     });
   }
 
-  takeAttendance() {
-    const loading = this.presentLoading();
-    loading.present();
-
-    this.events.subscribe('attendance:loaded', () => {
-      this.events.unsubscribe('attendance:loaded');
-      loading.dismiss();
-    });
-
-    const fourRandomDigits = Math.floor(1000 + Math.random() * 9000);
-    const attendance = {
-      room: this.room._id,
-      name: this.room.name,
-      code: fourRandomDigits,
-      students: this.room.students,
-      online: true,
-    };
-
-    this.attendance.create(attendance)
-      .then((res) => {
-        this.events.publish('attendance:live', res);
-        this.events.publish('tabs:select', 1);
-      })
-  }
-
   questionSelected() {
     this.sessionQuestions = this.questions.filter(x => x.isChecked);
   }
