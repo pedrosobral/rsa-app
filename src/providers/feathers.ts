@@ -14,15 +14,15 @@ import * as authentication from 'feathers-authentication-client';
 @Injectable()
 export class FeathersProvider {
 
-  // private _url: string = 'http://192.168.0.175:3030';
-
   // digital ocean
-  // private _url: string = 'https://server.univasf-buddy.club';
+  private _url: string = 'https://server.univasf-buddy.club';
+
+  // localhost
+  // private _url: string = 'http://localhost:3030';
 
   // heroku
   // private _url: string = 'https://rsa-app.herokuapp.com';
 
-  private _url: string = 'http://localhost:3030';
   private _socket: any;
   public app: any;
 
