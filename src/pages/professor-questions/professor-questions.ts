@@ -72,7 +72,7 @@ export class ProfessorQuestionsPage {
 
     // workaround b/c service is not triggering
     // with populate ['labels'] on created
-    this.qs.questions.on('created', () => this.refresh());
+    this.qs.questions.on('created', () => this.refresh())
   }
 
   refresh() {
@@ -195,7 +195,7 @@ export class ProfessorQuestionsPage {
   }
 
   presentToast(message) {
-    let toast = this.toastCtrl.create({
+    const toast = this.toastCtrl.create({
       message,
       duration: 3000,
     });

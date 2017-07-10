@@ -8,10 +8,6 @@
     <ng-template #noRoomTitle>
       <ion-title>Nenhuma turma ativa</ion-title>
     </ng-template>
-
-    <ion-buttons end>
-      <students-online [room]="room"></students-online>
-    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -25,13 +21,13 @@
       <p>Para iniciar uma sessão, você precisa criar uma questão primeiro.</p>
     </div>
 
-    <button ion-button icon-left (click)="newQuestion()">
+    <button ion-button icon-left (click)="newQuestion()" full>
       <ion-icon name="add"></ion-icon>
       Adicionar questão
     </button>
 
     <!-- header selected questions -->
-    <p *ngIf="questions?.length > 0" i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões} =1 {1 questão selecionada} other {{{sessionQuestions.length}} questões selecionadas}}
+    <p *ngIf="questions?.length > 0" i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões para iniciar uma sessão} =1 {1 questão selecionada} other {{{sessionQuestions.length}} questões selecionadas}}
     </p>
 
     <ion-item>
