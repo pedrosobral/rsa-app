@@ -1,6 +1,6 @@
 <ion-list>
   <ion-item>
-    Estudantes
+    Estudantes online
     <span item-right *ngIf="room?.private; else anonymousStats">{{room?.people}}/{{room?.students.length}}</span>
     <ng-template #anonymousStats>
       <span item-right>{{room?.peopleOnline}}</span>
