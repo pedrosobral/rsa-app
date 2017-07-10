@@ -3,11 +3,12 @@ page-professor-session-results {
     @media screen and (min-width: 992px) {
       margin-left: auto !important;
       margin-right: auto !important;
-      width: 80vw !important;
+      width: 50vw !important;
     }
   }
-  
-  .sessions-rows .item-inner:hover {
-    background-color: #FAFAFA;
+
+  .overall {
+    font-size: 2rem;
+    font-weight: 500;
   }
 }

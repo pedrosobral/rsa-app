@@ -14,9 +14,9 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <!-- <div [ngSwitch]="pet"></div> -->
-  <ion-list *ngIf="viewMode === 'questions'; else studentsView">
+  <!-- <ion-list *ngIf="viewMode === 'questions'; else studentsView">
     <ion-item class="list-header">
       <ion-row>
         <ion-col align-self-center col-3>Questão</ion-col>
@@ -38,6 +38,18 @@
           <ion-col align-self-center col-2>{{question.unanswer || question.students?.length - question.votes }}</ion-col>
         </ion-row>
       </ion-label>
+    </button>
+  </ion-list> -->
+
+  <ion-list *ngIf="viewMode === 'questions'; else studentsView" text-wrap>
+    <button ion-item class="sessions-rows" *ngFor="let question of poll?.questions" (click)="goToDetails(question)">
+      <h2>{{question.question}}</h2>
+      <ion-item no-lines>
+        <span ion-text class="overall" color="primary" item-left>{{question.overall || '-'}}</span>
+        <h4 class="stats" ion-text color="secondary">{{question.correctAnswers || '-'}} respostas corretas</h4>
+        <h4 class="stats" ion-text color="danger">{{question.wrongAnswers || '-'}} respostas erradas</h4>
+        <h4 class="stats" ion-text color="light">{{question.unanswer || question.students?.length - question.votes }} não responderam</h4>
+      </ion-item>
     </button>
   </ion-list>
 
