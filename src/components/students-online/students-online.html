@@ -1,8 +1,8 @@
-<button *ngIf="room?.private; else anonymousButton" ion-button (click)="presentPopover($event)">
-    Estudantes Online <span class="people-online"> {{room?.people}}</span>
+<button *ngIf="room?.private; else anonymousButton" ion-button color="white" clear (click)="presentPopover($event)">
+    Online <span class="people-online"> {{room?.people}}</span>
   </button>
 <ng-template #anonymousButton>
   <button *ngIf="room" ion-button (click)="presentPopover($event)">
-      Estudantes Online <span class="people-online">{{room?.peopleOnline}}</span>
+      Online <span class="people-online">{{room?.peopleOnline}}</span>
     </button>
 </ng-template>
