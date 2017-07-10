@@ -1,3 +1,18 @@
+<a name="0.30.0"></a>
+# [0.30.0](https://github.com/pedrosobral/rsa-app/compare/0.29.0...v0.30.0) (2017-07-10)
+
+
+### Bug Fixes
+
+* **poll:** poll should return room info ([3ee51a7](https://github.com/pedrosobral/rsa-app/commit/3ee51a7))
+
+
+### Features
+
+* **live:** add control buttons go to right and left slides presentation ([34a5968](https://github.com/pedrosobral/rsa-app/commit/34a5968))
+
+
+
 <a name="0.29.0"></a>
 # [0.29.0](https://github.com/pedrosobral/rsa-app/compare/0.28.0...v0.29.0) (2017-07-08)
 
