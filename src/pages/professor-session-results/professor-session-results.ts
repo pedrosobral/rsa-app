@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage({
-  segment: 'poll/details'
+  segment: 'poll/details',
 })
 @Component({
   selector: 'page-professor-session-results',
@@ -19,6 +19,15 @@ export class ProfessorSessionResultsPage {
   }
 
   ionViewDidLoad() {
+    // go back if there's no data
+    if (!this.poll) {
+      this.navCtrl.setRoot('ProfessorLivePage')
+        .then(() => {
+          this.navCtrl.goToRoot({});
+        });
+      return;
+    }
+
     this.setStats();
   }
 
@@ -55,7 +64,7 @@ export class ProfessorSessionResultsPage {
         if (q.type === 'free') return;
 
         const answer = q.students.find(x => x._id === s._id).answer;
-        answers.push({answer, correct: answer && answer.index === q.correct });
+        answers.push({ answer, correct: answer && answer.index === q.correct });
       });
       s.answers = answers;
 
