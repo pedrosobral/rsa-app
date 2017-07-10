@@ -7,37 +7,28 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list padding>
-    <ion-item class="list-header">
-      <ion-row>
-        <ion-col align-self-center col-4>Data</ion-col>
-        <ion-col align-self-center col-2>Frequência</ion-col>
-        <ion-col align-self-center col-1>Presentes</ion-col>
-        <ion-col align-self-center col-1>Ausentes</ion-col>
-        <ion-col align-self-center col-1></ion-col>
-      </ion-row>
-    </ion-item>
+<ion-content>
+  <ion-list>
     <ion-item *ngFor="let att of attendances">
-      <ion-label>
-        <ion-row>
-          <ion-col align-self-center col-4>
-            <div class="stats-date">{{att.createdAt | amDateFormat:'LL' }}</div>
-            <div class="stats-time">{{att.createdAt | amCalendar }} </div>
-          </ion-col>
-          <ion-col align-self-center col-2 class="stats-overall">{{att.overall}}%</ion-col>
-          <ion-col align-self-center col-1 class="stats-numbers green-800" >{{att.presents}}</ion-col>
-          <ion-col align-self-center col-1 class="stats-numbers" ion-text color="danger">{{att.abscents}}</ion-col>
-          <ion-col col-1>
-            <button ion-button clear icon-only (click)="edit(att)">
-              <ion-icon name="create"></ion-icon>
-            </button>
-            <button ion-button clear icon-only (click)="askToRemove(att)" color="danger">
-              <ion-icon name="trash"></ion-icon>
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-label>
+      <div class="stats-date">{{att.createdAt | amDateFormat:'LL' }}</div>
+      <div class="stats-time">{{att.createdAt | amCalendar }} </div>
+      <div item-left class="stats-overall">
+        {{att.overall}}%
+      </div>
+      <ion-row>
+        <ion-col col-5>
+          <div class="stats-numbers" ion-text color="secondary">Presentes {{att.presents}}</div>
+          <div class="stats-numbers" ion-text color="danger">Ausentes {{att.abscents}}</div>
+        </ion-col>
+        <ion-col col-1 offset-2>
+          <button ion-button clear icon-only (click)="edit(att)">
+            <ion-icon name="create"></ion-icon>
+          </button>
+          <button ion-button clear icon-only (click)="askToRemove(att)" color="danger">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
     </ion-item>
   </ion-list>
 </ion-content>
