@@ -3,9 +3,10 @@
     <name>RSA</name>
     <description>RSA: Resposta em Sala de Aula em tempo real</description>
     <author email="pedrosobralxv@gmail.com" href="http://ionicframework.com/">Pedro Henrique A. Sobral</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.0.175:8101" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
+    <allow-navigation href="http://192.168.0.175:8101" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
