@@ -17,7 +17,7 @@ export class PollService {
       query: {
         'room.code': room.code,
         isOver: false,
-        $select: ['available', 'user', 'questions']
+        $select: ['available', 'user', 'questions', 'room']
       },
       rx: {
         listStrategy: 'always'
