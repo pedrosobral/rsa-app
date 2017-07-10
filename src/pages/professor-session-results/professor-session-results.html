@@ -46,9 +46,9 @@
       <h2>{{question.question}}</h2>
       <ion-item no-lines>
         <span ion-text class="overall" color="primary" item-left>{{question.overall || '-'}}</span>
-        <h4 class="stats" ion-text color="secondary">{{question.correctAnswers || '-'}} respostas corretas</h4>
-        <h4 class="stats" ion-text color="danger">{{question.wrongAnswers || '-'}} respostas erradas</h4>
-        <h4 class="stats" ion-text color="light">{{question.unanswer || question.students?.length - question.votes }} não responderam</h4>
+        <h2 class="stats" ion-text color="secondary">{{question.correctAnswers || '-'}} respostas corretas</h2>
+        <h2 class="stats" ion-text color="danger">{{question.wrongAnswers || '-'}} respostas erradas</h2>
+        <h2 class="stats" ion-text color="light">{{question.unanswer || question.students?.length - question.votes }} não responderam</h2>
       </ion-item>
     </button>
   </ion-list>
