@@ -1,18 +1,20 @@
 page-professor-room {
   .room-head {
+    display: block;
     font-weight: 500;
+    margin-bottom: 5px;
   }
 
   ion-list {
     @media screen and (min-width: 992px) {
       margin-left: auto !important;
       margin-right: auto !important;
-      width: 80vw !important;
+      width: 50vw !important;
     }
   }
 
   .no-rooms {
-    ion-icon[name="school"]{
+    ion-icon[name="school"] {
       font-size: 40px;
     }
     margin-top: 20vh;
@@ -20,8 +22,12 @@ page-professor-room {
     font-size: 20px;
   }
 
+  ion-list .item-inner:hover {
+    background-color: #FAFAFA;
+  }
+
   ion-note {
-    display: block;
+    // display: block;
     margin-top: 5px;
     font-size: 15px;
   }

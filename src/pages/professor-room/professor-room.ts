@@ -11,7 +11,7 @@ import {
 
 import { RoomsProvider } from '../../providers/providers';
 
-@IonicPage({ })
+@IonicPage({})
 @Component({
   selector: 'page-professor-room',
   templateUrl: 'professor-room.html',
@@ -36,7 +36,7 @@ export class ProfessorRoomPage {
   }
 
   newRoom() {
-    this.modalCtrl.create('NewRoomPage', null, {cssClass: 'new-room-modal'}).present();
+    this.modalCtrl.create('NewRoomPage', null, { cssClass: 'new-room-modal' }).present();
   }
 
   students(room) {
@@ -51,8 +51,13 @@ export class ProfessorRoomPage {
         this.rs.activate(r, false);
       });
     }
+
     this.rs.activate(room, room.online)
-      .then(() => this.presentToast(`Turma #${room.code} ativada`));
+      .then(() => {
+        const message = room.online ? `Turma #${room.code} ativada` : `Turma #${room.code} desativada`
+        this.presentToast(message)
+          .catch((error) => console.info('error', error));
+      });
   }
 
   goToActivities(room) {

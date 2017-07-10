@@ -2,17 +2,19 @@
 
   <ion-navbar>
     <ion-title>Turmas</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-left (click)="newRoom()">
+        <ion-icon name="add"></ion-icon>
+        Adicionar turma
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
   <!-- rooms list -->
-  <ion-list padding *ngIf="rooms?.length">
-    <button ion-button icon-left (click)="newRoom()">
-      <ion-icon name="add"></ion-icon>
-      Adicionar turma
-    </button>
+  <!-- <ion-list padding *ngIf="rooms?.length">
     <ion-item class="room-head">
       <ion-row wrap>
         <ion-col align-self-center col-4>Nome</ion-col>
@@ -55,6 +57,31 @@
           </ion-col>
         </ion-row>
       </ion-label>
+    </ion-item>
+  </ion-list> -->
+
+  <ion-list *ngIf="rooms?.length">
+    <ion-item *ngFor="let room of rooms">
+      <ion-label>
+        <span class="room-head">{{room.name}}</span>
+        <p>
+          <ion-icon [name]="room.private ? 'lock' : 'unlock'" [color]="room.online ? 'secondary': ''"></ion-icon> {{ room.code }}
+          <ion-note *ngIf="room.private; else anonymous">(Acesso privado)</ion-note>
+          <ng-template #anonymous>
+            <ion-note>(Acesso livre)</ion-note>
+          </ng-template>
+        </p>
+        <button item-left ion-button outline small (click)="students(room)">
+          {{ room.students?.length || 0 }} estudantes
+        </button>
+        <button item-left ion-button outline small (click)="goToActivities(room)">
+          Frequências
+        </button>
+      </ion-label>
+      <ion-toggle item-right (ionChange)="activate(room)" [(ngModel)]="room.online"></ion-toggle>
+      <button item-right [disabled]="room.online" ion-button clear icon-only (click)="askToRemove(room)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
     </ion-item>
   </ion-list>
 
