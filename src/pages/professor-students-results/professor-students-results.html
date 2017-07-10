@@ -7,21 +7,11 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list>
-    <ion-item class="list-header">
-      <ion-row>
-        <ion-col align-self-center col-4>Nome</ion-col>
-        <ion-col align-self-center col-1>Resposta</ion-col>
-      </ion-row>
-    </ion-item>
+<ion-content>
+  <ion-list text-wrap>
     <ion-item *ngFor="let student of question?.students">
-      <ion-label>
-        <ion-row>
-          <ion-col align-self-center col-4 class="break-word">{{student.name}}</ion-col>
-          <ion-col align-self-center col-1>{{student.answer?.text || student.answer || '-'}}</ion-col>
-        </ion-row>
-      </ion-label>
+      <h3>{{student.name}}</h3>
+      <p> {{student.answer?.text || student.answer || '-'}} </p>
     </ion-item>
   </ion-list>
 </ion-content>
