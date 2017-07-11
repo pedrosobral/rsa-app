@@ -41,7 +41,7 @@ export class PollService {
       isOver: true
     }, {
       query: {
-        $select: ['']
+        $select: ['user']
       }
     });
   }
@@ -51,7 +51,7 @@ export class PollService {
       "available": value
     }, {
       query: {
-        $select: ['']
+        $select: ['user']
       }
     });
   }
@@ -61,7 +61,7 @@ export class PollService {
       [`questions.${questionIndex}.showChart`]: value
     }, {
       query: {
-        $select: ['']
+        $select: ['user']
       }
     });
   }
@@ -71,7 +71,7 @@ export class PollService {
       [`questions.${questionIndex}.showAnswer`]: value
     }, {
       query: {
-        $select: ['']
+        $select: ['user']
       }
     });
   }
