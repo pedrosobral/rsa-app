@@ -4,10 +4,16 @@
     <button ion-button menuToggle>
      <ion-icon name="menu"></ion-icon>
    </button>
-    <ion-title *ngIf="room; else noRoomTitle">{{room?.name}} #{{room?.code}}</ion-title>
+    <ion-title *ngIf="room; else noRoomTitle"><span hideWhen="android,ios">{{room?.name}} </span>#{{room?.code}}</ion-title>
     <ng-template #noRoomTitle>
       <ion-title>Nenhuma turma ativa</ion-title>
     </ng-template>
+    <ion-buttons end>
+      <button ion-button icon-left (click)="newQuestion()">
+        <ion-icon name="add"></ion-icon>
+        Adicionar questão
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -21,10 +27,6 @@
       <p>Para iniciar uma sessão, você precisa criar uma questão primeiro.</p>
     </div>
 
-    <button ion-button icon-left (click)="newQuestion()" full>
-      <ion-icon name="add"></ion-icon>
-      Adicionar questão
-    </button>
 
     <!-- header selected questions -->
     <p *ngIf="questions?.length > 0" i18n>{sessionQuestions.length, plural, =0 {Selecione uma ou mais questões para iniciar uma sessão} =1 {1 questão selecionada} other {{{sessionQuestions.length}} questões selecionadas}}
