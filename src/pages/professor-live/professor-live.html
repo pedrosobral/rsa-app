@@ -68,7 +68,7 @@
       <button outline ion-button item-right>Detalhes</button>
     </ion-item>
     <ion-item *ngIf="sessions?.length < 1">Nenhuma sessão encerrada</ion-item>
-    
+
     <div class="spinner">
       <ion-spinner color="primary" *ngIf="!isDataLoaded"></ion-spinner>
     </div>
@@ -121,9 +121,14 @@
       </button>
       <button ion-fab (click)="showChart()" [color]=" isChartAvailable ? 'secondary' : ''">
         <ion-icon name="stats"></ion-icon>
-        <ion-label hideWhen="android,ios">{{isChartAvailable ? 'Esconder resultado' : 'Mostrar resultado'}}</ion-label>
+        <ion-label *ngIf="!isFreeAnswerQuestion" hideWhen="android,ios">{{isChartAvailable ? 'Esconder resultado' : 'Mostrar resultado'}}</ion-label>
+        <ion-label *ngIf="isFreeAnswerQuestion" hideWhen="android,ios">Nuvem de Palavras</ion-label>
       </button>
-      <button (click)="showAnswer()" ion-fab [color]="isAnswerAvailable ? 'secondary' : ''">
+      <button (click)="showFreeAnswers()" ion-fab [hidden]="!isFreeAnswerQuestion">
+        <ion-icon name="checkmark"></ion-icon>
+        <ion-label hideWhen="android,ios">Ver respostas</ion-label>
+      </button>
+      <button (click)="showAnswer()" ion-fab [hidden]="isFreeAnswerQuestion" [color]="isAnswerAvailable ? 'secondary' : ''">
         <ion-icon name="checkmark"></ion-icon>
         <ion-label hideWhen="android,ios">{{!isAnswerAvailable ? 'Mostrar resposta' : 'Esconder resposta'}}</ion-label>
       </button>

@@ -36,6 +36,7 @@ export class ProfessorLivePage {
   currentSlide: number;
   isChartAvailable: boolean;
   isAnswerAvailable: boolean;
+  isFreeAnswerQuestion: boolean;
 
   isFullscreen: boolean = false;
 
@@ -121,14 +122,20 @@ export class ProfessorLivePage {
 
       // set fab actions state
       this.currentSlide = Reveal.getState().indexh;
-      this.isChartAvailable = this.poll.questions[this.currentSlide].showChart;
-      this.isAnswerAvailable = this.poll.questions[this.currentSlide].showAnswer;
+      const currentQuestion = this.poll.questions[this.currentSlide];
+
+      this.isChartAvailable = currentQuestion.showChart;
+      this.isAnswerAvailable = currentQuestion.showAnswer;
+      this.isFreeAnswerQuestion = currentQuestion.type === 'free';
 
       // settings
       this.updateSettings();
 
       // to dismiss loading
       this.events.publish('session:loaded');
+
+      // usage ProfessorStudentsResultsPage
+      this.isFreeAnswerQuestion && this.events.publish('results:update', { question: this.poll.questions[this.currentSlide] });
     });
   }
 
@@ -189,6 +196,7 @@ export class ProfessorLivePage {
       this.currentSlide = event.indexh;
       this.isChartAvailable = this.poll.questions[this.currentSlide].showChart;
       this.isAnswerAvailable = this.poll.questions[this.currentSlide].showAnswer;
+      this.isFreeAnswerQuestion = this.poll.questions[this.currentSlide].type === 'free';
 
       // settings
       this.updateSettings();
@@ -247,7 +255,7 @@ export class ProfessorLivePage {
   }
 
   takeAttendance() {
-    const loading = this.presentLoading();
+    const loading = this.createLoading();
     loading.present();
 
     const fourRandomDigits = Math.floor(1000 + Math.random() * 9000);
@@ -277,7 +285,7 @@ export class ProfessorLivePage {
     }).present();
   }
 
-  presentLoading() {
+  createLoading() {
     return this.loadCtrl.create({
       content: 'Carregando...',
       duration: 5000
@@ -354,6 +362,10 @@ export class ProfessorLivePage {
     this.isChartAvailable = !question.showChart;
 
     this.ps.showChart(this.poll, this.currentSlide, !question.showChart);
+  }
+
+  showFreeAnswers() {
+    this.navCtrl.push('ProfessorStudentsResultsPage', { question: this.poll.questions[this.currentSlide] });
   }
 
   fullscreen() {
