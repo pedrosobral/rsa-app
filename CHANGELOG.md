@@ -1,3 +1,13 @@
+<a name="0.33.0"></a>
+# [0.33.0](https://github.com/pedrosobral/rsa-app/compare/0.32.0...v0.33.0) (2017-07-11)
+
+
+### Bug Fixes
+
+* **providers:** should return at least user info ([b91d6fc](https://github.com/pedrosobral/rsa-app/commit/b91d6fc))
+
+
+
 <a name="0.32.0"></a>
 # [0.32.0](https://github.com/pedrosobral/rsa-app/compare/0.31.0...v0.32.0) (2017-07-11)
 
