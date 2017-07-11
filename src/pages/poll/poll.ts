@@ -135,7 +135,7 @@ export class PollPage {
   }
 
   initPoll() {
-    this.ps.poll({ code: this.code })
+    this.ps.getPollByStudent({ code: this.code })
       .subscribe((poll) => {
         if (poll.data.length > 0 && poll.data[0].available !== -1) {
           this.poll = poll.data[0];

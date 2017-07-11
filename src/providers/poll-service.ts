@@ -12,7 +12,20 @@ export class PollService {
     return this.polls.create(poll);
   }
 
-  poll(room: any) {
+  getPollByStudent(room: any) {
+    return this.polls.find({
+      query: {
+        'room.code': room.code,
+        isOver: false,
+        $select: ['available', 'user', 'questions', 'room']
+      },
+      rx: {
+        listStrategy: 'always'
+      }
+    });
+  }
+
+  getPollByProfessor(room: any) {
     const user = this.app.app.get('user');
 
     return this.polls.find({

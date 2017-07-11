@@ -102,7 +102,7 @@ export class ProfessorLivePage {
   }
 
   initializeData() {
-    this.room && this.ps.poll(this.room.code).subscribe((poll) => {
+    this.room && this.ps.getPollByProfessor(this.room.code).subscribe((poll) => {
       if (!poll.data.length) return;
 
       // force no view mode
