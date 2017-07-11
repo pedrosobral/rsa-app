@@ -20,7 +20,7 @@ export class QuestionsTab extends Page {
   }
 
   getAddQuestionButton() {
-    return element(by.cssContainingText('.button', 'Adicionar questão'));
+    return element(by.css('ion-buttons > button'));
   }
 
   getModalAddQuestion() {
