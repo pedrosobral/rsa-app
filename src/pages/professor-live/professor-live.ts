@@ -269,12 +269,12 @@ export class ProfessorLivePage {
   }
 
   presentToast(msg) {
-    const toast = this.toastCtrl.create({
+    this.toastCtrl.create({
       message: msg,
       duration: 2000,
       position: 'bottom',
       showCloseButton: true,
-    });
+    }).present();
   }
 
   presentLoading() {
