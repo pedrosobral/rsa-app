@@ -17,6 +17,8 @@ import { RoomsProvider } from '../../providers/providers';
   templateUrl: 'professor-room.html',
 })
 export class ProfessorRoomPage {
+  isDataLoaded: boolean = false;
+
   rooms: any;
 
   constructor(
@@ -32,6 +34,7 @@ export class ProfessorRoomPage {
     this.rs.find()
       .subscribe((rooms) => {
         this.rooms = rooms.data;
+        this.isDataLoaded = true;
       });
   }
 

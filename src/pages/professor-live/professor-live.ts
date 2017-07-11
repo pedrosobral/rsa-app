@@ -26,6 +26,7 @@ import {
 })
 export class ProfessorLivePage {
   @ViewChild('fab') fab: FabContainer;
+  isDataLoaded: boolean = false;
 
   sessions: any;
 
@@ -148,6 +149,8 @@ export class ProfessorLivePage {
       sessions.data.forEach((session) => {
         this.sessions.push(session);
       });
+
+      this.isDataLoaded = true;
     });
   }
 

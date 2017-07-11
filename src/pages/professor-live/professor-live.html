@@ -68,6 +68,10 @@
       <button outline ion-button item-right>Detalhes</button>
     </ion-item>
     <ion-item *ngIf="sessions?.length < 1">Nenhuma sessão encerrada</ion-item>
+    
+    <div class="spinner">
+      <ion-spinner color="primary" *ngIf="!isDataLoaded"></ion-spinner>
+    </div>
   </ion-list>
 
   <!-- slides -->

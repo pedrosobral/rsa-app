@@ -41,6 +41,10 @@
       </button>
     </ion-item>
 
+    <div class="spinner">
+      <ion-spinner color="primary" *ngIf="!isDataLoaded"></ion-spinner>
+    </div>
+
     <!-- list questions -->
     <ion-item *ngFor="let q of questions" no-padding>
       <ion-label>

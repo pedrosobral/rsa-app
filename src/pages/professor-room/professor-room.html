@@ -85,7 +85,7 @@
     </ion-item>
   </ion-list>
 
-  <div class="no-rooms" *ngIf="!rooms?.length">
+  <div class="no-rooms" *ngIf="isDataLoaded && !rooms?.length">
     <div>
       <ion-icon name="school"></ion-icon>
     </div>
@@ -97,6 +97,9 @@
     </button>
   </div>
 
+  <div class="spinner">
+    <ion-spinner color="primary" *ngIf="!isDataLoaded"></ion-spinner>
+  </div>
 
   <!-- <ion-fab right bottom>
     <button (click)="newRoom()" ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>

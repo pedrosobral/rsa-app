@@ -27,6 +27,8 @@ import {
   templateUrl: 'professor-questions.html',
 })
 export class ProfessorQuestionsPage {
+  isDataLoaded: boolean = false;
+
   questions: any = [];
   sessionQuestions: any = [];
 
@@ -93,6 +95,9 @@ export class ProfessorQuestionsPage {
 
       // no filter
       this.isFiltered = false;
+
+      // loading indicator
+      this.isDataLoaded = true;
     });
   }
 
