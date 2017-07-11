@@ -13,9 +13,11 @@ export class PollService {
   }
 
   poll(room: any) {
+    const user = this.app.app.get('user');
+
     return this.polls.find({
       query: {
-        'room.code': room.code,
+        user: user._id,
         isOver: false,
         $select: ['available', 'user', 'questions', 'room']
       },
@@ -40,40 +42,40 @@ export class PollService {
     return this.polls.patch(poll._id, {
       isOver: true
     }, {
-      query: {
-        $select: ['user']
-      }
-    });
+        query: {
+          $select: ['user']
+        }
+      });
   }
 
   setAvailable(poll, value) {
     return this.polls.patch(poll._id, {
       "available": value
     }, {
-      query: {
-        $select: ['user']
-      }
-    });
+        query: {
+          $select: ['user']
+        }
+      });
   }
 
   showChart(poll, questionIndex, value) {
     return this.polls.patch(poll._id, {
       [`questions.${questionIndex}.showChart`]: value
     }, {
-      query: {
-        $select: ['user']
-      }
-    });
+        query: {
+          $select: ['user']
+        }
+      });
   }
 
   showAnswer(poll, questionIndex, value) {
     return this.polls.patch(poll._id, {
       [`questions.${questionIndex}.showAnswer`]: value
     }, {
-      query: {
-        $select: ['user']
-      }
-    });
+        query: {
+          $select: ['user']
+        }
+      });
   }
 
   answer(poll, student, questionIndex, answer) {
