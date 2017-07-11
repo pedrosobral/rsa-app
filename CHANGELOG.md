@@ -1,3 +1,13 @@
+<a name="0.35.0"></a>
+# [0.35.0](https://github.com/pedrosobral/rsa-app/compare/0.34.0...v0.35.0) (2017-07-11)
+
+
+### Bug Fixes
+
+* **poll:** change API poll by professor and student ([60bbe4c](https://github.com/pedrosobral/rsa-app/commit/60bbe4c))
+
+
+
 <a name="0.34.0"></a>
 # [0.34.0](https://github.com/pedrosobral/rsa-app/compare/0.33.0...v0.34.0) (2017-07-11)
 
