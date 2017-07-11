@@ -1,3 +1,22 @@
+<a name="0.32.0"></a>
+# [0.32.0](https://github.com/pedrosobral/rsa-app/compare/0.31.0...v0.32.0) (2017-07-11)
+
+
+### Bug Fixes
+
+* **attendance-list:** increase width ([6ad114e](https://github.com/pedrosobral/rsa-app/commit/6ad114e))
+* **test:** better css to get element ([266257a](https://github.com/pedrosobral/rsa-app/commit/266257a))
+
+
+### Features
+
+* **live:** button to show answers free question w/ live update ([bab92e7](https://github.com/pedrosobral/rsa-app/commit/bab92e7))
+* **questions:** move button add questions to toolbar ([c090a2b](https://github.com/pedrosobral/rsa-app/commit/c090a2b))
+* **students-result:** add button to hide/show names ([4dc0b63](https://github.com/pedrosobral/rsa-app/commit/4dc0b63))
+* **word-freq:** improve word cloud by remove stop words ([ffc3592](https://github.com/pedrosobral/rsa-app/commit/ffc3592))
+
+
+
 <a name="0.31.0"></a>
 # [0.31.0](https://github.com/pedrosobral/rsa-app/compare/0.30.0...v0.31.0) (2017-07-11)
 
