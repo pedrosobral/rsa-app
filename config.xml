@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="apps.pedrosobral.rsa" version="0.3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="apps.pedrosobral.rsa" version="0.4.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>RSA</name>
     <description>RSA: Resposta em Sala de Aula em tempo real</description>
     <author email="pedrosobralxv@gmail.com" href="http://ionicframework.com/">Pedro Henrique A. Sobral</author>

@@ -1,3 +1,13 @@
+<a name="0.34.0"></a>
+# [0.34.0](https://github.com/pedrosobral/rsa-app/compare/0.33.0...v0.34.0) (2017-07-11)
+
+
+### Bug Fixes
+
+* **poll-service:** get room info by user id ([a380d21](https://github.com/pedrosobral/rsa-app/commit/a380d21))
+
+
+
 <a name="0.33.0"></a>
 # [0.33.0](https://github.com/pedrosobral/rsa-app/compare/0.32.0...v0.33.0) (2017-07-11)
 
