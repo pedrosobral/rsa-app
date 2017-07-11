@@ -30,13 +30,14 @@ export class SlideComponent {
   }
 
   dataChart() {
-    const calcPercentage = (votes = 0, total = 1) => votes / total;
-    const toPercentage = (number) => Math.floor(number * 100) + '%';
+    const calcPercentage = (votes = 0, total) => {
+      const result = votes / (total || 1);
+      return `(${votes}) ${Math.floor(result * 100)}%`;
+    }
 
     const totalVotes = this.question.votes;
     this.results = this.question.options
       .map(option => calcPercentage(option.votes, totalVotes))
-      .map(toPercentage);
   }
 
   doWordFreq() {
