@@ -1,3 +1,35 @@
+<a name="0.31.0"></a>
+# [0.31.0](https://github.com/pedrosobral/rsa-app/compare/0.30.0...v0.31.0) (2017-07-11)
+
+
+### Bug Fixes
+
+* **professor-session-results:** add check null data ([668ccc5](https://github.com/pedrosobral/rsa-app/commit/668ccc5))
+* **slide:** remove min scale so it scales auto ([a7cfbde](https://github.com/pedrosobral/rsa-app/commit/a7cfbde))
+* **stats:** should add empty answer when question type is 'FREE' ([11fa5db](https://github.com/pedrosobral/rsa-app/commit/11fa5db))
+* **toast:** present toast! ([94a77c4](https://github.com/pedrosobral/rsa-app/commit/94a77c4))
+
+
+### Features
+
+* **app:** add basic loading indicator ([ed0c94f](https://github.com/pedrosobral/rsa-app/commit/ed0c94f))
+* **attendance:** move action 'Take Attendance' to 'Aula' tab ([1855100](https://github.com/pedrosobral/rsa-app/commit/1855100))
+* **attendance-details:** fix layout for smartphone ([44cbaec](https://github.com/pedrosobral/rsa-app/commit/44cbaec))
+* **attendance-list:** better layout for smartphone ([75993fc](https://github.com/pedrosobral/rsa-app/commit/75993fc))
+* **index:** change title to RSA... ([5658bbc](https://github.com/pedrosobral/rsa-app/commit/5658bbc))
+* **live:** refactor layout to ion-list > ion-item * ([83f6b7f](https://github.com/pedrosobral/rsa-app/commit/83f6b7f))
+* **questions:** remove 'ONLINE' from toolbar tab 'Questions' ([100bb63](https://github.com/pedrosobral/rsa-app/commit/100bb63))
+* **refactor:** remove unused code ([c141d6c](https://github.com/pedrosobral/rsa-app/commit/c141d6c))
+* **room:** refactor layout to ion-list > ion-item* ([599f55f](https://github.com/pedrosobral/rsa-app/commit/599f55f))
+* **session-results:** better layout for smartphone ([b506210](https://github.com/pedrosobral/rsa-app/commit/b506210))
+* **session-results:** wip layout ([233b037](https://github.com/pedrosobral/rsa-app/commit/233b037))
+* **slide:** show number votes per alternative + % ([545588d](https://github.com/pedrosobral/rsa-app/commit/545588d))
+* **students-online:** reduce title, clear button ([b0db6c2](https://github.com/pedrosobral/rsa-app/commit/b0db6c2))
+* **students-results:** remove ion-grid ([3f8ce9b](https://github.com/pedrosobral/rsa-app/commit/3f8ce9b))
+* **tabs:** rename Ao Vivo to Aula ([67748e1](https://github.com/pedrosobral/rsa-app/commit/67748e1))
+
+
+
 <a name="0.30.0"></a>
 # [0.30.0](https://github.com/pedrosobral/rsa-app/compare/0.29.0...v0.30.0) (2017-07-10)
 
