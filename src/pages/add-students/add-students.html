@@ -11,8 +11,8 @@
 
 </ion-header>
 
-<ion-content padding>
-  <ion-card [hidden]="!!showInfo">
+<ion-content>
+  <ion-card [hidden]="!showInfo">
     <ion-card-header>
       <ion-item>
         Como importar lista de estudantes por arquivo CSV
@@ -28,23 +28,23 @@
   </ion-card>
 
   <ion-list>
-    <form [formGroup]="form">
-    <ion-buttons end>
-      <button *ngIf="import" ion-button icon-left clear (click)="undo()">
+    <form [formGroup]="form" *ngIf="form?.value?.students?.length">
+      <ion-buttons end padding>
+        <button *ngIf="import" ion-button icon-left clear (click)="undo()">
         <ion-icon name="undo"></ion-icon> Desfazer importação
       </button>
-      <button [disabled]="!((form.dirty) && form.valid)" ion-button icon-left clear (click)="save()">
+        <button [disabled]="!((form.dirty) && form.valid)" ion-button icon-left clear (click)="save()">
         <ion-icon name="checkmark"></ion-icon> Salvar
       </button>
-    </ion-buttons>
-    <ion-item class="student-header">
-      <ion-row>
-        <ion-col align-self-center col-1>#</ion-col>
-        <ion-col align-self-center col-6>Nome</ion-col>
-        <ion-col align-self-center col-3>ID</ion-col>
-        <ion-col align-self-center col-1></ion-col>
-      </ion-row>
-    </ion-item>
+      </ion-buttons>
+      <ion-item class="student-header">
+        <ion-row>
+          <ion-col align-self-center col-1>#</ion-col>
+          <ion-col align-self-center col-6>Nome</ion-col>
+          <ion-col align-self-center col-3>ID</ion-col>
+          <ion-col align-self-center col-1></ion-col>
+        </ion-row>
+      </ion-item>
       <ion-item formArrayName="students" *ngFor="let student of form.controls.students.controls; let i = index">
         <ion-label>
           <ion-row [formGroupName]="i">
@@ -68,9 +68,14 @@
         </ion-label>
       </ion-item>
     </form>
-    <ion-item *ngIf="!form?.value?.students?.length">
-      Nenhum estudante cadastrado
-    </ion-item>
+
+    <div class="no-rooms" *ngIf="!form?.value?.students?.length">
+      <div>
+        <ion-icon name="school"></ion-icon>
+      </div>
+      Você ainda não tem nenhum estudante cadastrado na turma. <br>
+      Começe adicionando nas opções ao lado.
+    </div>
   </ion-list>
 
 
