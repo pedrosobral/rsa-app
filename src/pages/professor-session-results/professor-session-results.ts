@@ -71,7 +71,7 @@ export class ProfessorSessionResultsPage {
       });
       s.answers = answers;
 
-      s.overall = answers.filter(x => x.correct).length / questions.length;
+      s.overall = answers.filter(x => x.correct).length / questions.filter(q => q.type !== 'free').length;
       s.overall = Math.floor(s.overall * 100) + '%';
     });
   }
