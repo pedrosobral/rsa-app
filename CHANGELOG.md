@@ -1,3 +1,21 @@
+<a name="0.36.0"></a>
+# [0.36.0](https://github.com/pedrosobral/rsa-app/compare/0.35.0...v0.36.0) (2017-07-13)
+
+
+### Bug Fixes
+
+* **stats:** fix error on issue [#3](https://github.com/pedrosobral/rsa-app/issues/3) ([bac7d02](https://github.com/pedrosobral/rsa-app/commit/bac7d02))
+
+
+### Features
+
+* **add-students:** better initial info when there's no students ([58ac8a3](https://github.com/pedrosobral/rsa-app/commit/58ac8a3))
+* **attendance:** message on no attendances ([f89d1b5](https://github.com/pedrosobral/rsa-app/commit/f89d1b5))
+* **e2e:** add remove question e2e test ([8dbc9ac](https://github.com/pedrosobral/rsa-app/commit/8dbc9ac))
+* **room-list:** add label toggle button ([ba79df3](https://github.com/pedrosobral/rsa-app/commit/ba79df3))
+
+
+
 <a name="0.35.0"></a>
 # [0.35.0](https://github.com/pedrosobral/rsa-app/compare/0.34.0...v0.35.0) (2017-07-11)
 
