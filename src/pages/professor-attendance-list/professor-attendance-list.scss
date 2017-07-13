@@ -33,4 +33,13 @@ page-professor-attendance-list {
     font-size: 2rem;
     font-weight: 500;
   }
+
+  .no-rooms {
+    ion-icon[name="hand"] {
+      font-size: 40px;
+    }
+    margin-top: 20vh;
+    text-align: center;
+    font-size: 20px;
+  }
 }

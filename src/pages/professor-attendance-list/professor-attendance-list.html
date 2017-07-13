@@ -32,5 +32,12 @@
         </ion-col>
       </ion-row>
     </ion-item>
+
+    <div class="no-rooms" *ngIf="!attendances?.length">
+      <div>
+        <ion-icon name="hand"></ion-icon>
+      </div>
+      Você ainda não realizou nenhuma frequência para esta turma. <br>
+    </div>
   </ion-list>
 </ion-content>
