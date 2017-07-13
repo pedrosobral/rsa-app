@@ -12,4 +12,8 @@ page-professor-session-results {
     font-weight: 500;
     color: color($colors, primary);
   }
+
+  .fab {
+    contain: layout;
+  }
 }

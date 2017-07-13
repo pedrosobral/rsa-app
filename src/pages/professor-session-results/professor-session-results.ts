@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { FabContainer, IonicPage, NavController, NavParams } from 'ionic-angular';
+
+import *  as Papa from 'papaparse';
 
 @IonicPage({
   segment: 'poll/details',
@@ -9,6 +11,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'professor-session-results.html',
 })
 export class ProfessorSessionResultsPage {
+  @ViewChild('fab') fab: FabContainer;
+
   poll = this.navParams.get('poll');
 
   viewMode = 'questions';
@@ -19,6 +23,9 @@ export class ProfessorSessionResultsPage {
   }
 
   ionViewDidLoad() {
+    // open fab-button
+    this.fab.toggleList();
+
     // go back if there's no data
     if (!this.poll) {
       this.navCtrl.setRoot('ProfessorLivePage')
@@ -62,7 +69,8 @@ export class ProfessorSessionResultsPage {
       const answers = [];
       questions.forEach((q) => {
         if (q.type === 'free') {
-          answers.push({});
+          const text = q.students.find(x => x._id === s._id).answer;
+          answers.push({ type: 'free', text });
           return;
         }
 
@@ -74,6 +82,43 @@ export class ProfessorSessionResultsPage {
       s.overall = answers.filter(x => x.correct).length / questions.filter(q => q.type !== 'free').length;
       s.overall = Math.floor(s.overall * 100) + '%';
     });
+  }
+
+  studentsToCSV() {
+    let csv = [];
+    this.poll.room.students.forEach(student => {
+      let row = {};
+
+      row['Nome'] = student.name;
+
+      student.answers.forEach((answer, index) => {
+        if (answer.type === 'free') {
+          row[`Q${index + 1}`] = answer.text;
+        } else {
+          row[`Q${index + 1}`] = answer.correct === undefined ? '-' : answer.correct ? 'C' : 'E';
+        }
+      });
+
+      row['Desempenho (%)'] = student.overall.split('%')[0];
+
+      // add to csv
+      csv.push(row);
+    });
+
+    this.download(Papa.unparse(csv));
+  }
+
+  download(csv) {
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(csv));
+    element.setAttribute('download', 'resultado.csv');
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
   }
 
 }
