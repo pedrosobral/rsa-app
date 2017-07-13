@@ -81,4 +81,22 @@ describe('Questions Tab', () => {
       // })
     })
   });
+
+
+  describe('remove question', () => {
+    it('should remove a question', () => {
+      questionsTab.getRemoveQuestionButton().get(0).click();
+
+      browser.sleep(500);
+
+      questionsTab.getRemoveOkAlertButton().click();
+
+      browser.sleep(200);
+
+      questionsTab.getNumQuestions()
+        .then(num => {
+          expect(num).toEqual(questionsTab.questions - 1);
+        });
+    });
+  });
 });

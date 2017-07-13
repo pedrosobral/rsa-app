@@ -55,10 +55,10 @@
         <ion-badge *ngFor="let label of q.labels" item-right>{{label.text}}</ion-badge>
       </ion-label>
       <ion-checkbox (ionChange)="questionSelected()" [(ngModel)]="q.isChecked"></ion-checkbox>
-      <button clear ion-button icon-only item-right (click)="edit(q)">
+      <button class="edit-button" clear ion-button icon-only item-right (click)="edit(q)">
           <ion-icon name="create"></ion-icon>
       </button>
-      <button clear ion-button icon-only item-right (click)="showConfirm(q)">
+      <button class="remove-button" clear ion-button icon-only item-right (click)="showConfirm(q)">
           <ion-icon name="trash"></ion-icon>
       </button>
     </ion-item>

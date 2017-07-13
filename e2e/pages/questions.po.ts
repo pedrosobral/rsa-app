@@ -23,6 +23,14 @@ export class QuestionsTab extends Page {
     return element(by.css('ion-buttons > button'));
   }
 
+  getRemoveQuestionButton() {
+    return element.all(by.css('.remove-button'));
+  }
+
+  getRemoveOkAlertButton() {
+    return element(by.cssContainingText('button[ion-button="alert-button"]','OK'));
+  }
+
   getModalAddQuestion() {
     return element(by.tagName('page-professor-new-question'));
   }
