@@ -78,6 +78,7 @@
           Frequências
         </button>
       </ion-label>
+      <ion-label class="active-label" hideWhen="android,ios">Ativar</ion-label>
       <ion-toggle item-right (ionChange)="activate(room)" [(ngModel)]="room.online"></ion-toggle>
       <button item-right [disabled]="room.online" ion-button clear icon-only (click)="askToRemove(room)">
         <ion-icon name="trash"></ion-icon>
