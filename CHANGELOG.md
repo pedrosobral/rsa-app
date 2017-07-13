@@ -1,3 +1,13 @@
+<a name="0.37.0"></a>
+# [0.37.0](https://github.com/pedrosobral/rsa-app/compare/0.36.0...v0.37.0) (2017-07-13)
+
+
+### Features
+
+* **export-csv:** basic export to csv individual students stats [#4](https://github.com/pedrosobral/rsa-app/issues/4) ([2f02feb](https://github.com/pedrosobral/rsa-app/commit/2f02feb))
+
+
+
 <a name="0.36.0"></a>
 # [0.36.0](https://github.com/pedrosobral/rsa-app/compare/0.35.0...v0.36.0) (2017-07-13)
 
