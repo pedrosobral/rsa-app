@@ -2,16 +2,16 @@
   <h3>Frequência para</h3>
   <b>{{attendance?.name}}</b>
   <h1 style="color: #387ef5">{{attendance?.code}}</h1>
-  <small>
+  <small hideWhen="android,ios">
     Estudantes entrem com o código acima para marcarem presença na aula.
   </small>
-  <p><br></p>
+  <p hideWhen="android,ios"><br></p>
   <h3 style="color: #387ef5">
     <p>{{showUp(attendance?.students)}}</p>
   </h3>
-  <p><br></p>
-  <b>Accesem ou baixem o aplicativo em:
+  <p hideWhen="android,ios"><br></p>
+  <b hideWhen="android,ios">Accesem ou baixem o aplicativo em:
     <br>
-    <a [attr.href]="'https://rsa-beta-a263f.firebaseapp.com/#/poll/' + info?.code" target="_blank">resposta.univasf.edu.br/#/poll/{{info?.code}}</a>
+    <a [attr.href]="'https://rsa-beta-a263f.firebaseapp.com/#/nav/n4/poll/' + info?.code" target="_blank">rsa.univasf.edu.br/#/poll/{{info?.code}}</a>
   </b>
 </section>

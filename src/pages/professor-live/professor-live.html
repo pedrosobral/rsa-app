@@ -137,7 +137,8 @@
         <ion-label>{{isFullscreen ? 'Sair tela cheia' : 'Tela cheia'}}</ion-label>
       </button>
     </ion-fab-list>
-    <ion-fab-list side="left">
+
+    <ion-fab-list side="left" [hidden]="appState !== 'POLL_LIVE'">
       <button ion-fab (click)="moveSlideTo('right')"><ion-icon name="arrow-dropright"></ion-icon></button>
       <button ion-fab (click)="moveSlideTo('left')"><ion-icon name="arrow-dropleft"></ion-icon></button>
     </ion-fab-list>
@@ -160,7 +161,7 @@
         <ion-icon name="close"></ion-icon>
         <ion-label>Encerrar frequência</ion-label>
       </button>
-      <button ion-fab (click)="fullscreen()" [color]=" isFullscreen ? 'secondary' : ''">
+      <button ion-fab (click)="fullscreen()" [color]=" isFullscreen ? 'secondary' : ''" hideWhen="android,ios">
         <ion-icon [name]="isFullscreen ? 'contract' : 'expand'"></ion-icon>
         <ion-label>{{isFullscreen ? 'Sair tela cheia' : 'Tela cheia'}}</ion-label>
       </button>
