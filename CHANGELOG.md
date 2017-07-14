@@ -1,3 +1,13 @@
+<a name="0.39.0"></a>
+# [0.39.0](https://github.com/pedrosobral/rsa-app/compare/0.38.0...v0.39.0) (2017-07-14)
+
+
+### Features
+
+* **attendance:** hide some controls on attendance mode ([034a056](https://github.com/pedrosobral/rsa-app/commit/034a056))
+
+
+
 <a name="0.38.0"></a>
 # [0.38.0](https://github.com/pedrosobral/rsa-app/compare/0.37.0...v0.38.0) (2017-07-14)
 
