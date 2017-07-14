@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, LoadingController } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, LoadingController } from 'ionic-angular';
 
 import { LogAccessProvider } from '../../providers/providers';
 
@@ -18,6 +18,7 @@ export class HomePage {
     public logAccess: LogAccessProvider,
     public auth: AuthProvider,
     public loadCtrl: LoadingController,
+    public alertCtrl: AlertController,
   ) { }
 
   ionViewDidEnter() {
@@ -46,5 +47,16 @@ export class HomePage {
       }
       return this.navCtrl.push('ProfessorTabsPage');
     })
+  }
+
+  info() {
+    const alert = this.alertCtrl.create({
+      title: 'Sobre',
+      subTitle: `Este aplicativo é parte do Trabalho de Conclusão de Curso do aluno Pedro Henrique.
+      <p> Você está utilizando
+      a versão <strong>0.38.0</strong> do aplicativo.</p>`,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }
