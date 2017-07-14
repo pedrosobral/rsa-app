@@ -1,3 +1,13 @@
+<a name="0.38.0"></a>
+# [0.38.0](https://github.com/pedrosobral/rsa-app/compare/0.37.0...v0.38.0) (2017-07-14)
+
+
+### Features
+
+* **about:** add about info on home page w/ version number ([2ed6f43](https://github.com/pedrosobral/rsa-app/commit/2ed6f43))
+
+
+
 <a name="0.37.0"></a>
 # [0.37.0](https://github.com/pedrosobral/rsa-app/compare/0.36.0...v0.37.0) (2017-07-13)
 
