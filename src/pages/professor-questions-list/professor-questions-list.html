@@ -17,7 +17,7 @@
         </button>
         <button ion-item (click)="label()">
           <ion-icon name="create" item-left></ion-icon>
-          {{ !labels?.length ? 'Criar um nova marcador' : 'Editar marcadores' }}
+          {{ !labels?.length ? 'Criar um novo marcador' : 'Editar marcadores' }}
         </button>
         <button ion-item *ngFor="let label of labels" (click)="filterByLabel(label)">
           <ion-icon name="pricetag" item-left></ion-icon>
