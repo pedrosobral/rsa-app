@@ -1,6 +1,6 @@
 # RSA: Resposta em Sala de Aula
 
-RSA é um projeto *open-source* de um Sistema de Resposta em sala de aula (*Classroom Response System*).
+RSA é um projeto de *software livre* de um Sistema de Resposta em sala de aula (*Classroom Response System*).
 
 ![RSA](https://lh3.googleusercontent.com/lm3qXBEGuMYLBxobDXIDfYQ_c9O44fRdalgD8rdtravdj6s2BYGlSXor8Hl5xkKr6saJF4el5crfqYCoexGCVrF9Z0dgG6BTx1BRGqWOVBVyq6H2Cx3iNpQaZ26enaxIGazJqHuDh2s=w1198-h545-no)
 
