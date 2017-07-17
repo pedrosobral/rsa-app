@@ -117,7 +117,7 @@ export class PollPage {
         this.clearRoom();
 
         // add room entry to log access
-        this.logAccess.addHistory(Object.assign({}, this.room, {'code': this.code}));
+        this.logAccess.addHistory(Object.assign({}, this.room, { 'code': this.code }));
       })
       .catch(() => {
         loader.dismiss().then(() => {
@@ -136,18 +136,31 @@ export class PollPage {
 
   initPoll() {
     this.ps.getPollByStudent({ code: this.code })
-      .subscribe((poll) => {
-        if (poll.data.length > 0 && poll.data[0].available !== -1) {
-          this.poll = poll.data[0];
-          this.question = this.poll.questions[this.poll.available];
+      .subscribe((results) => {
+        if (results.data.length > 0 && results.data[0].available !== -1) {
+          const poll = results.data[0];
+          const question = poll.questions[poll.available];
 
-          if (this.checkAlreadyAnswered(this.question)) {
+          if (this.checkAlreadyAnswered(question)) {
             this.poll = null;
+            this.question = null;
+          } else {
+            // change question if it's different
+            if (!this.checkIsSameQuestion(question)) {
+              this.question = question;
+            }
+
+            this.poll = poll;
           }
+
         } else {
           this.poll = null;
         }
       });
+  }
+
+  checkIsSameQuestion(question) {
+    return this.question && this.question._id === question._id;
   }
 
   checkAlreadyAnswered(question) {
@@ -239,7 +252,7 @@ export class PollPage {
       if (!this.student) {
         this.ps.anonymousShortAnswer(this.poll, this.poll.available, answer)
           .then(() => {
-            this.answer = '';
+            this.clearPoll();
             this.presentToast('Resposta enviada');
           });
         return;
@@ -247,7 +260,7 @@ export class PollPage {
 
       this.ps.shortAnswer(this.poll, this.student, this.poll.available, answer)
         .then(() => {
-          this.answer = '';
+          this.clearPoll();
           this.presentToast('Resposta enviada');
         });
       return;
@@ -255,10 +268,14 @@ export class PollPage {
 
     this.ps.answer(this.poll, this.student, this.poll.available, answer)
       .then((res) => {
-        this.poll = null;
-        this.answer = '';
+        this.clearPoll();
         this.presentToast('Resposta enviada');
       });
+  }
+
+  clearPoll() {
+    this.poll = null;
+    this.answer = '';
   }
 
   askId() {
@@ -280,7 +297,7 @@ export class PollPage {
               .then(() => {
                 this.navCtrl.canGoBack() && this.navCtrl.popToRoot();
               });
-              return false;
+            return false;
           }
         },
         {
