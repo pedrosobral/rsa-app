@@ -54,7 +54,7 @@ export class HomePage {
       title: 'Sobre',
       subTitle: `Este aplicativo é parte do Trabalho de Conclusão de Curso do aluno Pedro Henrique.
       <p> Você está utilizando
-      a versão <strong>0.39.0</strong> do aplicativo.</p>`,
+      a versão <strong>0.40.0</strong> do aplicativo.</p>`,
       buttons: ['OK']
     });
     alert.present();

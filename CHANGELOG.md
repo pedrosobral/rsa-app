@@ -1,3 +1,13 @@
+<a name="0.40.0"></a>
+# [0.40.0](https://github.com/pedrosobral/rsa-app/compare/0.39.0...v0.40.0) (2017-07-17)
+
+
+### Bug Fixes
+
+* **poll:** avoid change question if it has not been answered yet. ([fda8bfc](https://github.com/pedrosobral/rsa-app/commit/fda8bfc))
+
+
+
 <a name="0.39.0"></a>
 # [0.39.0](https://github.com/pedrosobral/rsa-app/compare/0.38.0...v0.39.0) (2017-07-14)
 
